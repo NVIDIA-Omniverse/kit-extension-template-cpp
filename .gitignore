@@ -6,7 +6,6 @@ _*/
 
 # Visual Studio files.
 /.vs
-/.vscode
 **/.vscode/ipch
 
 # macOS files.
