@@ -1,0 +1,22 @@
+# An application is really just an extension that depends on other extensions
+[package]
+title = "Example Application: Extension Browser"
+description = "An example application that runs kit with a minimal set of extensions enabled, including the extension browser."
+keywords = ["app"] # Makes this browsable in the UI under the "experience" filter.
+
+# Add new extensions here if you want them enabled automatically when this app is run.
+# Otherwise, you can search for them in the extensions window and enable/disable them.
+[dependencies]
+"omni.kit.uiapp" = {}
+"omni.kit.window.console" = {}
+"omni.kit.window.extensions" = {}
+"omni.kit.window.script_editor" = {}
+
+ # Make extensions from this repo available to kit.
+[settings.app.exts]
+folders.'++' = ["${app}/../exts"]
+
+[settings.app.window]
+title = "Example Application: Extension Browser"
+width = 1700
+height = 900
