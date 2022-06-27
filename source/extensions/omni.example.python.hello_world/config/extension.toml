@@ -1,0 +1,17 @@
+[package]
+version = "1.0.0" # Semantic Versioning is used: https://semver.org/
+
+# These fields are used primarily for display in the extension browser UI.
+authors = ["Anton Novoselov <anovoselov@nvidia.com>", "David Bosnich <dbosnich@nvidia.com>"]
+title = "Example Python Extension: Hello World"
+description = "An example Python extension."
+category = "Example"
+keywords = ["example"]
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+icon = "data/icon.png"
+repository = "https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp"
+
+# Define the Python modules that this extension provides.
+[[python.module]]
+name = "omni.example.python.hello_world"
