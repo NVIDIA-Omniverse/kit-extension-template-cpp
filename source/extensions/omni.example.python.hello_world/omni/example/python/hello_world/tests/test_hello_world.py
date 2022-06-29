@@ -10,7 +10,7 @@ import omni.example.python.hello_world
 
 # Any class that dervives from 'omni.kit.test.AsyncTestCase'
 # declared at the root of the module will be auto-discovered,
-class Test(omni.kit.test.AsyncTestCase):
+class ExamplePythonHelloWorldTest(omni.kit.test.AsyncTestCase):
     # Called before running each test.
     async def setUp(self):
         pass

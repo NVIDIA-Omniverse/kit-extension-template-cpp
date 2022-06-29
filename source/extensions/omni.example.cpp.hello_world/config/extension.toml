@@ -12,6 +12,11 @@ readme  = "docs/README.md"
 icon = "data/icon.png"
 repository = "https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp"
 
+# Define the Python modules that this extension provides.
+# C++ only extensions need this just so tests don't fail.
+[[python.module]]
+name = "omni.example.cpp.hello_world"
+
 # Define the C++ plugins that this extension provides.
 [[native.plugin]]
 path = "bin/*.plugin"

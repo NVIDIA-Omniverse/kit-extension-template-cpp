@@ -6,6 +6,7 @@ project_ext(ext)
 repo_build.prebuild_link {
     { "data", ext.target_dir.."/data" },
     { "docs", ext.target_dir.."/docs" },
+    { "omni", ext.target_dir.."/omni" },
 }
 
 -- Build the C++ plugin that will be loaded by the extension.

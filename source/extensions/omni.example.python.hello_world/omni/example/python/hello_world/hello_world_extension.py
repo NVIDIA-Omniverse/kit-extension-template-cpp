@@ -6,9 +6,10 @@ def hello_from(caller: str):
     print(f"[omni.example.python.hello_world] hello_from was called from {caller}.")
     return "Hello back from omni.example.python.hello_world!"
 
+
 def hello_squared(x: int):
     print(f"[omni.example.python.hello_world] hello_squared was called with {x}.")
-    return x ** x
+    return x**x
 
 
 # When this extension is enabled, any class that derives from 'omni.ext.IExt'
