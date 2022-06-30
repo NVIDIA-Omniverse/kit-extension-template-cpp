@@ -10,6 +10,7 @@ keywords = ["example"]
 changelog = "docs/CHANGELOG.md"
 readme  = "docs/README.md"
 icon = "data/icon.png"
+preview_image = "data/preview.png"
 repository = "https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp"
 
 # Define the Python modules that this extension provides.

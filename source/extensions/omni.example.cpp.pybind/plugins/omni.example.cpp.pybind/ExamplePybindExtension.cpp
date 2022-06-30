@@ -30,7 +30,7 @@ namespace cpp
 namespace pybind
 {
 
-class ExamplePybindImplementation : public IExampleBoundInterface
+class ExampleBoundImplementation : public IExampleBoundInterface
 {
 public:
     void registerBoundObject(carb::ObjectPtr<IExampleBoundObject>& object) override
@@ -73,8 +73,8 @@ private:
 }
 }
 
-CARB_PLUGIN_IMPL(pluginImplDesc, omni::example::cpp::pybind::ExamplePybindImplementation)
+CARB_PLUGIN_IMPL(pluginImplDesc, omni::example::cpp::pybind::ExampleBoundImplementation)
 
-void fillInterface(omni::example::cpp::pybind::ExamplePybindImplementation& iface)
+void fillInterface(omni::example::cpp::pybind::ExampleBoundImplementation& iface)
 {
 }
