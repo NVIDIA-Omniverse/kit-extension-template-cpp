@@ -10,23 +10,21 @@ While an extension can consist of a single `extension.toml` file, most contain P
 ```mermaid
 graph TD
 
-  subgraph "Python Only"
-  A1(eg. omni.example.python.hello_world)
+  subgraph A[Mixed]
+  A1(eg. omni.example.cpp.pybind)
   end
 
-  subgraph "C++ Only"
-  A2(eg. omni.example.cpp.hello_world)
+  subgraph B[C++ Only]
+  B1(eg. omni.example.cpp.hello_world)
   end
 
-  subgraph "Mixed"
-  A3(eg. omni.example.cpp.pybind)
+  subgraph C[Python Only]
+  C1(eg. omni.example.python.hello_world)
   end
 
-
-
-  Kit[Kit] --> A1
-  Kit[Kit] --> A2
-  Kit[Kit] --> A3
+  Kit[Kit] --> A
+  Kit[Kit] --> B
+  Kit[Kit] --> C
 ```
 
 Extensive documentation detailing what extensions are and how they work can be found [here](https://docs.omniverse.nvidia.com/py/kit/docs/guide/extensions.html).
@@ -40,6 +38,7 @@ Extensive documentation detailing what extensions are and how they work can be f
 4. Run `_build\windows-x86_64\release\omni.app.example.extension_browser.bat` to open an example kit application.
 5. From the menu, select `Window->Extensions` to open the extension browser window.
 6. Enter `omni.example.cpp` in the search bar at the top of the extension browser window to view the example extensions included with this repo.
+
 ![Extension Browser](/images/extension_browser.png)
 
 
@@ -49,6 +48,7 @@ Extensive documentation detailing what extensions are and how they work can be f
 2. Open `_compiler\vs2019\kit-extension-template-cpp.sln` using Visual Studio 2019.
 3. Select `omni.app.example.extension_browser` as the startup project (if it isn't already).
 4. Run/debug the example kit application, using the extension browser window to enable/disable extensions.
+
 ![Visual Studio Solution](/images/visual_studio_solution.png)
 
 
