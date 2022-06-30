@@ -22,9 +22,9 @@ graph TD
   C1(eg. omni.example.python.hello_world)
   end
 
-  Kit[Kit] --> A
-  Kit[Kit] --> B
-  Kit[Kit] --> C
+  Kit[Kit] --> A1
+  Kit[Kit] --> B1
+  Kit[Kit] --> C1
 ```
 
 Extensive documentation detailing what extensions are and how they work can be found [here](https://docs.omniverse.nvidia.com/py/kit/docs/guide/extensions.html).
