@@ -1,0 +1,45 @@
+-- Get the info associated with this extension.
+local ext = get_current_extension_info()
+
+-- Link folders that should be packaged with the extension.
+project_ext(ext)
+repo_build.prebuild_link {
+    { "data", ext.target_dir.."/data" },
+    { "docs", ext.target_dir.."/docs" },
+}
+
+-- Build the C++ plugin that will be loaded by the extension.
+project_ext_plugin(ext, "omni.example.cpp.ui_widget")
+    local plugin_name = "omni.example.cpp.ui_widget"
+    add_files("source", "plugins/"..plugin_name)
+    add_files("include", "include")
+    defines { "OMNIUI_CPPWIDGET_EXPORTS", "IMGUI_NVIDIA" }
+    exceptionhandling "On"
+    rtti "On"
+    includedirs {
+        "include",
+        "plugins/"..plugin_name,
+        "%{target_deps}/boost-preprocessor",
+        "%{target_deps}/imgui"
+    }
+    links { "imgui", "carb", "%{kit_sdk}/extscore/omni.ui/bin/omni.ui" }
+
+-- Build Python bindings that will be loaded by the extension.
+project_ext_bindings {
+    ext = ext,
+    project_name = "omni.example.cpp.ui_widget.python",
+    module = "_example_cpp_widget",
+    src = "bindings/python/omni.example.cpp.ui_widget",
+    target_subdir = "omni/example/cpp/ui_widget"
+}
+    includedirs {
+        "include",
+        "bindings/python/omni.example.cpp.ui_widget",
+        "%{target_deps}/boost-preprocessor",
+        "%{target_deps}/imgui"
+    }
+    links { "omni.example.cpp.ui_widget", "%{kit_sdk}/extscore/omni.ui/bin/omni.ui" }
+
+    repo_build.prebuild_link {
+        { "python/tests", ext.target_dir.."/omni/example/cpp/ui_widget/tests" },
+    }
