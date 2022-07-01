@@ -1,20 +1,8 @@
-omni.example.cpp.hello_world
-###################################
-
-Example Python Extension: Hello World
-===================================
-
-An example C++ extension that can be used as a reference/template for creating new extensions.
+omni.example.python.hello_world
+###############################
 
 .. toctree::
    :maxdepth: 1
 
    CHANGELOG
-
-User Guide
-===================================
-
-.. toctree::
-   :maxdepth: 1
-
-   OVERVIEW
+   README

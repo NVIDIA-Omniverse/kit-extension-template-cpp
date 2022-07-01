@@ -60,7 +60,14 @@ Extensive documentation detailing what extensions are and how they work can be f
 4. Update your new extension's C++ code in the `plugins` folder as necessary.
 5. Update your new extension's Python code in the `python` folder as necessary.
 6. Update your new extension's Python bindings in the `bindings` folder as necessary.
-7. Run `build.bat` to build your new extension.
-8. Refer to the *Getting Started* section above to open the example kit application and extension browser window.
-9. Enter the name of your new extension in the search bar at the top of the extension browser window to view it.
+7. Update your new extension's documentation in the `docs` folder as necessary.
+8. Run `build.bat` to build your new extension.
+9. Refer to the *Getting Started* section above to open the example kit application and extension browser window.
+10. Enter the name of your new extension in the search bar at the top of the extension browser window to view it.
+
+
+## Generating Documentation
+
+1. Run `repo.bat docs` to generate the documentation for the repo, including all extensions it contains.
+2. Open `_build/docs/kit-extension-template-cpp/latest/index.html` to view the generated documentation.
 

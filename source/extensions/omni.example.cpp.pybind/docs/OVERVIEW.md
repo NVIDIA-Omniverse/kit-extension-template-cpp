@@ -1,7 +1,5 @@
 # Overview
 
-This example extension demonstrates how to reflect C++ code for use from Python code.
-
 The IExampleBoundInterface located in `include/omni/example/cpp/pybind/IExampleBoundInterface.h` (starting from the root of the repo) is:
 - Implemented in `plugins/omni.example.cpp.pybind/ExamplePybindExtension.cpp` (starting from the root of the extension).
 - Reflected in `bindings/python/omni.example.cpp.pybind/ExamplePybindBindings.cpp` (starting from the root of the extension).
