@@ -71,3 +71,6 @@ Extensive documentation detailing what extensions are and how they work can be f
 1. Run `repo.bat docs` to generate the documentation for the repo, including all extensions it contains.
 2. Open `_build/docs/kit-extension-template-cpp/latest/index.html` to view the generated documentation.
 
+## Contributing
+The source code for this repository is provided as-is and we are not accepting outside contributions.
+
