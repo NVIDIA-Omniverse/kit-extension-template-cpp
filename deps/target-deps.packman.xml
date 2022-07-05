@@ -15,7 +15,7 @@
     <package name="carb_sdk+plugins.${platform}" version="125.0" platforms="windows-x86_64 linux-x86_64 linux-aarch64" />
   </dependency>
 
-  <!-- The boost preprocessor and imgui are required by the omni.example.cpp.ui_widget extension. -->
+  <!-- The omni.example.cpp.ui_widget extension depends on the boost preprocessor and imgui. -->
   <dependency name="boost_preprocessor" linkPath="../_build/target-deps/boost-preprocessor">
     <package name="boost-preprocessor" version="1.70-2" />
   </dependency>
