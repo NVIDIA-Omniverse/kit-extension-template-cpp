@@ -11,6 +11,7 @@
 
 #include <carb/PluginUtils.h>
 
+#include <omni/ext/ExtensionsUtils.h>
 #include <omni/ext/IExt.h>
 #include <omni/kit/IApp.h>
 
@@ -38,24 +39,27 @@ class ExampleCppUsdExtension : public omni::ext::IExt
 public:
     void onStartup(const char* extId) override
     {
-        // ToDo: Get stagePath from somewhere that isn't hardcoded.
-        const char* stagePath = "C:/omniverse/kit-extension-template-cpp/_build/windows-x86_64/debug/exts/omni.example.cpp.usd/data/example_usd_stage.usd";
-        m_stage = pxr::UsdStage::Open(stagePath);
+        // Open the example USD stage included with this extension.
+        omni::kit::IApp* app = carb::getCachedInterface<omni::kit::IApp>();
+        const std::string extPath = getExtensionPath(app->getExtensionManager(), extId);
+        const std::string stagePath = extPath + "/data/example_usd_stage.usd";
+
+        m_stage = pxr::UsdStage::Open(stagePath.c_str());
         if (!m_stage)
         {
-            printf("Could not open USD stage: %s.\n", stagePath);
+            printf("Could not open USD stage: %s.\n", stagePath.c_str());
             return;
         }
 
-        // Print the stage's up-axis.
+        // Print the USD stage's up-axis.
         const pxr::TfToken stageUpAxis = pxr::UsdGeomGetStageUpAxis(m_stage);
         printf("Stage up-axis is: %s.\n", stageUpAxis.GetText());
 
-        // Print the stage's meters per unit.
+        // Print the USD stage's meters per unit.
         const double metersPerUnit = pxr::UsdGeomGetStageMetersPerUnit(m_stage);
         printf("Stage meters per unit: %f.\n", metersPerUnit);
 
-        // Print the stage's prims.
+        // Print the USD stage's prims.
         const pxr::UsdPrimRange primRange = m_stage->Traverse();
         for (const pxr::UsdPrim& prim : primRange)
         {
