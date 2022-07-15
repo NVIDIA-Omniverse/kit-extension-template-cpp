@@ -1,10 +1,10 @@
 <project toolsVersion="5.0">
   <dependency name="premake" linkPath="../_build/host-deps/premake">
-    <package name="premake" version="5.0.0-alpha15.dev+pipeline3388156.1f299ea4-${platform}" />
+    <package name="premake" version="5.0.0-alpha15.dev+pipeline3388156.1f299ea4-${platform}"/>
   </dependency>
 
   <dependency name="msvc" linkPath="../_build/host-deps/msvc">
-    <package name="msvc" version="2019-16.7.6-license" platforms="windows-x86_64" />
+    <package name="msvc" version="2019-16.7.6-license" platforms="windows-x86_64"/>
   </dependency>
 
   <dependency name="winsdk" linkPath="../_build/host-deps/winsdk">

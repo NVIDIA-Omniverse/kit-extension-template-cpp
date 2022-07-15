@@ -10,5 +10,8 @@ import_configs = ["${root}/_repo/deps/repo_kit_tools/kit-template/repo.toml"]
 # Repository Name
 name = "kit-extension-template-cpp"
 
+[repo_build.licensing]
+enabled = false
+
 [repo_build.msbuild]
 vs_version = "vs2019"
