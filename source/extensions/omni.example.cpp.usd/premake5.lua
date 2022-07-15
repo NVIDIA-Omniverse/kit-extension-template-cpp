@@ -15,6 +15,6 @@ project_ext_plugin(ext, "omni.example.cpp.usd.plugin")
     add_files("source", "plugins/"..plugin_name)
     includedirs { "plugins/"..plugin_name, "%{target_deps}/nv_usd/%{cfg.buildcfg}/include" }
     libdirs { "%{target_deps}/nv_usd/%{cfg.buildcfg}/lib" }
-    links { "sdf", "tf", "usd", "usdGeom" }
+    links { "gf", "sdf", "tf", "usd", "usdGeom", "usdUtils" }
     defines { "NOMINMAX", "TBB_USE_DEBUG=%{cfg.buildcfg == 'debug' and 1 or 0}" }
     buildoptions { "/wd4244 /wd4305" }
