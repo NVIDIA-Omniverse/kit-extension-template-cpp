@@ -98,6 +98,7 @@ public:
             }
         }
 
+        // Print some info about the stage before and after creating some example prims.
         printStageInfo();
         createExamplePrims();
         printStageInfo();
@@ -116,6 +117,8 @@ protected:
             return;
         }
 
+        printf("---Stage Info Begin---\n");
+
         // Print the USD stage's up-axis.
         const pxr::TfToken stageUpAxis = pxr::UsdGeomGetStageUpAxis(m_stage);
         printf("Stage up-axis is: %s.\n", stageUpAxis.GetText());
@@ -130,6 +133,8 @@ protected:
         {
             printf("Stage contains prim: %s.\n", prim.GetPath().GetString().c_str());
         }
+
+        printf("---Stage Info End---\n\n");
     }
 
     void createExamplePrims()
@@ -147,25 +152,23 @@ protected:
             pxr::UsdPrim prim = m_stage->DefinePrim(pxr::SdfPath(primPath), pxr::TfToken("Sphere"));
 
             // Set the radius of the sphere prim.
-            constexpr double sphereRadius = 20.0;
+            const double sphereRadius = 0.5 / pxr::UsdGeomGetStageMetersPerUnit(m_stage);
             prim.CreateAttribute(pxr::TfToken("radius"), pxr::SdfValueTypeNames->Double).Set(sphereRadius);
 
             // Leave the first prim at the origin...
             if (i > 0)
             {
                 // ...then position all other prims in a circle surrounding the first one.
-                const double translateX = 0.0;
-                const double translateY = 0.0;
-                const double translateZ = 2.0 / pxr::UsdGeomGetStageMetersPerUnit(m_stage);
-                const pxr::GfVec3d translation(translateX, translateY, translateZ);
+                const float rotationIncrement = 360.0f / (numPrimsToCreate - 1);
+                const float rotationY = rotationIncrement * static_cast<float>(i);
+                const float translationX = 0.0f;
+                const float translationY = 0.0f;
+                const float translationZ = sphereRadius * 4.0f;
+                const pxr::GfVec3f translation(translationX, translationY, translationZ);
 
-                constexpr double rotationIncrement = 360.0 / (numPrimsToCreate - 1);
-                const double rotationY = static_cast<double>(i) * rotationIncrement;
-
-                // ToDo: Fix to rotate around the origin instead of locally.
                 pxr::UsdGeomXformable xformable = pxr::UsdGeomXformable(prim);
-                xformable.AddRotateYOp().Set(rotationY);
-                xformable.AddTranslateOp().Set(translation);
+                xformable.AddRotateYOp(pxr::UsdGeomXformOp::PrecisionFloat).Set(rotationY);
+                xformable.AddTranslateOp(pxr::UsdGeomXformOp::PrecisionFloat).Set(translation);
             }
         }
 
