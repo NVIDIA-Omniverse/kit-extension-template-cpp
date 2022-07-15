@@ -23,6 +23,8 @@
 #include <pxr/usd/usdGeom/xform.h>
 #include <pxr/usd/usdUtils/stageCache.h>
 
+#include <vector>
+
 const struct carb::PluginImplDesc pluginImplDesc = { "omni.example.cpp.usd.plugin",
                                                      "An example C++ extension.", "NVIDIA",
                                                      carb::PluginHotReload::eEnabled, "dev" };
@@ -100,12 +102,21 @@ public:
 
         // Print some info about the stage before and after creating some example prims.
         printStageInfo();
-        createExamplePrims();
+        createPrims();
         printStageInfo();
+
+        // Subscribe to update events so we can animate the prims.
+        omni::kit::IApp* app = carb::getCachedInterface<omni::kit::IApp>();
+        m_updateEvents = carb::events::createSubscriptionToPop(app->getUpdateEventStream(), [this](carb::events::IEvent*)
+        {
+            animatePrims();
+        });
     }
 
     void onShutdown() override
     {
+        m_updateEvents = nullptr;
+        m_rotationOps.clear();
         m_stage.Reset();
     }
 
@@ -137,7 +148,7 @@ protected:
         printf("---Stage Info End---\n\n");
     }
 
-    void createExamplePrims()
+    void createPrims()
     {
         if (!m_stage)
         {
@@ -155,28 +166,46 @@ protected:
             const double sphereRadius = 0.5 / pxr::UsdGeomGetStageMetersPerUnit(m_stage);
             prim.CreateAttribute(pxr::TfToken("radius"), pxr::SdfValueTypeNames->Double).Set(sphereRadius);
 
-            // Leave the first prim at the origin...
+            // Leave the first prim at the origin and position the rest in a circle surrounding it.
             if (i > 0)
             {
-                // ...then position all other prims in a circle surrounding the first one.
+                pxr::UsdGeomXformable xformable = pxr::UsdGeomXformable(prim);
+
+                // Setup the rotation operation.
                 const float rotationIncrement = 360.0f / (numPrimsToCreate - 1);
                 const float rotationY = rotationIncrement * static_cast<float>(i);
-                const float translationX = 0.0f;
-                const float translationY = 0.0f;
-                const float translationZ = sphereRadius * 4.0f;
-                const pxr::GfVec3f translation(translationX, translationY, translationZ);
+                pxr::UsdGeomXformOp rotationOp = xformable.AddRotateYOp(pxr::UsdGeomXformOp::PrecisionFloat);
+                m_rotationOps.push_back(rotationOp); // Store it so we can update it later in animatePrims().
+                rotationOp.Set(rotationY);
 
-                pxr::UsdGeomXformable xformable = pxr::UsdGeomXformable(prim);
-                xformable.AddRotateYOp(pxr::UsdGeomXformOp::PrecisionFloat).Set(rotationY);
+                // Setup the translation operation.
+                const pxr::GfVec3f translation(0.0f, 0.0f, sphereRadius * 4.0f);
                 xformable.AddTranslateOp(pxr::UsdGeomXformOp::PrecisionFloat).Set(translation);
             }
         }
+    }
 
-        // ToDo: Move them in update, and change their colour?
+    void animatePrims()
+    {
+        for (pxr::UsdGeomXformOp& rotationOp : m_rotationOps)
+        {
+            // Update the value of each rotation operation to (crudely) animate the prims.
+            float currentValue = 0.0f;
+            rotationOp.Get(&currentValue);
+            currentValue -= 1.0f;
+            if (currentValue < 0.0f)
+            {
+                // Prevent the rotation value from getting too big and losing precision or overflowing.
+                currentValue += 360.0f;
+            }
+            rotationOp.Set(currentValue);
+        }
     }
 
 private:
     pxr::UsdStageRefPtr m_stage;
+    std::vector<pxr::UsdGeomXformOp> m_rotationOps;
+    carb::ObjectPtr<carb::events::ISubscription> m_updateEvents;
 };
 
 }
