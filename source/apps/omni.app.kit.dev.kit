@@ -1,0 +1,12 @@
+[package]
+title = "Kit Dev App With Example Extensions"
+description = "The default kit dev app with extensions from this repo made available."
+version = "1.0.0"
+keywords = ["app"]
+
+[dependencies]
+"omni.app.dev" = {}
+
+ # Make extensions from this repo available.
+[settings.app.exts]
+folders.'++' = ["${app}/../exts"]

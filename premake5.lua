@@ -35,3 +35,6 @@ workspace(_OPTIONS["solution-name"])
 
 -- Example application that runs kit with a minimal set of extensions enabled, including the extension browser.
 define_app("omni.app.example.extension_browser")
+
+-- The default kit dev app with extensions from this repo made available.
+define_app("omni.app.kit.dev")
