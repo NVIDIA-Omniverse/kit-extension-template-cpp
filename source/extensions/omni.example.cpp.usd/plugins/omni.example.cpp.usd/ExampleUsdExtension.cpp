@@ -116,7 +116,8 @@ public:
     void onShutdown() override
     {
         m_updateEvents = nullptr;
-        m_rotationOps.clear();
+        m_globalRotationOps.clear();
+        m_localRotationOps.clear();
         m_stage.Reset();
     }
 
@@ -158,53 +159,73 @@ protected:
         constexpr int numPrimsToCreate = 9;
         for (int i = 0; i < numPrimsToCreate; ++i)
         {
-            // Create a sphere prim.
-            const std::string primPath = "/example_prim_" + std::to_string(i);
-            pxr::UsdPrim prim = m_stage->DefinePrim(pxr::SdfPath(primPath), pxr::TfToken("Sphere"));
+            // Create a cube prim.
+            const std::string primPath = "/World/example_prim_" + std::to_string(i);
+            pxr::UsdPrim prim = m_stage->DefinePrim(pxr::SdfPath(primPath), pxr::TfToken("Cube"));
 
-            // Set the radius of the sphere prim.
-            const double sphereRadius = 0.5 / pxr::UsdGeomGetStageMetersPerUnit(m_stage);
-            prim.CreateAttribute(pxr::TfToken("radius"), pxr::SdfValueTypeNames->Double).Set(sphereRadius);
+            // Set the size of the cube prim.
+            const double cubeSize = 0.5 / pxr::UsdGeomGetStageMetersPerUnit(m_stage);
+            prim.CreateAttribute(pxr::TfToken("size"), pxr::SdfValueTypeNames->Double).Set(cubeSize);
 
             // Leave the first prim at the origin and position the rest in a circle surrounding it.
             if (i > 0)
             {
                 pxr::UsdGeomXformable xformable = pxr::UsdGeomXformable(prim);
 
-                // Setup the rotation operation.
+                // Setup the global rotation operation.
                 const float rotationIncrement = 360.0f / (numPrimsToCreate - 1);
-                const float rotationY = rotationIncrement * static_cast<float>(i);
-                pxr::UsdGeomXformOp rotationOp = xformable.AddRotateYOp(pxr::UsdGeomXformOp::PrecisionFloat);
-                m_rotationOps.push_back(rotationOp); // Store it so we can update it later in animatePrims().
-                rotationOp.Set(rotationY);
+                const float initialRotation = rotationIncrement * static_cast<float>(i);
+                pxr::UsdGeomXformOp globalRotationOp = xformable.AddRotateYOp(pxr::UsdGeomXformOp::PrecisionFloat);
+                m_globalRotationOps.push_back(globalRotationOp); // Store it so we can update it later in animatePrims().
+                globalRotationOp.Set(initialRotation);
 
                 // Setup the translation operation.
-                const pxr::GfVec3f translation(0.0f, 0.0f, sphereRadius * 4.0f);
+                const pxr::GfVec3f translation(0.0f, 0.0f, cubeSize * 4.0f);
                 xformable.AddTranslateOp(pxr::UsdGeomXformOp::PrecisionFloat).Set(translation);
+
+                // Setup the local rotation operation.
+                pxr::UsdGeomXformOp localRotationOp = xformable.AddRotateXOp(pxr::UsdGeomXformOp::PrecisionFloat);
+                m_localRotationOps.push_back(localRotationOp); // Store it so we can update it later in animatePrims().
+                localRotationOp.Set(initialRotation);
             }
         }
     }
 
     void animatePrims()
     {
-        for (pxr::UsdGeomXformOp& rotationOp : m_rotationOps)
+        for (pxr::UsdGeomXformOp& globalRotationOp : m_globalRotationOps)
         {
-            // Update the value of each rotation operation to (crudely) animate the prims.
+            // Update the value of each global rotation operation to (crudely) animate the prims around the origin.
             float currentValue = 0.0f;
-            rotationOp.Get(&currentValue);
+            globalRotationOp.Get(&currentValue);
             currentValue -= 1.0f;
             if (currentValue < 0.0f)
             {
                 // Prevent the rotation value from getting too big and losing precision or overflowing.
                 currentValue += 360.0f;
             }
-            rotationOp.Set(currentValue);
+            globalRotationOp.Set(currentValue);
+        }
+
+        for (pxr::UsdGeomXformOp& localRotationOp : m_localRotationOps)
+        {
+            // Update the value of each local rotation operation to (crudely) animate the prims around their axis.
+            float currentValue = 0.0f;
+            localRotationOp.Get(&currentValue);
+            currentValue += 1.0f;
+            if (currentValue > 360.0f)
+            {
+                // Prevent the rotation value from getting too big and losing precision or overflowing.
+                currentValue -= 360.0f;
+            }
+            localRotationOp.Set(currentValue);
         }
     }
 
 private:
     pxr::UsdStageRefPtr m_stage;
-    std::vector<pxr::UsdGeomXformOp> m_rotationOps;
+    std::vector<pxr::UsdGeomXformOp> m_localRotationOps;
+    std::vector<pxr::UsdGeomXformOp> m_globalRotationOps;
     carb::ObjectPtr<carb::events::ISubscription> m_updateEvents;
 };
 
