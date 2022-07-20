@@ -97,7 +97,7 @@ private:
     std::string m_memberString;
 };
 
-// Define the pybind11 module using the same name specific in premake5.lua
+// Define the pybind11 module using the same name specified in premake5.lua
 PYBIND11_MODULE(_example_pybind_bindings, m)
 {
     using namespace omni::example::cpp::pybind;

@@ -13,6 +13,9 @@ readme  = "docs/README.md"
 authors = ["David Bosnich <dbosnich@nvidia.com>"]
 repository = "https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp"
 
+[dependencies]
+"omni.usd" = {}
+
 # Define the Python modules that this extension provides.
 # C++ only extensions need this just so tests don't fail.
 [[python.module]]

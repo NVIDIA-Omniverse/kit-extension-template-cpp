@@ -7,4 +7,5 @@
 ## license agreement from NVIDIA CORPORATION is strictly prohibited.
 ##
 
-# This file is needed so tests don't fail.
+# Necessary so we can link to the Python source instead of copying it.
+from .impl import *

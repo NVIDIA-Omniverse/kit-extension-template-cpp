@@ -10,8 +10,8 @@
 #define CARB_EXPORTS
 
 #include <carb/PluginUtils.h>
-#include <carb/scripting/IScripting.h>
 
+#include <omni/example/cpp/usd/IExampleUsdInterface.h>
 #include <omni/ext/ExtensionsUtils.h>
 #include <omni/ext/IExt.h>
 #include <omni/kit/IApp.h>
@@ -29,8 +29,6 @@ const struct carb::PluginImplDesc pluginImplDesc = { "omni.example.cpp.usd.plugi
                                                      "An example C++ extension.", "NVIDIA",
                                                      carb::PluginHotReload::eEnabled, "dev" };
 
-CARB_PLUGIN_IMPL_DEPS(omni::kit::IApp, carb::scripting::IScripting)
-
 namespace omni
 {
 namespace example
@@ -40,89 +38,10 @@ namespace cpp
 namespace usd
 {
 
-int getDefaultUsdStageId()
+class ExampleCppUsdExtension : public IExampleUsdInterface
 {
-    // Get the id of the 'default' USD stage (ie. the one open in the main viewport).
-    // Calling into Python to get this is not ideal, but necessary for the time being
-    // because the equivalent omni.usd C++ API isn't yet ready for public consumption.
-    carb::scripting::IScripting* scripting =
-        carb::getFramework()->acquireInterface<carb::scripting::IScripting>("carb.scripting-python.plugin");
-    carb::scripting::Context* scriptingContext = scripting->createContext();
-
-    const char* importCommand = R"(from omni.usd import get_context)";
-    scripting->executeString(scriptingContext, importCommand, 0, nullptr);
-
-    carb::scripting::Object* usdContext = scripting->createObject();
-    scripting->executeFunction(scriptingContext, "get_context", usdContext, 0);
-
-    carb::scripting::Object* stageId = scripting->createObject();
-    scripting->executeMethod(scriptingContext, usdContext, "get_stage_id", stageId, 0);
-
-    const int returnValue = stageId ? scripting->getObjectAsInt(stageId) : 0;
-    scripting->destroyObject(stageId);
-    scripting->destroyObject(usdContext);
-    scripting->destroyContext(scriptingContext);
-    return returnValue;
-}
-
-pxr::UsdStageRefPtr findDefaultUsdStage()
-{
-    // Find the 'default' USD stage (ie. the one open in the main viewport).
-    const int defaultUsdStageId = getDefaultUsdStageId();
-    return pxr::UsdUtilsStageCache::Get().Find(pxr::UsdStageCache::Id::FromLongInt(defaultUsdStageId));
-}
-
-pxr::UsdStageRefPtr openExampleUSDStage(const char* extId)
-{
-    // Open the example USD stage included with this extension.
-    omni::kit::IApp* app = carb::getCachedInterface<omni::kit::IApp>();
-    const std::string extPath = getExtensionPath(app->getExtensionManager(), extId);
-    const std::string stagePath = extPath + "/data/example_usd_stage.usd";
-    return pxr::UsdStage::Open(stagePath.c_str());
-}
-
-class ExampleCppUsdExtension : public omni::ext::IExt
-{
-public:
-    void onStartup(const char* extId) override
-    {
-        // First try to find the 'default' USD stage (ie. the one open in the main viewport).
-        m_stage = findDefaultUsdStage();
-        if (!m_stage)
-        {
-            // Otherwise try to open the example USD stage included with this extension.
-            printf("Could not find the default USD stage, opening the example one.\n");
-            m_stage = openExampleUSDStage(extId);
-            if (!m_stage)
-            {
-                printf("Could not open the example USD stage.\n");
-                return;
-            }
-        }
-
-        // Print some info about the stage before and after creating some example prims.
-        printStageInfo();
-        createPrims();
-        printStageInfo();
-
-        // Subscribe to update events so we can animate the prims.
-        omni::kit::IApp* app = carb::getCachedInterface<omni::kit::IApp>();
-        m_updateEvents = carb::events::createSubscriptionToPop(app->getUpdateEventStream(), [this](carb::events::IEvent*)
-        {
-            animatePrims();
-        });
-    }
-
-    void onShutdown() override
-    {
-        m_updateEvents = nullptr;
-        m_globalRotationOps.clear();
-        m_localRotationOps.clear();
-        m_stage.Reset();
-    }
-
 protected:
-    void printStageInfo() const
+    void printStageInfo() const override
     {
         if (!m_stage)
         {
@@ -149,7 +68,7 @@ protected:
         printf("---Stage Info End---\n\n");
     }
 
-    void createPrims()
+    void createPrims() override
     {
         if (!m_stage)
         {
@@ -160,8 +79,13 @@ protected:
         for (int i = 0; i < numPrimsToCreate; ++i)
         {
             // Create a cube prim.
-            const std::string primPath = "/World/example_prim_" + std::to_string(i);
-            pxr::UsdPrim prim = m_stage->DefinePrim(pxr::SdfPath(primPath), pxr::TfToken("Cube"));
+            const pxr::SdfPath primPath("/World/example_prim_" + std::to_string(i));
+            if (m_stage->GetPrimAtPath(primPath))
+            {
+                // A prim already exists at this path.
+                continue;
+            }
+            pxr::UsdPrim prim = m_stage->DefinePrim(primPath, pxr::TfToken("Cube"));
 
             // Set the size of the cube prim.
             const double cubeSize = 0.5 / pxr::UsdGeomGetStageMetersPerUnit(m_stage);
@@ -188,6 +112,28 @@ protected:
                 m_localRotationOps.push_back(localRotationOp); // Store it so we can update it later in animatePrims().
                 localRotationOp.Set(initialRotation);
             }
+        }
+    }
+
+    bool getAnimatePrims() const override
+    {
+        return m_updateEvents.get();
+    }
+
+    void setAnimatePrims(bool value) override
+    {
+        if (value && !m_updateEvents)
+        {
+            // Subscribe to update events so we can animate the prims.
+            omni::kit::IApp* app = carb::getCachedInterface<omni::kit::IApp>();
+            m_updateEvents = carb::events::createSubscriptionToPop(app->getUpdateEventStream(), [this](carb::events::IEvent*)
+            {
+                animatePrims();
+            });
+        }
+        else if (!value && m_updateEvents)
+        {
+            m_updateEvents = nullptr;
         }
     }
 
@@ -219,6 +165,19 @@ protected:
                 currentValue -= 360.0f;
             }
             localRotationOp.Set(currentValue);
+        }
+    }
+
+    void onDefaultUsdStageChanged(long stageId)
+    {
+        m_updateEvents = nullptr;
+        m_globalRotationOps.clear();
+        m_localRotationOps.clear();
+        m_stage.Reset();
+
+        if (stageId)
+        {
+            m_stage = pxr::UsdUtilsStageCache::Get().Find(pxr::UsdStageCache::Id::FromLongInt(stageId));
         }
     }
 
