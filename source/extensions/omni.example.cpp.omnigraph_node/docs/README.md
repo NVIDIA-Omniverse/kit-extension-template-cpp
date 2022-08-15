@@ -1,4 +1,4 @@
-# Example C++ Extension: Graph Node
+# Example C++ Extension: OmniGraph Node
 
 An example C++ extension that can be used as a reference/template for creating new extensions.
 

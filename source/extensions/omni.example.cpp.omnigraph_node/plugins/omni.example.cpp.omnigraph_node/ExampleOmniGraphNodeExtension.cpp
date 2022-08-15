@@ -14,7 +14,7 @@
 #include <omni/ext/IExt.h>
 #include <omni/graph/core/IGraphRegistry.h>
 
-const struct carb::PluginImplDesc pluginImplDesc = { "omni.example.cpp.graph_node.plugin",
+const struct carb::PluginImplDesc pluginImplDesc = { "omni.example.cpp.omnigraph_node.plugin",
                                                      "An example C++ extension.", "NVIDIA",
                                                      carb::PluginHotReload::eEnabled, "dev" };
 
@@ -26,20 +26,20 @@ namespace example
 {
 namespace cpp
 {
-namespace graph_node
+namespace omnigraph_node
 {
 
-class ExampleGraphNodeExtension : public omni::ext::IExt
+class ExampleOmniGraphNodeExtension : public omni::ext::IExt
 {
 public:
     void onStartup(const char* extId) override
     {
-        printf("ExampleGraphNodeExtension starting up (ext_id: %s).\n", extId);
+        printf("ExampleOmniGraphNodeExtension starting up (ext_id: %s).\n", extId);
     }
 
     void onShutdown() override
     {
-        printf("ExampleGraphNodeExtension shutting down.\n");
+        printf("ExampleOmniGraphNodeExtension shutting down.\n");
     }
 
 private:
@@ -50,8 +50,8 @@ private:
 }
 }
 
-CARB_PLUGIN_IMPL(pluginImplDesc, omni::example::cpp::graph_node::ExampleGraphNodeExtension)
+CARB_PLUGIN_IMPL(pluginImplDesc, omni::example::cpp::omnigraph_node::ExampleOmniGraphNodeExtension)
 
-void fillInterface(omni::example::cpp::graph_node::ExampleGraphNodeExtension& iface)
+void fillInterface(omni::example::cpp::omnigraph_node::ExampleOmniGraphNodeExtension& iface)
 {
 }
