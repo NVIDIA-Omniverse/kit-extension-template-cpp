@@ -1,0 +1,23 @@
+[package]
+version = "1.0.0" # Semantic Versioning is used: https://semver.org/
+
+# These fields are used primarily for display in the extension browser UI.
+title = "Example C++ Extension: Graph Node"
+description = "Demonstrates how to create a C++ node for omni.graph"
+category = "Example"
+keywords = ["example", "C++", "cpp", "Graph", "Node"]
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+changelog = "docs/CHANGELOG.md"
+readme  = "docs/README.md"
+authors = ["Kevin Picott <kpicott@nvidia.com>", "David Bosnich <dbosnich@nvidia.com>"]
+repository = "https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp"
+
+[dependencies]
+"omni.graph" = {}
+
+[[python.module]]
+name = "omni.example.cpp.graph_node"
+
+[[native.plugin]]
+path = "bin/*.plugin"
