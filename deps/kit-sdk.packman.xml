@@ -1,5 +1,5 @@
 <project toolsVersion="5.0">
   <dependency name="kit_sdk_${config}" linkPath="../_build/${platform}/${config}/kit" tags="${config} non-redist">
-    <package name="kit-sdk" version="103.1+release.15114.efd64cf1.tc.${platform}.${config}"/>
+    <package name="kit-sdk" version="104.0+master.90216.d3b7ba68.tc.${platform}.${config}"/>
   </dependency>
 </project>

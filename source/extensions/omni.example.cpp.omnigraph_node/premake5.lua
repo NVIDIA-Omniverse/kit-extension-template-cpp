@@ -13,4 +13,4 @@ repo_build.prebuild_link {
 project_ext_plugin(ext, "omni.example.cpp.omnigraph_node.plugin")
     local plugin_name = "omni.example.cpp.omnigraph_node"
     add_files("source", "plugins/"..plugin_name)
-    includedirs { "plugins/"..plugin_name }
+    includedirs { "plugins/"..plugin_name, "%{kit_sdk}/extscore/usdrt.scenegraph/include" }
