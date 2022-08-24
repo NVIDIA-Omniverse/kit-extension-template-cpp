@@ -38,18 +38,14 @@ public:
     virtual void printStageInfo() const = 0;
 
     /**
-     * Get whether the example prims are being animated.
-     *
-     * @return True if the example prims are being animated, false otherwise.
+     * Start animating the example prims using the timeline.
      */
-    virtual bool getAnimatePrims() const = 0;
+    virtual void startTimelineAnimation() = 0;
 
     /**
-     * Set whether to animate the example prims.
-     *
-     * @param value True if the example prims should be animated, false otherwise.
+     * Stop animating the example prims using the timeline.
      */
-    virtual void setAnimatePrims(bool value) = 0;
+    virtual void stopTimelineAnimation() = 0;
 
     /**
      * Called when the default USD stage (ie. the one open in the main viewport) changes.

@@ -1,37 +1,37 @@
 -- Setup the extension.
 local ext = get_current_extension_info()
 project_ext(ext)
+
 -- Link folders that should be packaged with the extension.
 repo_build.prebuild_link {
     { "data", ext.target_dir.."/data" },
     { "docs", ext.target_dir.."/docs" },
 }
+
 -- Build the C++ plugin that will be loaded by the extension.
 project_ext_plugin(ext, "omni.example.cpp.usd.plugin")
     add_files("include", "include/omni/example/cpp/usd")
     add_files("source", "plugins/omni.example.cpp.usd")
+    includedirs {
+        "include",
+        "plugins/omni.example.cpp.usd",
+        "%{target_deps}/nv_usd/%{cfg.buildcfg}/include" }
     libdirs { "%{target_deps}/nv_usd/%{cfg.buildcfg}/lib" }
     links { "gf", "sdf", "tf", "usd", "usdGeom", "usdUtils" }
     defines { "NOMINMAX", "TBB_USE_DEBUG=%{cfg.buildcfg == 'debug' and 1 or 0}" }
+
     filter { "system:linux" }
         rtti "On"
         exceptionhandling "On"
         staticruntime "Off"
         cppdialect "C++17"
-        includedirs {
-            "include",
-            "plugins/omni.example.cpp.usd",
-            "%{target_deps}/nv_usd/%{cfg.buildcfg}/include",
-            "%{target_deps}/python/include/python3.7m" }
+        includedirs { "%{target_deps}/python/include/python3.7m" }
         buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef" }
         linkoptions { '-Wl,--disable-new-dtags -Wl,-rpath,../../../_build/target-deps/nv_usd/%{cfg.buildcfg}/lib:../../../_build/target-deps/python/lib:' }
     filter { "system:windows" }
-        includedirs {
-            "include",
-            "plugins/omni.example.cpp.usd",
-            "%{target_deps}/nv_usd/%{cfg.buildcfg}/include" }
         buildoptions { "/wd4244 /wd4305" }
     filter {}
+
 -- Build Python bindings that will be loaded by the extension.
 project_ext_bindings {
     ext = ext,

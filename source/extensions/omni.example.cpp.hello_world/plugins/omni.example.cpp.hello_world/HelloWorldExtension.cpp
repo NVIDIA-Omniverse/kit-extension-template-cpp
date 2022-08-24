@@ -45,11 +45,7 @@ public:
             // Subscribe to update events.
             m_updateEventsSubscription =
                 carb::events::createSubscriptionToPop(app->getUpdateEventStream(), [this](carb::events::IEvent*) {
-                if (m_updateCounter % 1000 == 0)
-                {
-                    printf("Hello from the omni.example.cpp.hello_world extension! %d updates counted.\n", m_updateCounter);
-                }
-                m_updateCounter++;
+                onUpdate();
             });
         }
     }
@@ -62,8 +58,17 @@ public:
         m_updateEventsSubscription = nullptr;
     }
 
+    void onUpdate()
+    {
+        if (m_updateCounter % 1000 == 0)
+        {
+            printf("Hello from the omni.example.cpp.hello_world extension! %d updates counted.\n", m_updateCounter);
+        }
+        m_updateCounter++;
+    }
+
 private:
-    carb::ObjectPtr<carb::events::ISubscription> m_updateEventsSubscription;
+    carb::events::ISubscriptionPtr m_updateEventsSubscription;
     int m_updateCounter = 0;
 };
 

@@ -46,7 +46,7 @@ class ExampleUsdExtension(omni.ext.IExt):
         _example_usd_interface.print_stage_info()
 
         # Animate the example prims from C++.
-        _example_usd_interface.animate_prims = True
+        _example_usd_interface.start_timeline_animation()
 
     def on_shutdown(self):
         # Unsubscribe from omni.usd stage events.

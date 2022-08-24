@@ -29,7 +29,8 @@ PYBIND11_MODULE(_example_usd_bindings, m)
         m, "IExampleUsdInterface", "acquire_example_usd_interface", "release_example_usd_interface")
         .def("create_prims", &IExampleUsdInterface::createPrims)
         .def("print_stage_info", &IExampleUsdInterface::printStageInfo)
-        .def_property("animate_prims", &IExampleUsdInterface::getAnimatePrims, &IExampleUsdInterface::setAnimatePrims)
+        .def("start_timeline_animation", &IExampleUsdInterface::startTimelineAnimation)
+        .def("stop_timeline_animation", &IExampleUsdInterface::stopTimelineAnimation)
         .def("on_default_usd_stage_changed", &IExampleUsdInterface::onDefaultUsdStageChanged)
     /**/;
 }
