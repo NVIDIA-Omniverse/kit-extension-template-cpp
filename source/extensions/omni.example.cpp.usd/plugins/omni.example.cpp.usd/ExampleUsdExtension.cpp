@@ -45,6 +45,8 @@ class ExampleCppUsdExtension : public IExampleUsdInterface
 protected:
     void createPrims() override
     {
+        // It is important that all USD stage reads/writes happen from the main thread:
+        // https ://graphics.pixar.com/usd/release/api/_usd__page__multi_threading.html
         if (!m_stage)
         {
             return;
@@ -55,35 +57,35 @@ protected:
         for (int i = 0; i < numPrimsToCreate; ++i)
         {
             // Create a cube prim.
-            const pxr::SdfPath primPath("/World/example_prim_" + std::to_string(i));
+            const PXR_NS::SdfPath primPath("/World/example_prim_" + std::to_string(i));
             if (m_stage->GetPrimAtPath(primPath))
             {
                 // A prim already exists at this path.
                 continue;
             }
-            pxr::UsdPrim prim = m_stage->DefinePrim(primPath, pxr::TfToken("Cube"));
+            PXR_NS::UsdPrim prim = m_stage->DefinePrim(primPath, PXR_NS::TfToken("Cube"));
 
             // Set the size of the cube prim.
-            const double cubeSize = 0.5 / pxr::UsdGeomGetStageMetersPerUnit(m_stage);
-            prim.CreateAttribute(pxr::TfToken("size"), pxr::SdfValueTypeNames->Double).Set(cubeSize);
+            const double cubeSize = 0.5 / PXR_NS::UsdGeomGetStageMetersPerUnit(m_stage);
+            prim.CreateAttribute(PXR_NS::TfToken("size"), PXR_NS::SdfValueTypeNames->Double).Set(cubeSize);
 
             // Leave the first prim at the origin and position the rest in a circle surrounding it.
             if (i > 0)
             {
-                pxr::UsdGeomXformable xformable = pxr::UsdGeomXformable(prim);
+                PXR_NS::UsdGeomXformable xformable = PXR_NS::UsdGeomXformable(prim);
 
                 // Setup the global rotation operation.
                 const float initialRotation = rotationIncrement * static_cast<float>(i);
-                pxr::UsdGeomXformOp globalRotationOp = xformable.AddRotateYOp(pxr::UsdGeomXformOp::PrecisionFloat);
+                PXR_NS::UsdGeomXformOp globalRotationOp = xformable.AddRotateYOp(PXR_NS::UsdGeomXformOp::PrecisionFloat);
                 m_globalRotationOps.push_back(globalRotationOp); // Store it so we can update it later in animatePrims().
                 globalRotationOp.Set(initialRotation);
 
                 // Setup the translation operation.
-                const pxr::GfVec3f translation(0.0f, 0.0f, cubeSize * 4.0f);
-                xformable.AddTranslateOp(pxr::UsdGeomXformOp::PrecisionFloat).Set(translation);
+                const PXR_NS::GfVec3f translation(0.0f, 0.0f, cubeSize * 4.0f);
+                xformable.AddTranslateOp(PXR_NS::UsdGeomXformOp::PrecisionFloat).Set(translation);
 
                 // Setup the local rotation operation.
-                pxr::UsdGeomXformOp localRotationOp = xformable.AddRotateXOp(pxr::UsdGeomXformOp::PrecisionFloat);
+                PXR_NS::UsdGeomXformOp localRotationOp = xformable.AddRotateXOp(PXR_NS::UsdGeomXformOp::PrecisionFloat);
                 m_localRotationOps.push_back(localRotationOp); // Store it so we can update it later in animatePrims().
                 localRotationOp.Set(initialRotation);
             }
@@ -110,16 +112,16 @@ protected:
         printf("---Stage Info Begin---\n");
 
         // Print the USD stage's up-axis.
-        const pxr::TfToken stageUpAxis = pxr::UsdGeomGetStageUpAxis(m_stage);
+        const PXR_NS::TfToken stageUpAxis = PXR_NS::UsdGeomGetStageUpAxis(m_stage);
         printf("Stage up-axis is: %s.\n", stageUpAxis.GetText());
 
         // Print the USD stage's meters per unit.
-        const double metersPerUnit = pxr::UsdGeomGetStageMetersPerUnit(m_stage);
+        const double metersPerUnit = PXR_NS::UsdGeomGetStageMetersPerUnit(m_stage);
         printf("Stage meters per unit: %f.\n", metersPerUnit);
 
         // Print the USD stage's prims.
-        const pxr::UsdPrimRange primRange = m_stage->Traverse();
-        for (const pxr::UsdPrim& prim : primRange)
+        const PXR_NS::UsdPrimRange primRange = m_stage->Traverse();
+        for (const PXR_NS::UsdPrim& prim : primRange)
         {
             printf("Stage contains prim: %s.\n", prim.GetPath().GetString().c_str());
         }
@@ -153,7 +155,7 @@ protected:
 
         if (stageId)
         {
-            m_stage = pxr::UsdUtilsStageCache::Get().Find(pxr::UsdStageCache::Id::FromLongInt(stageId));
+            m_stage = PXR_NS::UsdUtilsStageCache::Get().Find(PXR_NS::UsdStageCache::Id::FromLongInt(stageId));
         }
     }
 
@@ -205,6 +207,8 @@ protected:
 
     void onUpdateEvent()
     {
+        // It is important that all USD stage reads/writes happen from the main thread:
+        // https ://graphics.pixar.com/usd/release/api/_usd__page__multi_threading.html
         if (!m_stage)
         {
             return;
@@ -216,7 +220,7 @@ protected:
         const float currentAnimTime = omni::timeline::getTimeline()->getCurrentTime() * m_stage->GetTimeCodesPerSecond();
         for (size_t i = 0; i < numGlobalRotationOps; ++i)
         {
-            pxr::UsdGeomXformOp& globalRotationOp = m_globalRotationOps[i];
+            PXR_NS::UsdGeomXformOp& globalRotationOp = m_globalRotationOps[i];
             const float initialRotation = initialGlobalRotationIncrement * static_cast<float>(i);
             const float currentRotation = initialRotation - (360.0f * (currentAnimTime / 100.0f));
             globalRotationOp.Set(currentRotation);
@@ -227,7 +231,7 @@ protected:
         const float initialLocalRotationIncrement = 360.0f / numLocalRotationOps;
         for (size_t i = 0; i < numLocalRotationOps; ++i)
         {
-            pxr::UsdGeomXformOp& localRotationOp = m_localRotationOps[i];
+            PXR_NS::UsdGeomXformOp& localRotationOp = m_localRotationOps[i];
             const float initialRotation = initialLocalRotationIncrement * static_cast<float>(i);
             const float currentRotation = initialRotation + (360.0f * (currentAnimTime / 100.0f));
             localRotationOp.Set(currentRotation);
@@ -235,9 +239,9 @@ protected:
     }
 
 private:
-    pxr::UsdStageRefPtr m_stage;
-    std::vector<pxr::UsdGeomXformOp> m_localRotationOps;
-    std::vector<pxr::UsdGeomXformOp> m_globalRotationOps;
+    PXR_NS::UsdStageRefPtr m_stage;
+    std::vector<PXR_NS::UsdGeomXformOp> m_localRotationOps;
+    std::vector<PXR_NS::UsdGeomXformOp> m_globalRotationOps;
     carb::events::ISubscriptionPtr m_updateEventsSubscription;
     carb::events::ISubscriptionPtr m_timelineEventsSubscription;
 };
