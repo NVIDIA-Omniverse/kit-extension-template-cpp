@@ -14,7 +14,8 @@ authors = ["Kevin Picott <kpicott@nvidia.com>", "David Bosnich <dbosnich@nvidia.
 repository = "https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp"
 
 [dependencies]
-"omni.graph" = {}
+"omni.graph.core" = {}
+"omni.graph.tools" = {}
 
 [[python.module]]
 name = "omni.example.cpp.omnigraph_node"
