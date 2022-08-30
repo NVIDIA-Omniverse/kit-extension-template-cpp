@@ -38,40 +38,10 @@ public:
         // provides access.
         auto& points = db.outputs.points();
 
-        // This is how to extract an input bundle attribute. It returns an accessor that lets you inspect the bundle
-        // contents and the values of the attributes in the bundle.
-        const auto& bundleWithGeometry = db.inputs.geometry();
-        auto pointsAccessor = bundleWithGeometry.attributeByName(pointsToken);
-        // The bundle member accessor has a boolean cast to help determine if an attribute name was found in one step
-        if (! pointsAccessor)
-        {
-            // This is just a warning because technically the node did what it said it would - output the result of
-            // offsetting a points attribute in the bundle. No attribute was found, no work was done, as expected.
-            db.logWarning("No 'points' attribute found in the bundle. No compute happened.");
-            return true;
-        }
-        // Confirm that the type matches, as well as the name. The "get<>()" function returns an accessor that
-        // provides a boolean operatortop confirm type compatibility, and an indirection operator that returns a
-        // reference to data of the type that was matched (array of float[3] in this case)
-        auto inputPoints = pointsAccessor.get<float[][3]>();
-        if (inputPoints)
-        {
-            db.logWarning(
-                "The 'points' attribute was type %s, not float[3][]. No compute happened.",
-                pointsAccessor.typeName().c_str()
-            );
-            return true;
-        }
-
-        // Handle the trivial case of modifying an empty point array first as the other values don't matter
-        if (inputPoints.size() == 0)
-        {
-            points.resize(0);
-            return true;
-        }
-
-        // By default the generated code will cast to the USD data types, however you can use any binary compatible
-        // types you have. See the .ogn documentation on type configurations to see how to change types.
+        // Attributes with well-defined types, like float/float[3], cast by default to the USD data types, however you
+        // can use any binary compatible types you have. See the .ogn documentation on type configurations to see how
+        // to change types. For bundle members and extended types whose type is determined at runtime the types are all
+        // POD types (though they can also be cast to other types at runtime if they are easier to use)
         pxr::GfVec3f pointOffset{ 0.0f, 0.0f,  0.0f };
 
         // This is how to extract a variable-typed input attribute. By default if the type has not been resolved to
@@ -85,17 +55,14 @@ public:
             // The data received back from the "get<>()" method is an accessor that provides a boolean operator,
             // which did the type compatibility test that got us into this section of the "if", and an indirection
             // operator that returns a reference to data of the type that was matched (float in this case).
-            auto const& floatValue = *floatOffset
-            pointOffset[0] = floatValue;
-            pointOffset[1] = floatValue;
-            pointOffset[2] = floatValue;
-            std::cout << "Got a float value of " << floatValue << std::endl;
+            pointOffset = pxr::GfVec3f{*floatOffset, *floatOffset, *floatOffset};
+            std::cout << "Got a float value of " << *floatOffset << std::endl;
         }
         // Repeat the same process of checking and applying for the other accepted value type of float[3]
         else if (auto float3Offset = offsetValue.get<float[3]>())
         {
-            pointOffset = *float3Offset;
-            std::cout << "Got a float[3] value of " << float3Value[0] << ", " << float3Value[1] << ", " << float3Value[2] << std::endl;
+            pointOffset = pxr::GfVec3f{*float3Offset};
+            std::cout << "Got a float[3] value of " << pointOffset[0] << ", " << pointOffset[1] << ", " << pointOffset[2] << std::endl;
         }
         else
         {
@@ -126,17 +93,45 @@ public:
         // return false;
         // -------------------------------------------------------------------------------------------------------------
 
+        // This is how to extract an input bundle attribute. It returns an accessor that lets you inspect the bundle
+        // contents and the values of the attributes in the bundle.
+        const auto& bundleWithGeometry = db.inputs.geometry();
+        // The accessor supports a range-based for-loop for iterating over members. Since the output has to have a
+        // fixed size there is a first pass here just to count the matching members.
+        size_t numPointsToOffset{ 0 };
+        for (auto const& bundleMember : bundleWithGeometry)
+        {
+            auto inputPoint = bundleMember.get<float[3]>();
+            // The member accessor supports a boolean operator indicating if it is valid, meaning the type is
+            // compatible with the templated type with which it was extracted (float[3]).
+            if (inputPoint)
+            {
+                numPointsToOffset++;
+            }
+        }
+
         // Now that all values are accessible the actual computation can happen.
         //
         // Output arrays must always be first resized to be the total number of entries they will eventually
         // contain. Repeated resizing can be expensive so it's best to do it once up front.
-        points.resize(inputPoints.size());
+        points.resize(numPointsToOffset);
 
         // The array accessor provides the common definitions that allow range-based for loops
         size_t pointIndex{ 0 };
-        for (auto const& pointToModify : inputPoints)
+        for (auto const& bundleMember : bundleWithGeometry)
         {
-            points[pointIndex] = pointToModify + pointOffset;
+            auto inputPoint = bundleMember.get<float[3]>();
+            if (! inputPoint)
+            {
+                continue;
+            }
+            auto& point = points[pointIndex++];
+            point = pxr::GfVec3f(inputPoint);
+            if (! disableOffset)
+            {
+                point += pointOffset;
+            }
+            pointIndex++;
         }
 
         // Returning true tells Omnigraph that the compute was successful and the output value is now valid.
@@ -144,6 +139,8 @@ public:
     }
 };
 
+// This macro provides the information necessary to OmniGraph that lets it automatically register and deregister
+// your node type definition.
 REGISTER_OGN_NODE()
 
 } // omnigraph_node

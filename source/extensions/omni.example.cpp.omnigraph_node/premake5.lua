@@ -31,6 +31,7 @@ project_ext_ogn( ext, ogn )
 -- Build the C++ plugin that will be loaded by the extension.
 project_ext_plugin(ext, ogn.plugin_project)
     add_files("source", "plugins/"..ogn.module)
+    add_files("nodes", "plugins/nodes")
     includedirs { "plugins/"..ogn.module }
 
     -- Add the standard dependencies all OGN projects have

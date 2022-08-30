@@ -4,10 +4,10 @@
         "uiName": "Example Offset Node",
         "description": [
             "This is an example OmniGraph node. It adds a fixed offset specified by the 'offset' input attribute",
-            "to any attributes within the input bundle 'geometry' that are named 'points'. The offset is ignored",
-            "if the input 'disable' is set to True. This gives a rough guideline of how to access some of the",
-            "basic data types. See the online OmniGraph documentation for many more details on what you are able",
-            "to do within a node."
+            "to any attributes within the input bundle 'geometry' that have type 'float[3]' and appends these points",
+            "to the output 'points' array. The offset is ignored if the input 'disable' is set to True. This gives a",
+            "rough guideline of how to access some of the most common data types. See the online OmniGraph",
+            "documentation for more detail on what you are able to do within a node."
         ],
         "categories": ["tutorials"],
         "inputs": {
@@ -32,8 +32,8 @@
                 "uiName": "Geometry To Offset",
                 "description": [
                     "A bundle is a collection of attributes with their own names. This node inspects the bundle",
-                    "to find an attribute named 'points'. If it is found then it extracts all of the points, adds",
-                    "the specfied offset to them and puts the resulting array into the output 'points' attribute."
+                    "to find attributes of type 'float[3]'. If found then it extracts each member, adds the",
+                    "offset to them, and appends the results to the output 'points' array attribute."
                 ]
             }
         },
@@ -43,7 +43,7 @@
                 "uiName": "Offset Points",
                 "description": [
                     "Set of points extracted from the input 'geometry' bundle with the offsets added. If there is",
-                    "no 'points' attribute in the geometry bundle then this will be an empty array."
+                    "no matching attribute in the geometry bundle then this will be an empty array."
                 ]
             }
         }
