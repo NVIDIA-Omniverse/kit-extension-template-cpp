@@ -1,0 +1,51 @@
+{
+    "ExampleNode": {
+        "version": 1,
+        "uiName": "Example Offset Node",
+        "description": [
+            "This is an example OmniGraph node. It adds a fixed offset specified by the 'offset' input attribute",
+            "to any attributes within the input bundle 'geometry' that have type 'float[3]' and appends these points",
+            "to the output 'points' array. The offset is ignored if the input 'disable' is set to True. This gives a",
+            "rough guideline of how to access some of the most common data types. See the online OmniGraph",
+            "documentation for more detail on what you are able to do within a node."
+        ],
+        "categories": ["tutorials"],
+        "inputs": {
+            "disable": {
+                "type": "bool",
+                "uiName": "Disable Offsets",
+                "description": "Set this to false to prevent any offset from being applied to points",
+                "default": true
+            },
+            "offset": {
+                "type": ["float[3]", "float"],
+                "uiName": "Offset Amount",
+                "description": [
+                    "Amount of offset to be applied to all of the values in the 'points' bundled attribute.",
+                    "If the attribute value is resolved to be a float[3] then that value is applied evenly",
+                    "to every point. If the attribute value is resolved to be a plain float then that value",
+                    "is used as a common offset for each of the x, y, and z components of the points."
+                ]
+            },
+            "geometry": {
+                "type": "bundle",
+                "uiName": "Geometry To Offset",
+                "description": [
+                    "A bundle is a collection of attributes with their own names. This node inspects the bundle",
+                    "to find attributes of type 'float[3]'. If found then it extracts each member, adds the",
+                    "offset to them, and appends the results to the output 'points' array attribute."
+                ]
+            }
+        },
+        "outputs": {
+            "points": {
+                "type": "float[3][]",
+                "uiName": "Offset Points",
+                "description": [
+                    "Set of points extracted from the input 'geometry' bundle with the offsets added. If there is",
+                    "no matching attribute in the geometry bundle then this will be an empty array."
+                ]
+            }
+        }
+    }
+}
