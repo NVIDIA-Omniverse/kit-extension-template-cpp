@@ -3,7 +3,7 @@ version = "1.0.0" # Semantic Versioning is used: https://semver.org/
 
 # These fields are used primarily for display in the extension browser UI.
 title = "Example C++ Extension: OmniGraph Node"
-description = "Demonstrates how to create a C++ node for omni.graph"
+description = "Demonstrates how to create a C++ node for OmniGraph"
 category = "Example"
 keywords = ["example", "C++", "cpp", "Graph", "Node", "OmniGraph"]
 icon = "data/icon.png"
