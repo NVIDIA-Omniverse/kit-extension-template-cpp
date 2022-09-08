@@ -27,7 +27,7 @@ project_ext_plugin(ext, "omni.example.cpp.usd.plugin")
         cppdialect "C++17"
         includedirs { "%{target_deps}/python/include/python3.7m" }
         buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef" }
-        linkoptions { '-Wl,--disable-new-dtags -Wl,-rpath,../../../_build/target-deps/nv_usd/%{cfg.buildcfg}/lib:../../../_build/target-deps/python/lib:' }
+        linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/nv_usd/%{cfg.buildcfg}/lib:%{target_deps}/python/lib:" }
     filter { "system:windows" }
         buildoptions { "/wd4244 /wd4305" }
     filter {}
