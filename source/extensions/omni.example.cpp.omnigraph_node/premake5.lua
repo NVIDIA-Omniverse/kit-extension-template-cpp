@@ -36,6 +36,7 @@ project_ext_plugin(ext, ogn.plugin_project)
     -- It is important that you add all subdirectories containing C++ code to this project
     add_files("source", "plugins/"..ogn.module)
     add_files("nodes", "plugins/nodes")
+    includedirs { "%{kit_sdk}/extscore/usdrt.scenegraph/include" }
 
     -- Add the standard dependencies all OGN projects have; includes, libraries to link, and required compiler flags
     add_ogn_dependencies(ogn)
