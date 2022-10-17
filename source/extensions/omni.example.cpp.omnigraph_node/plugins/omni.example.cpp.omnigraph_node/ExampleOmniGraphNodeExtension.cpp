@@ -13,6 +13,7 @@
 
 #include <omni/ext/IExt.h>
 #include <omni/graph/core/IGraphRegistry.h>
+#include <omni/graph/core/ogn/Database.h>
 #include <omni/graph/core/ogn/Registration.h>
 
 // Standard plugin definitions required by Carbonite.

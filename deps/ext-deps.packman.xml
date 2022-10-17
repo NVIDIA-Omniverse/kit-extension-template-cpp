@@ -1,0 +1,16 @@
+<project toolsVersion="5.0">
+  <!-- Import dependencies from Kit SDK to ensure we're using the same versions. -->
+  <import path="../_build/${platform}/${config}/kit/dev/all-deps.packman.xml">
+    <filter include="boost_preprocessor"/>
+    <filter include="imgui"/>
+    <filter include="nv_usd_py37_debug"/>
+    <filter include="nv_usd_py37_release"/>
+  </import>
+
+  <!-- Override the link paths to point to the correct locations. -->
+  <dependency name="boost_preprocessor" linkPath="../_build/target-deps/boost-preprocessor"/>
+  <dependency name="imgui" linkPath="../_build/target-deps/imgui"/>
+  <dependency name="nv_usd_py37_debug" linkPath="../_build/target-deps/nv_usd/debug"/>
+  <dependency name="nv_usd_py37_release" linkPath="../_build/target-deps/nv_usd/release"/>
+
+</project>
