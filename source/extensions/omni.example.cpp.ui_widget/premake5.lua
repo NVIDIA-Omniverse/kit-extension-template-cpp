@@ -22,7 +22,7 @@ project_ext_plugin(ext, "omni.example.cpp.ui_widget")
         "%{target_deps}/boost-preprocessor",
         "%{target_deps}/imgui"
     }
-    links { "imgui", "carb", "%{kit_sdk}/extscore/omni.ui/bin/omni.ui" }
+    links { "carb", "%{kit_sdk}/extscore/omni.ui/bin/omni.ui", "%{kit_sdk}/extscore/omni.kit.renderer.imgui/bin/imgui" }
 
 -- Build Python bindings that will be loaded by the extension.
 project_ext_bindings {
