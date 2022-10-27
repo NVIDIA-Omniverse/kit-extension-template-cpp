@@ -7,24 +7,13 @@ This project contains everything necessary to develop extensions that contain C+
 
 While an extension can consist of a single `extension.toml` file, most contain Python code, C++ code, or a mixture of both:
 
-```{mermaid}
-graph TD
-
-  subgraph A[Mixed]
-  A1(eg. omni.example.cpp.pybind)
-  end
-
-  subgraph B[C++ Only]
-  B1(eg. omni.example.cpp.hello_world)
-  end
-
-  subgraph C[Python Only]
-  C1(eg. omni.example.python.hello_world)
-  end
-
-  Kit[Kit] --> A1
-  Kit[Kit] --> B1
-  Kit[Kit] --> C1
+```
+                                                        Kit
+                                                         |
+                     ____________________________________|____________________________________
+                    |                                    |                                    |
+               Python Only                             C++ Only                             Mixed
+  (eg. omni.example.python.hello_world)   (eg. omni.example.cpp.hello_world)   (eg. omni.example.cpp.pybind)
 ```
 
 Extensive documentation detailing what extensions are and how they work can be found [here](https://docs.omniverse.nvidia.com/py/kit/docs/guide/extensions.html).
