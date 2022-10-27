@@ -20,3 +20,14 @@ name = "omni.example.cpp.pybind"
 # Define the C++ plugins that this extension provides.
 [[native.plugin]]
 path = "bin/*.plugin"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+cpp_api = [
+     "include/omni/example/cpp/pybind/IExampleBoundInterface.h",
+     "include/omni/example/cpp/pybind/IExampleBoundObject.h",
+     "include/omni/example/cpp/pybind/ExampleBoundObject.h",
+]

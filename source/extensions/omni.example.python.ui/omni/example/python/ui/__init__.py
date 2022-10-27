@@ -6,4 +6,5 @@
 ## distribution of this software and related documentation without an express
 ## license agreement from NVIDIA CORPORATION is strictly prohibited.
 ##
+__all__ = ["ExamplePythonUIExtension", "CppWidget"]
 from .example_python_ui_extension import *

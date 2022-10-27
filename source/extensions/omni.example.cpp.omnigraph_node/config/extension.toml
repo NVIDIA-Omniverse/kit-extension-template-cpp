@@ -22,3 +22,9 @@ name = "omni.example.cpp.omnigraph_node"
 
 [[native.plugin]]
 path = "bin/*.plugin"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

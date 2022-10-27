@@ -29,6 +29,7 @@ public:
     /**
      * @brief This property holds the thickness of the rectangle line.
      */
+    /// @private (suppress doc generation error)
     OMNIUI_PROPERTY(float, thickness, DEFAULT, 1.0f, READ, getThickness, WRITE, setThickness);
 
 protected:

@@ -21,3 +21,9 @@ name = "omni.example.cpp.hello_world"
 # Define the C++ plugins that this extension provides.
 [[native.plugin]]
 path = "bin/*.plugin"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

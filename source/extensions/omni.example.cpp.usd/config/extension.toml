@@ -24,3 +24,12 @@ name = "omni.example.cpp.usd"
 # Define the C++ plugins that this extension provides.
 [[native.plugin]]
 path = "bin/*.plugin"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+cpp_api = [
+     "include/omni/example/cpp/usd/IExampleUsdInterface.h",
+]

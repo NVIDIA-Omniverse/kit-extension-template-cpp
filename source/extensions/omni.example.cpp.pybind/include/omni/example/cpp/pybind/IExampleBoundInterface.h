@@ -27,6 +27,7 @@ namespace pybind
 class IExampleBoundInterface
 {
 public:
+    /// @private
     CARB_PLUGIN_INTERFACE("omni::example::cpp::pybind::IExampleBoundInterface", 1, 0);
 
     /**

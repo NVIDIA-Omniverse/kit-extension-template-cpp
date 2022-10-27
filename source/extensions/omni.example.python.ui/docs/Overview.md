@@ -1,4 +1,4 @@
-# Example Python Extension: UI
+# Overview
 
 An example Python extension that can be used as a template for creating new extensions.
 

@@ -37,3 +37,12 @@ args = [
 stdoutFailPatterns.exclude = [
     "*omniclient: Initialization failed*",
 ]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]
+cpp_api = [
+     "include/CppWidget.h",
+]

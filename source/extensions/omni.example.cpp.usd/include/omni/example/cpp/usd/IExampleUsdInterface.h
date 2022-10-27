@@ -25,6 +25,7 @@ namespace usd
 class IExampleUsdInterface
 {
 public:
+    /// @private
     CARB_PLUGIN_INTERFACE("omni::example::cpp::usd::IExampleUsdInterface", 1, 0);
 
     /**

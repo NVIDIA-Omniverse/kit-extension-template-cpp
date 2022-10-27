@@ -1,4 +1,4 @@
-# Example Python Extension: Hello World
+# Overview
 
 An example Python extension that can be used as a reference/template for creating new extensions.
 

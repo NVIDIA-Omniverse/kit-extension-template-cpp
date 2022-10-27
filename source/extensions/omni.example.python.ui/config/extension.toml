@@ -27,3 +27,9 @@ name = "omni.example.python.ui"
 dependencies = [
     "omni.kit.ui_test"
 ]
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

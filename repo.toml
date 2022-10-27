@@ -15,3 +15,25 @@ enabled = false
 
 [repo_build.msbuild]
 vs_version = "vs2019"
+
+[repo_docs]
+name = "Kit Extension Template C++"
+project = "kit-extension-template-cpp"
+sphinx_exclude_patterns = [
+    "_build",
+    "tools",
+    "VERSION.md",
+    "source/extensions/*/docs/Overview.md",
+    "source/extensions/*/docs/CHANGELOG.md",
+]
+
+[repo_docs.kit]
+extensions = [
+    "omni.example.cpp.hello_world",
+    "omni.example.cpp.omnigraph_node",
+    "omni.example.cpp.pybind",
+    "omni.example.cpp.ui_widget",
+    "omni.example.cpp.usd",
+    "omni.example.python.hello_world",
+    "omni.example.python.ui",
+]
