@@ -17,6 +17,7 @@ repository = "https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp"
 [[python.module]]
 name = "omni.example.python.hello_world"
 
+# Define the documentation that will be generated for this extension.
 [documentation]
 pages = [
     "docs/Overview.md",

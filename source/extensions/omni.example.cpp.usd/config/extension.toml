@@ -25,6 +25,7 @@ name = "omni.example.cpp.usd"
 [[native.plugin]]
 path = "bin/*.plugin"
 
+# Define the documentation that will be generated for this extension.
 [documentation]
 pages = [
     "docs/Overview.md",

@@ -27,3 +27,8 @@ project_ext_bindings {
         { "python/impl", ext.target_dir.."/omni/example/cpp/pybind/impl" },
         { "python/tests", ext.target_dir.."/omni/example/cpp/pybind/tests" },
     }
+
+-- Build the C++ plugin that will be loaded by the tests.
+project_ext_tests(ext, "omni.example.cpp.pybind.tests")
+    add_files("source", "plugins/omni.example.cpp.pybind.tests")
+    includedirs { "include", "plugins/omni.example.cpp.pybind.tests" }

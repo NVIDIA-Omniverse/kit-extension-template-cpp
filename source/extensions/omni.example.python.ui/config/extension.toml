@@ -28,6 +28,7 @@ dependencies = [
     "omni.kit.ui_test"
 ]
 
+# Define the documentation that will be generated for this extension.
 [documentation]
 pages = [
     "docs/Overview.md",

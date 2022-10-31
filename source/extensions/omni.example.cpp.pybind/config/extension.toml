@@ -21,6 +21,13 @@ name = "omni.example.cpp.pybind"
 [[native.plugin]]
 path = "bin/*.plugin"
 
+# Define any test specific properties of this extension.
+[[test]]
+cppTests.libraries = [
+    "bin/${lib_prefix}omni.example.cpp.pybind.tests${lib_ext}"
+]
+
+# Define the documentation that will be generated for this extension.
 [documentation]
 pages = [
     "docs/Overview.md",
