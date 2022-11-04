@@ -30,6 +30,7 @@ sphinx_exclude_patterns = [
 [repo_docs.kit]
 extensions = [
     "omni.example.cpp.actions",
+    "omni.example.cpp.commands",
     "omni.example.cpp.hello_world",
     "omni.example.cpp.omnigraph_node",
     "omni.example.cpp.pybind",

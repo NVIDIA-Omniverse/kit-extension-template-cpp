@@ -34,6 +34,16 @@ using namespace omni::kit::actions::core;
 class ExampleCustomAction : public Action
 {
 public:
+    static carb::ObjectPtr<IAction> create(const char* extensionId,
+                                           const char* actionId,
+                                           const MetaData* metaData)
+    {
+        // Note: It is important to construct the handler using ObjectPtr<T>::InitPolicy::eSteal,
+        // otherwise we end up incresing the reference count by one too many during construction,
+        // resulting in a carb::ObjectPtr<IAction> whose object instance will never be destroyed.
+        return carb::stealObject<IAction>(new ExampleCustomAction(extensionId, actionId, metaData));
+    }
+
     ExampleCustomAction(const char* extensionId, const char* actionId, const MetaData* metaData)
         : Action(extensionId, actionId, metaData), m_executionCount(0)
     {
@@ -83,7 +93,7 @@ public:
         Action::MetaData metaData;
         metaData.displayName = "Example Custom Action Display Name";
         metaData.description = "Example Custom Action Description.";
-        m_exampleCustomAction = carb::stealObject<IAction>(new ExampleCustomAction("omni.example.cpp.actions", "example_custom_action_id", &metaData));
+        m_exampleCustomAction = ExampleCustomAction::create("omni.example.cpp.actions", "example_custom_action_id", &metaData);
         actionRegistry->registerAction(m_exampleCustomAction);
 
         // Example of registering a lambda action from C++.
