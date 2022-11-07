@@ -1,0 +1,22 @@
+# An application is really just an extension that depends on other extensions
+[package]
+title = "Example Application: Viewport"
+description = "An example application that runs kit with the minimal set of extensions required to use the viewport."
+keywords = ["app"] # Makes this browsable in the UI under the "experience" filter.
+
+# Add new extensions here if you want them enabled automatically when this app is run.
+# Otherwise, you can search for them in the extensions window and enable/disable them.
+[dependencies]
+"omni.kit.uiapp" = {}
+"omni.kit.viewport.bundle" = {}
+"omni.kit.viewport.rtx" = {}
+"omni.kit.window.extensions" = {}
+"omni.kit.window.file" = {}
+"omni.kit.window.toolbar" = {}
+
+[settings]
+app.content.emptyStageOnStart = true
+app.exts.folders.'++' = ["${app}/../exts"] # Make extensions from this repo available.
+app.window.title = "Example Application: Viewport"
+app.window.width = 1700
+app.window.height = 900

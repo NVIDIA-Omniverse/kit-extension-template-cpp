@@ -24,7 +24,9 @@ Extensive documentation detailing what extensions are and how they work can be f
 1. Clone the [GitHub repo](https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp) to your local machine.
 2. Open a command prompt and navigate to the root of your cloned repo.
 3. Run `build.bat` to bootstrap your dev environment and build the example extensions.
-4. Run `_build\windows-x86_64\release\omni.app.example.extension_browser.bat` to open an example kit application.
+4. Run `_build\{platform}\release\omni.app.example.extension_browser.bat` to open an example kit application.
+    - Run `omni.app.example.viewport.bat` instead if you want the renderer and main viewport to be enabled.
+    - Run `omni.app.kit.dev.bat` instead if you want the full kit developer experience to be enabled.
 5. From the menu, select `Window->Extensions` to open the extension browser window.
 6. Enter `omni.example.cpp` in the search bar at the top of the extension browser window to view the example extensions included with this repo.
 
@@ -36,6 +38,8 @@ Extensive documentation detailing what extensions are and how they work can be f
 1. Run `build.bat` (if you haven't already) to generate the solution file.
 2. Open `_compiler\vs2019\kit-extension-template-cpp.sln` using Visual Studio 2019.
 3. Select `omni.app.example.extension_browser` as the startup project (if it isn't already).
+    - Select `omni.app.example.viewport` instead if you want the renderer and main viewport to be enabled.
+    - Select `omni.app.kit.dev` instead if you want the full kit developer experience to be enabled.
 4. Run/debug the example kit application, using the extension browser window to enable/disable extensions.
 
 ![Visual Studio Solution](/images/visual_studio_solution.png)

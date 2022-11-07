@@ -39,3 +39,6 @@ extensions = [
     "omni.example.python.hello_world",
     "omni.example.python.ui",
 ]
+
+[repo_package.packages."platform:windows-x86_64".docs]
+windows_max_path_length = 0

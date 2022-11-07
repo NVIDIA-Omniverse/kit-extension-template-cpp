@@ -20,4 +20,7 @@
   <dependency name="repo_source" linkPath="../_repo/deps/repo_source">
     <package name="repo_source" version="0.3.0"/>
   </dependency>
+  <dependency name="repo_test" linkPath="../_repo/deps/repo_test">
+    <package name="repo_test" version="1.7.1"/>
+  </dependency>
 </project>

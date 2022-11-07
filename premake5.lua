@@ -12,8 +12,11 @@ MSBUILD_VERSION = "Current"
 -- Execute the kit template premake configuration, which creates the solution, finds extensions, etc.
 dofile("_repo/deps/repo_kit_tools/kit-template/premake5.lua")
 
--- Example application that runs kit with a minimal set of extensions enabled, including the extension browser.
+-- Example application that runs kit with the minimal set of extensions required to use the extension browser.
 define_app("omni.app.example.extension_browser")
+
+-- Example application that runs kit with the minimal set of extensions required to use the viewport.
+define_app("omni.app.example.viewport")
 
 -- The default kit dev app with extensions from this repo made available.
 define_app("omni.app.kit.dev")
