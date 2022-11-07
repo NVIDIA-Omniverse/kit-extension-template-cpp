@@ -13,9 +13,15 @@ import omni.kit.undo
 
 
 class TestCommandsExample(omni.kit.test.AsyncTestCase):
+    async def setUp(self):
+        omni.kit.undo.clear_stack()
+
+    async def tearDown(self):
+        omni.kit.undo.clear_stack()
+
     async def test_cpp_commands(self):
         # Execute
-        res = omni.kit.commands.execute("example_cpp_command")
+        res = omni.kit.commands.execute("ExampleCpp")
         self.assertEqual(res, (True, None))
 
         # Undo

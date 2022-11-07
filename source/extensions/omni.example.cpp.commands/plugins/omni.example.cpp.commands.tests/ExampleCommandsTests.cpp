@@ -21,12 +21,11 @@ TEST_SUITE("omni.example.cpp.commands.tests")
 
     TEST_CASE("Execute Example C++ Command")
     {
-        CHECK(true);
         auto commandBridge = carb::getCachedInterface<ICommandBridge>();
         REQUIRE(commandBridge != nullptr);
 
         // Execute
-        bool result = commandBridge->executeCommand("example_cpp_command");
+        bool result = commandBridge->executeCommand("ExampleCpp");
         CHECK(result);
 
         // Undo
@@ -48,7 +47,7 @@ TEST_SUITE("omni.example.cpp.commands.tests")
         REQUIRE(kwargs != nullptr);
         iDictionary->makeAtPath(kwargs, "x", -9);
         iDictionary->makeAtPath(kwargs, "y", 99);
-        result = commandBridge->executeCommand("example_cpp_command", kwargs);
+        result = commandBridge->executeCommand("ExampleCpp", kwargs);
         iDictionary->destroyItem(kwargs);
         CHECK(result);
 

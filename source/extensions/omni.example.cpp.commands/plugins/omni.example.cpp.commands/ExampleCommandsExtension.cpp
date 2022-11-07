@@ -94,14 +94,14 @@ public:
 
         // Example of registering a command from C++.
         commandBridge->registerCommand(
-            "omni.example.cpp.commands", "example_cpp_command", ExampleCppCommand::create, ExampleCppCommand::populateKeywordArgs);
+            "omni.example.cpp.commands", "ExampleCppCommand", ExampleCppCommand::create, ExampleCppCommand::populateKeywordArgs);
     }
 
     void onShutdown() override
     {
         if (auto commandBridge = carb::getCachedInterface<ICommandBridge>())
         {
-            commandBridge->deregisterCommand("omni.example.cpp.commands", "example_cpp_command");
+            commandBridge->deregisterCommand("omni.example.cpp.commands", "ExampleCppCommand");
         }
         else
         {
