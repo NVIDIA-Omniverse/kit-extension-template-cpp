@@ -3,7 +3,7 @@ version = "1.0.0" # Semantic Versioning is used: https://semver.org/
 
 # These fields are used primarily for display in the extension browser UI.
 title = "Example C++ Extension: USD"
-description = "Demonstrates how to create a C++ plugin that can modify the current USD stage."
+description = "Demonstrates how to create a C++ plugin that can interact with the current USD stage."
 category = "Example"
 keywords = ["example", "C++", "cpp", "USD"]
 icon = "data/icon.png"
