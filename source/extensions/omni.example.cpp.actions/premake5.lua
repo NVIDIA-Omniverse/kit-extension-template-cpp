@@ -14,9 +14,15 @@ project_ext_plugin(ext, "omni.example.cpp.actions.plugin")
     local plugin_name = "omni.example.cpp.actions"
     add_files("source", "plugins/"..plugin_name)
     includedirs { "plugins/"..plugin_name }
+    filter { "system:linux" }
+        disablewarnings { "error=sign-compare", "error=unused-variable" }
+    filter {}
 
 -- Build the C++ plugin that will be loaded by the tests.
 project_ext_tests(ext, "omni.example.cpp.actions.tests")
     local plugin_name = "omni.example.cpp.actions.tests"
     add_files("source", "plugins/"..plugin_name)
     includedirs { "plugins/"..plugin_name }
+    filter { "system:linux" }
+        disablewarnings { "error=sign-compare", "error=unused-variable" }
+    filter {}
