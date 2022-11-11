@@ -17,11 +17,11 @@ project_ext_plugin(ext, "omni.example.cpp.usd.plugin")
         "plugins/omni.example.cpp.usd",
         "%{target_deps}/nv_usd/%{cfg.buildcfg}/include" }
     libdirs { "%{target_deps}/nv_usd/%{cfg.buildcfg}/lib" }
-    links { "gf", "sdf", "tf", "usd", "usdGeom", "usdUtils" }
+    links { "arch", "gf", "sdf", "tf", "usd", "usdGeom", "usdUtils" }
     defines { "NOMINMAX", "TBB_USE_DEBUG=%{cfg.buildcfg == 'debug' and 1 or 0}" }
+    rtti "On"
 
     filter { "system:linux" }
-        rtti "On"
         exceptionhandling "On"
         staticruntime "Off"
         cppdialect "C++17"

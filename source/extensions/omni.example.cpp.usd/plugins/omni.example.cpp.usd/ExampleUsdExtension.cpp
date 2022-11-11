@@ -18,6 +18,7 @@
 #include <omni/timeline/ITimeline.h>
 #include <omni/timeline/TimelineTypes.h>
 
+#include <pxr/usd/usd/notice.h>
 #include <pxr/usd/usd/stage.h>
 #include <pxr/usd/usd/stageCache.h>
 #include <pxr/usd/usd/primRange.h>
@@ -41,6 +42,7 @@ namespace usd
 {
 
 class ExampleCppUsdExtension : public IExampleUsdInterface
+                             , public PXR_NS::TfWeakBase
 {
 protected:
     void createPrims() override
@@ -77,7 +79,6 @@ protected:
                 // Setup the global rotation operation.
                 const float initialRotation = rotationIncrement * static_cast<float>(i);
                 PXR_NS::UsdGeomXformOp globalRotationOp = xformable.AddRotateYOp(PXR_NS::UsdGeomXformOp::PrecisionFloat);
-                m_globalRotationOps.push_back(globalRotationOp); // Store it so we can update it later in animatePrims().
                 globalRotationOp.Set(initialRotation);
 
                 // Setup the translation operation.
@@ -86,8 +87,10 @@ protected:
 
                 // Setup the local rotation operation.
                 PXR_NS::UsdGeomXformOp localRotationOp = xformable.AddRotateXOp(PXR_NS::UsdGeomXformOp::PrecisionFloat);
-                m_localRotationOps.push_back(localRotationOp); // Store it so we can update it later in animatePrims().
                 localRotationOp.Set(initialRotation);
+
+                // Store the prim and rotation ops so we can update them later in animatePrims().
+                m_primsWithRotationOps.push_back({ prim, localRotationOp, globalRotationOp });
             }
         }
 
@@ -147,15 +150,30 @@ protected:
 
     void onDefaultUsdStageChanged(long stageId) override
     {
+        pxr::TfNotice::Revoke(m_usdNoticeListenerKey);
         m_timelineEventsSubscription = nullptr;
         m_updateEventsSubscription = nullptr;
-        m_globalRotationOps.clear();
-        m_localRotationOps.clear();
+        m_primsWithRotationOps.clear();
         m_stage.Reset();
 
         if (stageId)
         {
             m_stage = PXR_NS::UsdUtilsStageCache::Get().Find(PXR_NS::UsdStageCache::Id::FromLongInt(stageId));
+            m_usdNoticeListenerKey = PXR_NS::TfNotice::Register(PXR_NS::TfCreateWeakPtr(this), &ExampleCppUsdExtension::onObjectsChanged);
+        }
+    }
+
+    void onObjectsChanged(const PXR_NS::UsdNotice::ObjectsChanged& objectsChanged)
+    {
+        // Check whether any of the prims we created have been (potentially) invalidated.
+        // This may be too broad a check, but handles prims being removed from the stage.
+        for (auto& primWithRotationOps : m_primsWithRotationOps)
+        {
+            if (objectsChanged.ResyncedObject(primWithRotationOps.m_prim))
+            {
+                primWithRotationOps.m_invalid = true;
+                break;
+            }
         }
     }
 
@@ -214,34 +232,42 @@ protected:
             return;
         }
 
-        // Update the value of each global rotation operation to (crudely) animate the prims around the origin.
-        const size_t numGlobalRotationOps = m_globalRotationOps.size();
-        const float initialGlobalRotationIncrement = 360.0f / numGlobalRotationOps;
+        // Update the value of each local and global rotation operation to (crudely) animate the prims around the origin.
+        const size_t numPrims = m_primsWithRotationOps.size();
+        const float initialLocalRotationIncrement = 360.0f / numPrims;
+        const float initialGlobalRotationIncrement = 360.0f / numPrims;
         const float currentAnimTime = omni::timeline::getTimeline()->getCurrentTime() * m_stage->GetTimeCodesPerSecond();
-        for (size_t i = 0; i < numGlobalRotationOps; ++i)
+        for (size_t i = 0; i < numPrims; ++i)
         {
-            PXR_NS::UsdGeomXformOp& globalRotationOp = m_globalRotationOps[i];
-            const float initialRotation = initialGlobalRotationIncrement * static_cast<float>(i);
-            const float currentRotation = initialRotation - (360.0f * (currentAnimTime / 100.0f));
-            globalRotationOp.Set(currentRotation);
-        }
+            if (m_primsWithRotationOps[i].m_invalid)
+            {
+                continue;
+            }
 
-        // Update the value of each local rotation operation to (crudely) animate the prims around their axis.
-        const size_t numLocalRotationOps = m_localRotationOps.size();
-        const float initialLocalRotationIncrement = 360.0f / numLocalRotationOps;
-        for (size_t i = 0; i < numLocalRotationOps; ++i)
-        {
-            PXR_NS::UsdGeomXformOp& localRotationOp = m_localRotationOps[i];
-            const float initialRotation = initialLocalRotationIncrement * static_cast<float>(i);
-            const float currentRotation = initialRotation + (360.0f * (currentAnimTime / 100.0f));
-            localRotationOp.Set(currentRotation);
+            PXR_NS::UsdGeomXformOp& localRotationOp = m_primsWithRotationOps[i].m_localRotationOp;
+            const float initialLocalRotation = initialLocalRotationIncrement * static_cast<float>(i);
+            const float currentLocalRotation = initialLocalRotation + (360.0f * (currentAnimTime / 100.0f));
+            localRotationOp.Set(currentLocalRotation);
+
+            PXR_NS::UsdGeomXformOp& globalRotationOp = m_primsWithRotationOps[i].m_globalRotationOp;
+            const float initialGlobalRotation = initialGlobalRotationIncrement * static_cast<float>(i);
+            const float currentGlobalRotation = initialGlobalRotation - (360.0f * (currentAnimTime / 100.0f));
+            globalRotationOp.Set(currentGlobalRotation);
         }
     }
 
 private:
+    struct PrimWithRotationOps
+    {
+        PXR_NS::UsdPrim m_prim;
+        PXR_NS::UsdGeomXformOp m_localRotationOp;
+        PXR_NS::UsdGeomXformOp m_globalRotationOp;
+        bool m_invalid = false;
+    };
+
     PXR_NS::UsdStageRefPtr m_stage;
-    std::vector<PXR_NS::UsdGeomXformOp> m_localRotationOps;
-    std::vector<PXR_NS::UsdGeomXformOp> m_globalRotationOps;
+    PXR_NS::TfNotice::Key m_usdNoticeListenerKey;
+    std::vector<PrimWithRotationOps> m_primsWithRotationOps;
     carb::events::ISubscriptionPtr m_updateEventsSubscription;
     carb::events::ISubscriptionPtr m_timelineEventsSubscription;
 };
