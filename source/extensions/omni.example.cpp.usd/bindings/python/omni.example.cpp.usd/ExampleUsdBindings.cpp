@@ -28,6 +28,7 @@ PYBIND11_MODULE(_example_usd_bindings, m)
     carb::defineInterfaceClass<IExampleUsdInterface>(
         m, "IExampleUsdInterface", "acquire_example_usd_interface", "release_example_usd_interface")
         .def("create_prims", &IExampleUsdInterface::createPrims)
+        .def("remove_prims", &IExampleUsdInterface::removePrims)
         .def("print_stage_info", &IExampleUsdInterface::printStageInfo)
         .def("start_timeline_animation", &IExampleUsdInterface::startTimelineAnimation)
         .def("stop_timeline_animation", &IExampleUsdInterface::stopTimelineAnimation)

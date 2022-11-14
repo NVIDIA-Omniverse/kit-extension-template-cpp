@@ -21,8 +21,8 @@ def get_example_usd_interface() -> IExampleUsdInterface:
 # Use the extension entry points to acquire and release the interface,
 # and to subscribe to usd stage events.
 class ExampleUsdExtension(omni.ext.IExt):
-    def __init__(self):
-        # Acqurie the example USD interface.
+    def on_startup(self):
+        # Acquire the example USD interface.
         global _example_usd_interface
         _example_usd_interface = acquire_example_usd_interface()
 
@@ -49,11 +49,18 @@ class ExampleUsdExtension(omni.ext.IExt):
         _example_usd_interface.start_timeline_animation()
 
     def on_shutdown(self):
+        global _example_usd_interface
+
+        # Stop animating the example prims from C++.
+        _example_usd_interface.stop_timeline_animation()
+
+        # Remove the example prims from C++.
+        _example_usd_interface.remove_prims()
+
         # Unsubscribe from omni.usd stage events.
         self._stage_event_sub = None
 
         # Release the example USD interface.
-        global _example_usd_interface
         release_example_usd_interface(_example_usd_interface)
         _example_usd_interface = None
 

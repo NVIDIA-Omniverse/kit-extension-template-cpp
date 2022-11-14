@@ -72,7 +72,11 @@ protected:
             prim.CreateAttribute(PXR_NS::TfToken("size"), PXR_NS::SdfValueTypeNames->Double).Set(cubeSize);
 
             // Leave the first prim at the origin and position the rest in a circle surrounding it.
-            if (i > 0)
+            if (i == 0)
+            {
+                m_primsWithRotationOps.push_back({ prim });
+            }
+            else
             {
                 PXR_NS::UsdGeomXformable xformable = PXR_NS::UsdGeomXformable(prim);
 
@@ -103,6 +107,26 @@ protected:
                 onTimelineEvent(static_cast<omni::timeline::TimelineEventType>(timelineEvent->type));
             });
         }
+    }
+
+    void removePrims() override
+    {
+        if (!m_stage)
+        {
+            return;
+        }
+
+        // Release all event subscriptions.
+        PXR_NS::TfNotice::Revoke(m_usdNoticeListenerKey);
+        m_timelineEventsSubscription = nullptr;
+        m_updateEventsSubscription = nullptr;
+
+        // Remove all prims.
+        for (auto& primWithRotationOps : m_primsWithRotationOps)
+        {
+            m_stage->RemovePrim(primWithRotationOps.m_prim.GetPath());
+        }
+        m_primsWithRotationOps.clear();
     }
 
     void printStageInfo() const override
@@ -150,7 +174,7 @@ protected:
 
     void onDefaultUsdStageChanged(long stageId) override
     {
-        pxr::TfNotice::Revoke(m_usdNoticeListenerKey);
+        PXR_NS::TfNotice::Revoke(m_usdNoticeListenerKey);
         m_timelineEventsSubscription = nullptr;
         m_updateEventsSubscription = nullptr;
         m_primsWithRotationOps.clear();
@@ -169,10 +193,10 @@ protected:
         // This may be too broad a check, but handles prims being removed from the stage.
         for (auto& primWithRotationOps : m_primsWithRotationOps)
         {
-            if (objectsChanged.ResyncedObject(primWithRotationOps.m_prim))
+            if (!primWithRotationOps.m_invalid &&
+                objectsChanged.ResyncedObject(primWithRotationOps.m_prim))
             {
                 primWithRotationOps.m_invalid = true;
-                break;
             }
         }
     }
@@ -220,7 +244,7 @@ protected:
     void stopAnimatingPrims()
     {
         m_updateEventsSubscription = nullptr;
-        onUpdateEvent(); // Reset the prims.
+        onUpdateEvent(); // Reset positions.
     }
 
     void onUpdateEvent()
@@ -234,10 +258,10 @@ protected:
 
         // Update the value of each local and global rotation operation to (crudely) animate the prims around the origin.
         const size_t numPrims = m_primsWithRotationOps.size();
-        const float initialLocalRotationIncrement = 360.0f / numPrims;
-        const float initialGlobalRotationIncrement = 360.0f / numPrims;
+        const float initialLocalRotationIncrement = 360.0f / (numPrims - 1); // Ignore the first prim at the origin.
+        const float initialGlobalRotationIncrement = 360.0f / (numPrims - 1); // Ignore the first prim at the origin.
         const float currentAnimTime = omni::timeline::getTimeline()->getCurrentTime() * m_stage->GetTimeCodesPerSecond();
-        for (size_t i = 0; i < numPrims; ++i)
+        for (size_t i = 1; i < numPrims; ++i) // Ignore the first prim at the origin.
         {
             if (m_primsWithRotationOps[i].m_invalid)
             {

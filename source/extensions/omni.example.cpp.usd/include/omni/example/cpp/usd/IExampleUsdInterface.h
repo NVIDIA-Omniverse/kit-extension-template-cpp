@@ -34,6 +34,11 @@ public:
     virtual void createPrims() = 0;
 
     /**
+     * Remove the example prims using C++.
+     */
+    virtual void removePrims() = 0;
+
+    /**
      * Print some info about the currently open USD stage from C++.
      */
     virtual void printStageInfo() const = 0;
