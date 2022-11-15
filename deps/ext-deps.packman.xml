@@ -5,6 +5,8 @@
     <filter include="imgui"/>
     <filter include="nv_usd_py37_debug"/>
     <filter include="nv_usd_py37_release"/>
+    <filter include="usd_ext_physics_debug"/>
+    <filter include="usd_ext_physics_release"/>
   </import>
 
   <!-- Override the link paths to point to the correct locations. -->
@@ -12,5 +14,7 @@
   <dependency name="imgui" linkPath="../_build/target-deps/imgui"/>
   <dependency name="nv_usd_py37_debug" linkPath="../_build/target-deps/nv_usd/debug"/>
   <dependency name="nv_usd_py37_release" linkPath="../_build/target-deps/nv_usd/release"/>
+  <dependency name="usd_ext_physics_debug" linkPath="../_build/target-deps/usd_ext_physics/debug"/>
+  <dependency name="usd_ext_physics_release" linkPath="../_build/target-deps/usd_ext_physics/release"/>
 
 </project>

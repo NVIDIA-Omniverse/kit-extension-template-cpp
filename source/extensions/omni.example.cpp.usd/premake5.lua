@@ -15,10 +15,11 @@ project_ext_plugin(ext, "omni.example.cpp.usd.plugin")
     includedirs {
         "include",
         "plugins/omni.example.cpp.usd",
-        "%{target_deps}/nv_usd/%{cfg.buildcfg}/include" }
-    libdirs { "%{target_deps}/nv_usd/%{cfg.buildcfg}/lib" }
+        "%{target_deps}/nv_usd/release/include" }
+    libdirs { "%{target_deps}/nv_usd/release/lib" }
     links { "arch", "gf", "sdf", "tf", "usd", "usdGeom", "usdUtils" }
-    defines { "NOMINMAX", "TBB_USE_DEBUG=%{cfg.buildcfg == 'debug' and 1 or 0}" }
+    defines { "NOMINMAX", "NDEBUG" }
+    runtime "Release"
     rtti "On"
 
     filter { "system:linux" }
@@ -27,7 +28,7 @@ project_ext_plugin(ext, "omni.example.cpp.usd.plugin")
         cppdialect "C++17"
         includedirs { "%{target_deps}/python/include/python3.7m" }
         buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef" }
-        linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/nv_usd/%{cfg.buildcfg}/lib:%{target_deps}/python/lib:" }
+        linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/nv_usd/release/lib:%{target_deps}/python/lib:" }
     filter { "system:windows" }
         buildoptions { "/wd4244 /wd4305" }
     filter {}

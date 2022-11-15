@@ -36,6 +36,7 @@ extensions = [
     "omni.example.cpp.pybind",
     "omni.example.cpp.ui_widget",
     "omni.example.cpp.usd",
+    "omni.example.cpp.usd_physics",
     "omni.example.python.hello_world",
     "omni.example.python.ui",
 ]
