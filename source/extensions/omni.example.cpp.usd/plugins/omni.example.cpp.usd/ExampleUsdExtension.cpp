@@ -99,7 +99,7 @@ protected:
         }
 
         // Subscribe to timeline events so we know when to start or stop animating the prims.
-        if (omni::timeline::ITimeline* timeline = omni::timeline::getTimeline())
+        if (auto timeline = omni::timeline::getTimeline())
         {
             m_timelineEventsSubscription = carb::events::createSubscriptionToPop(
                 timeline->getTimelineEventStream(),
@@ -158,7 +158,7 @@ protected:
 
     void startTimelineAnimation() override
     {
-        if (omni::timeline::ITimeline* timeline = omni::timeline::getTimeline())
+        if (auto timeline = omni::timeline::getTimeline())
         {
             timeline->play();
         }
@@ -166,7 +166,7 @@ protected:
 
     void stopTimelineAnimation() override
     {
-        if (omni::timeline::ITimeline* timeline = omni::timeline::getTimeline())
+        if (auto timeline = omni::timeline::getTimeline())
         {
             timeline->stop();
         }

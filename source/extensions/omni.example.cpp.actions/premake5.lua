@@ -22,7 +22,12 @@ project_ext_plugin(ext, "omni.example.cpp.actions.plugin")
 project_ext_tests(ext, "omni.example.cpp.actions.tests")
     local plugin_name = "omni.example.cpp.actions.tests"
     add_files("source", "plugins/"..plugin_name)
-    includedirs { "plugins/"..plugin_name }
+    includedirs { "plugins/"..plugin_name, "%{target_deps}/doctest/include" }
     filter { "system:linux" }
         disablewarnings { "error=sign-compare", "error=unused-variable" }
     filter {}
+
+    -- Temp: Should have been set by project_ext_tests
+    libdirs {
+        "%{kit_sdk}/exts/omni.kit.test/bin",
+    }

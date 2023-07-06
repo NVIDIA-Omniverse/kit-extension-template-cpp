@@ -8,9 +8,9 @@
 //
 #include <omni/ui/bind/BindUtils.h>
 
-#include <pybind11/pybind11/functional.h>
-#include <pybind11/pybind11/pybind11.h>
-#include <pybind11/pybind11/stl.h>
+#include <pybind11/functional.h>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include <CppWidget.h>
 #include <BindCppWidget.h>

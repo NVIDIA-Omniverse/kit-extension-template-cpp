@@ -1,23 +1,22 @@
-:: Reset errorlevel status (don't inherit from caller) [xxxxxxxxxxx]
+:: RUN_PM_MODULE must always be at the same spot for packman update to work (batch reloads file during update!) 
+:: [xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]
+:: Reset errorlevel status (don't inherit from caller) 
 @call :ECHO_AND_RESET_ERROR
-:: You can remove the call below if you do your own manual configuration of the dev machines
-call "%~dp0\bootstrap\configure.bat"
 
+:: You can remove this section if you do your own manual configuration of the dev machines
+call :CONFIGURE
 if %errorlevel% neq 0 ( exit /b %errorlevel% )
+
 :: Everything below is mandatory
 if not defined PM_PYTHON goto :PYTHON_ENV_ERROR
 if not defined PM_MODULE goto :MODULE_ENV_ERROR
 
-:: Generate temporary path for variable file
-for /f "delims=" %%a in ('powershell -ExecutionPolicy ByPass -NoLogo -NoProfile ^
--File "%~dp0bootstrap\generate_temp_file_name.ps1"') do set PM_VAR_PATH=%%a
+set PM_VAR_PATH_ARG=
 
-if %1.==. (
-	set PM_VAR_PATH_ARG=
-) else (
-	set PM_VAR_PATH_ARG=--var-path="%PM_VAR_PATH%"
-)
+if "%1"=="pull" goto :SET_VAR_PATH
+if "%1"=="install" goto :SET_VAR_PATH
 
+:RUN_PM_MODULE
 "%PM_PYTHON%" -S -s -u -E "%PM_MODULE%" %* %PM_VAR_PATH_ARG%
 if %errorlevel% neq 0 ( exit /b %errorlevel% )
 
@@ -54,3 +53,19 @@ if /I "%PM_VERBOSITY%"=="debug" (
 	@echo on
 )
 exit /b 0
+
+:SET_VAR_PATH
+:: Generate temporary path for variable file
+for /f "delims=" %%a in ('%PM_PYTHON% -S -s -u -E -c "import tempfile;file = tempfile.NamedTemporaryFile(mode='w+t', delete=False);print(file.name)"') do (set PM_VAR_PATH=%%a)
+set PM_VAR_PATH_ARG=--var-path="%PM_VAR_PATH%"
+goto :RUN_PM_MODULE
+
+:CONFIGURE
+:: Must capture and set code page to work around issue #279, powershell invocation mutates console font
+for /f "tokens=2 delims=:" %%a in ('chcp') do (set OLD_CODE_PAGE=%%a)
+chcp 437 > nul
+call "%~dp0\bootstrap\configure.bat"
+set CONFIG_ERRORLEVEL=%errorlevel%
+:: Restore code page
+chcp %OLD_CODE_PAGE% > nul
+exit /b %CONFIG_ERRORLEVEL%

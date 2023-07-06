@@ -16,12 +16,11 @@
 #include <pxr/usd/usd/stage.h>
 #include <pxr/usd/usdGeom/cube.h>
 #include <pxr/usd/usdGeom/metrics.h>
+#include <pxr/usd/usdPhysics/collisionAPI.h>
+#include <pxr/usd/usdPhysics/massAPI.h>
+#include <pxr/usd/usdPhysics/rigidBodyAPI.h>
+#include <pxr/usd/usdPhysics/scene.h>
 #include <pxr/usd/usdUtils/stageCache.h>
-
-#include <usdPhysics/collisionAPI.h>
-#include <usdPhysics/massAPI.h>
-#include <usdPhysics/rigidBodyAPI.h>
-#include <usdPhysics/scene.h>
 
 const struct carb::PluginImplDesc pluginImplDesc = { "omni.example.cpp.usd_physics.plugin",
                                                      "An example C++ extension.", "NVIDIA",

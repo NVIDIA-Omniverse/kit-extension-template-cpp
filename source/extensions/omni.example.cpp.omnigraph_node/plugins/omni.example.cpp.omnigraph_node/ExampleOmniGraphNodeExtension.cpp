@@ -23,8 +23,8 @@ const struct carb::PluginImplDesc pluginImplDesc = { "omni.example.cpp.omnigraph
 
 // These interface dependencies are required by all OmniGraph node types
 CARB_PLUGIN_IMPL_DEPS(omni::graph::core::IGraphRegistry,
-                      carb::flatcache::IPath,
-                      carb::flatcache::IToken)
+                      omni::fabric::IPath,
+                      omni::fabric::IToken)
 
 // This macro sets up the information required to register your node type definitions with OmniGraph
 DECLARE_OGN_NODES()

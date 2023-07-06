@@ -9,7 +9,7 @@
 #include <carb/BindingsUtils.h>
 
 #include <omni/ui/bind/BindUtils.h>
-#include <pybind11/pybind11/pybind11.h>
+#include <pybind11/pybind11.h>
 
 // We need to be registered as Carbonite plugin because we need to use CARB_LOG_ERROR
 CARB_BINDINGS("omni.example.cpp.ui_widget.python")

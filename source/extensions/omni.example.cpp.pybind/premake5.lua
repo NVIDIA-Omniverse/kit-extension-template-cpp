@@ -31,4 +31,9 @@ project_ext_bindings {
 -- Build the C++ plugin that will be loaded by the tests.
 project_ext_tests(ext, "omni.example.cpp.pybind.tests")
     add_files("source", "plugins/omni.example.cpp.pybind.tests")
-    includedirs { "include", "plugins/omni.example.cpp.pybind.tests" }
+    includedirs { "include", "plugins/omni.example.cpp.pybind.tests", "%{target_deps}/doctest/include" }
+
+    -- Temp: Should have been set by project_ext_tests
+    libdirs {
+        "%{kit_sdk}/exts/omni.kit.test/bin",
+    }

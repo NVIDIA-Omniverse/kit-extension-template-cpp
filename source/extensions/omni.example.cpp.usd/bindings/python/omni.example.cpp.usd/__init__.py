@@ -8,4 +8,5 @@
 ##
 
 # Necessary so we can link to the Python source instead of copying it.
+__all__ = ['IExampleUsdInterface', 'acquire_example_usd_interface', 'release_example_usd_interface']
 from .impl import *

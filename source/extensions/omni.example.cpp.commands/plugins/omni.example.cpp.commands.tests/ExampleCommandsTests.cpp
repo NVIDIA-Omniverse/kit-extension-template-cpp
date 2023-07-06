@@ -7,7 +7,7 @@
 // license agreement from NVIDIA CORPORATION is strictly prohibited.
 //
 
-#include <doctest/doctest/doctest.h>
+#include <doctest/doctest.h>
 
 #include <carb/BindingsUtils.h>
 

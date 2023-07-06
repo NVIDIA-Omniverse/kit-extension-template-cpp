@@ -20,6 +20,8 @@ def get_bound_interface() -> IExampleBoundInterface:
 # Use the extension entry points to acquire and release the interface.
 class ExamplePybindExtension(omni.ext.IExt):
     def __init__(self):
+        super().__init__()
+
         global _bound_interface
         _bound_interface = acquire_bound_interface()
 

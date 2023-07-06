@@ -10,7 +10,7 @@
 #include <omni/example/cpp/pybind/IExampleBoundInterface.h>
 #include <omni/example/cpp/pybind/ExampleBoundObject.h>
 
-#include <doctest/doctest/doctest.h>
+#include <doctest/doctest.h>
 
 #include <carb/BindingsUtils.h>
 

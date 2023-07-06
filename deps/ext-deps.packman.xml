@@ -3,18 +3,19 @@
   <import path="../_build/${platform}/${config}/kit/dev/all-deps.packman.xml">
     <filter include="boost_preprocessor"/>
     <filter include="imgui"/>
-    <filter include="nv_usd_py37_debug"/>
-    <filter include="nv_usd_py37_release"/>
-    <filter include="usd_ext_physics_debug"/>
-    <filter include="usd_ext_physics_release"/>
+    <filter include="nv_usd_py310_release"/>
   </import>
 
   <!-- Override the link paths to point to the correct locations. -->
   <dependency name="boost_preprocessor" linkPath="../_build/target-deps/boost-preprocessor"/>
   <dependency name="imgui" linkPath="../_build/target-deps/imgui"/>
-  <dependency name="nv_usd_py37_debug" linkPath="../_build/target-deps/nv_usd/debug"/>
-  <dependency name="nv_usd_py37_release" linkPath="../_build/target-deps/nv_usd/release"/>
-  <dependency name="usd_ext_physics_debug" linkPath="../_build/target-deps/usd_ext_physics/debug"/>
-  <dependency name="usd_ext_physics_release" linkPath="../_build/target-deps/usd_ext_physics/release"/>
+  <dependency name="nv_usd_py310_release" linkPath="../_build/target-deps/nv_usd/release"/>
+
+  <!-- Because we always use the release kit-sdk we have to explicitly refer to the debug usd package. -->
+  <dependency name="nv_usd_py310_debug" linkPath="../_build/target-deps/nv_usd/debug">
+      <package name="nv-usd" version="22.11.nv.0.2.49.a42c0222-win64_py310_debug-merge_pxr_22-11-py310" platforms="windows-x86_64"/>
+      <package name="nv-usd" version="22.11.nv.0.2.49.a42c0222-linux64_py310-centos_debug-merge_pxr_22-11-py310" platforms="linux-x86_64" />
+      <package name="nv-usd" version="22.11.nv.0.2.49.a42c0222-linux-aarch64_py310_debug-merge_pxr_22-11-py310" platforms="linux-aarch64" />
+  </dependency>
 
 </project>

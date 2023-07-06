@@ -9,7 +9,7 @@
 
 #include <omni/kit/actions/core/IActionRegistry.h>
 
-#include <doctest/doctest/doctest.h>
+#include <doctest/doctest.h>
 
 #include <carb/BindingsUtils.h>
 

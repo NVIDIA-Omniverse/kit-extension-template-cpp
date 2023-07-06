@@ -26,7 +26,7 @@ project_ext_plugin(ext, "omni.example.cpp.usd.plugin")
         exceptionhandling "On"
         staticruntime "Off"
         cppdialect "C++17"
-        includedirs { "%{target_deps}/python/include/python3.7m" }
+        includedirs { "%{target_deps}/python/include/python3.10" } 
         buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef" }
         linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/nv_usd/release/lib:%{target_deps}/python/lib:" }
     filter { "system:windows" }

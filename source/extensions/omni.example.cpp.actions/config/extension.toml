@@ -1,5 +1,5 @@
 [package]
-version = "1.0.0" # Semantic Versioning is used: https://semver.org/
+version = "1.0.1" # Semantic Versioning is used: https://semver.org/
 
 # These fields are used primarily for display in the extension browser UI.
 title = "Example C++ Extension: actions"

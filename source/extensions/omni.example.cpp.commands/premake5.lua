@@ -19,4 +19,9 @@ project_ext_plugin(ext, "omni.example.cpp.commands.plugin")
 project_ext_tests(ext, "omni.example.cpp.commands.tests")
     local plugin_name = "omni.example.cpp.commands.tests"
     add_files("source", "plugins/"..plugin_name)
-    includedirs { "plugins/"..plugin_name }
+    includedirs { "plugins/"..plugin_name, "%{target_deps}/doctest/include" }
+
+    -- Temp: Should have been set by project_ext_tests
+    libdirs {
+        "%{kit_sdk}/exts/omni.kit.test/bin",
+    }

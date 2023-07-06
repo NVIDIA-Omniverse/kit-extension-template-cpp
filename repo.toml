@@ -10,15 +10,16 @@ import_configs = ["${root}/_repo/deps/repo_kit_tools/kit-template/repo.toml"]
 # Repository Name
 name = "kit-extension-template-cpp"
 
-[repo_build.licensing]
-enabled = false
-
-[repo_build.msbuild]
-vs_version = "vs2019"
+[repo_build]
+msbuild.vs_version = "vs2019"
+post_build.commands = []
 
 [repo_docs]
 name = "Kit Extension Template C++"
 project = "kit-extension-template-cpp"
+api_output_directory = "api"
+use_fast_doxygen_conversion=false
+sphinx_version = "4.5.0.2-py3.10-${platform}"
 sphinx_exclude_patterns = [
     "_build",
     "tools",

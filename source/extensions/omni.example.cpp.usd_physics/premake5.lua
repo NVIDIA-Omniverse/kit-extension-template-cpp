@@ -16,11 +16,8 @@ project_ext_plugin(ext, "omni.example.cpp.usd_physics.plugin")
     includedirs {
         "include",
         "plugins/omni.example.cpp.usd_physics",
-        "%{target_deps}/nv_usd/release/include",
-        "%{target_deps}/usd_ext_physics/release/include" }
-    libdirs {
-        "%{target_deps}/nv_usd/release/lib",
-        "%{target_deps}/usd_ext_physics/release/lib" }
+        "%{target_deps}/nv_usd/release/include" }
+    libdirs { "%{target_deps}/nv_usd/release/lib" }
     links { "arch", "gf", "sdf", "tf", "usd", "usdGeom", "usdPhysics", "usdUtils" }
     defines { "NOMINMAX", "NDEBUG" }
     runtime "Release"
@@ -30,7 +27,7 @@ project_ext_plugin(ext, "omni.example.cpp.usd_physics.plugin")
         exceptionhandling "On"
         staticruntime "Off"
         cppdialect "C++17"
-        includedirs { "%{target_deps}/python/include/python3.7m" }
+        includedirs { "%{target_deps}/python/include/python3.10" }
         buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef" }
         linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/nv_usd/release/lib:%{target_deps}/python/lib:%{target_deps}/usd_ext_physics/release/lib:" }
     filter { "system:windows" }
