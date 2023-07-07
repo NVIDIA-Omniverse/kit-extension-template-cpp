@@ -1,0 +1,311 @@
+>>> Fetching all dependencies.
+Package 'git' at version '2.28.0-windows-x86_64' is missing from local storage.
+Package 'premake' at version '5.0.0-alpha15.dev+pipeline3388156.1f299ea4-windows-x86_64' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/premake%405.0.0-alpha15.dev%2Bpipeline3388156.1f299ea4-windows-x86_64.7z (429.7 KiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/git%402.28.0-windows-x86_64.7z (44.72 MiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 119 mb/s)
+Total of 0.03 seconds
+packman(WARNING): Package at 'C:\Users\pthac\AppData\Local\Temp\tmpe1dz6dwt\premake@5.0.0-alpha15.dev+pipeline3388156.1f299ea4-windows-x86_64.7z' has checksum 'b1e5dcef9acf47b0c86a4630afa4fadc9485b878e25e4321ac5afbb826bbdf93' but '123' was expected.
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: premake@5.0.0-alpha15.dev+pipeline3388156.1f299ea4-windows-x86_64.7z (429.7 KiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 449 mb/s)
+Total of 0.03 seconds
+Output size: 1.339 MiB
+Package successfully installed to C:\packman-repo\chk\premake\5.0.0-alpha15.dev+pipeline3388156.1f299ea4-windows-x86_64
+Package 'msvc' at version '2019-16.7.6-license' is missing from local storage.
+100% (speed 812 mb/s)
+Total of 0.46 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: git@2.28.0-windows-x86_64.7z (44.72 MiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/msvc%402019-16.7.6-license.7z (64.60 MiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 223 mb/s)
+Total of 2.43 seconds
+packman(WARNING): Package at 'C:\Users\pthac\AppData\Local\Temp\tmpe1dz6dwt\msvc@2019-16.7.6-license.7z' has checksum '0e37c0f29899fe10dcbef6756bcd69c2c4422a3ca1101206df272dc3d295b92d' but '123' was expected.
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: msvc@2019-16.7.6-license.7z (64.60 MiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 515 mb/s)
+Total of 4.68 seconds
+Output size: 287.0 MiB
+Package successfully installed to C:\packman-repo\chk\git\2.28.0-windows-x86_64
+
+100% (speed 1.81 gb/s)
+Total of 3.05 seconds
+Output size: 659.3 MiB
+Package successfully installed to C:\packman-repo\chk\msvc\2019-16.7.6-license
+Package 'winsdk' at version '10.0.18362.0-license' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/winsdk%4010.0.18362.0-license.7z (48.27 MiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 275 mb/s)
+Total of 1.47 seconds
+packman(WARNING): Package at 'C:\Users\pthac\AppData\Local\Temp\tmpe1dz6dwt\winsdk@10.0.18362.0-license.7z' has checksum '2db7aeb2278b79c6c9fbca8f5d72b16090b3554f52b1f3e5f1c8739c5132a3d6' but '123' was expected.
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: winsdk@10.0.18362.0-license.7z (48.27 MiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 1.49 gb/s)
+Total of 3.58 seconds
+Output size: 635.8 MiB
+Package successfully installed to C:\packman-repo\chk\winsdk\10.0.18362.0-license
+Package 'kit-sdk' at version '105.0.1+release.109439.ed961c5c.tc.windows-x86_64.release' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/kit-sdk%40105.0.1%2Brelease.109439.ed961c5c.tc.windows-x86_64.release.7z (1.347 GiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+This is taking a while. Estimated time of arrival is 20 seconds from now ...
+100% (speed 281 mb/s)
+Total of 41.22 seconds
+packman(WARNING): Package at 'C:\Users\pthac\AppData\Local\Temp\tmpl16k2vi6\kit-sdk@105.0.1+release.109439.ed961c5c.tc.windows-x86_64.release.7z' has checksum '06c4fcf3f8d687d55c91093ec06ba4c6fded67af8da267b708bc50aa2eecb7a7' but '123' was expected.
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: kit-sdk@105.0.1+release.109439.ed961c5c.tc.windows-x86_64.release.7z (1.347 GiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 1.24 gb/s)
+Total of 37.11 seconds
+Output size: 5.362 GiB
+Package successfully installed to C:\packman-repo\chk\kit-sdk\105.0.1+release.109439.ed961c5c.tc.windows-x86_64.release
+Package 'carb_sdk+plugins.windows-x86_64' at version '146.6+release146.tc8432.5d97b625' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/carb_sdk%2Bplugins.windows-x86_64%40146.6%2Brelease146.tc8432.5d97b625.7z (43.04 MiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 744 mb/s)
+Total of 0.49 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: carb_sdk+plugins.windows-x86_64@146.6+release146.tc8432.5d97b625.7z (43.04 MiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 1.48 gb/s)
+Total of 2.02 seconds
+Output size: 355.2 MiB
+Package successfully installed to C:\packman-repo\chk\carb_sdk+plugins.windows-x86_64\146.6+release146.tc8432.5d97b625
+Package 'doctest' at version '2.4.5-1' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/doctest%402.4.5-1.7z (51.68 KiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 48.3 mb/s)
+Total of 0.01 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: doctest@2.4.5-1.7z (51.68 KiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 161 mb/s)
+Total of 0.02 seconds
+Output size: 315.0 KiB
+Package successfully installed to C:\packman-repo\chk\doctest\2.4.5-1
+Package 'pybind11' at version '2.7.1-0' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/pybind11%402.7.1-0.7z (126.9 KiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 6.66 mb/s)
+Total of 0.16 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: pybind11@2.7.1-0.7z (126.9 KiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 178 mb/s)
+Total of 0.03 seconds
+Output size: 639.8 KiB
+Package successfully installed to C:\packman-repo\chk\pybind11\2.7.1-0
+Package 'python' at version '3.10.10+nv1-windows-x86_64' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/python%403.10.10%2Bnv1-windows-x86_64.7z (20.38 MiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 185 mb/s)
+Total of 0.92 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: python@3.10.10+nv1-windows-x86_64.7z (20.38 MiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 492 mb/s)
+Total of 1.94 seconds
+Output size: 113.8 MiB
+Package successfully installed to C:\packman-repo\chk\python\3.10.10+nv1-windows-x86_64
+Package 'boost-preprocessor' at version '1.70-2' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/boost-preprocessor%401.70-2.7z (183.7 KiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 6.61 mb/s)
+Total of 0.23 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: boost-preprocessor@1.70-2.7z (183.7 KiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 88.5 mb/s)
+Total of 0.35 seconds
+Output size: 3.724 MiB
+Package successfully installed to C:\packman-repo\chk\boost-preprocessor\1.70-2
+Package 'imgui' at version '1.77_WIP-277297b1' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/imgui%401.77_WIP-277297b1.7z (1020 KiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 21.9 mb/s)
+Total of 0.38 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: imgui@1.77_WIP-277297b1.7z (1020 KiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 356 mb/s)
+Total of 0.13 seconds
+Output size: 5.399 MiB
+Package successfully installed to C:\packman-repo\chk\imgui\1.77_WIP-277297b1
+Package 'nv-usd' at version '22.11.nv.0.2.955.d3c752d9-win64_py310_release-kit-release-integ-23-04-105-0-0' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/nv-usd%4022.11.nv.0.2.955.d3c752d9-win64_py310_release-kit-release-integ-23-04-105-0-0.7z (107.9 MiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 298 mb/s)
+Total of 3.04 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: nv-usd@22.11.nv.0.2.955.d3c752d9-win64_py310_release-kit-release-integ-23-04-105-0-0.7z (107.9 MiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 350 mb/s)
+Total of 11.08 seconds
+Output size: 462.6 MiB
+Package successfully installed to C:\packman-repo\chk\nv-usd\22.11.nv.0.2.955.d3c752d9-win64_py310_release-kit-release-integ-23-04-105-0-0
+Package 'nv-usd' at version '22.11.nv.0.2.49.a42c0222-win64_py310_debug-merge_pxr_22-11-py310' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/nv-usd%4022.11.nv.0.2.49.a42c0222-win64_py310_debug-merge_pxr_22-11-py310.7z (114.8 MiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 257 mb/s)
+Total of 3.75 seconds
+packman(WARNING): Package at 'C:\Users\pthac\AppData\Local\Temp\tmp1t555nh0\nv-usd@22.11.nv.0.2.49.a42c0222-win64_py310_debug-merge_pxr_22-11-py310.7z' has checksum 'e292a1bde7a84d907c9d6eb9df4d066fa7265e2011fdbfbb45235eb739ac1adc' but '123' was expected.
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: nv-usd@22.11.nv.0.2.49.a42c0222-win64_py310_debug-merge_pxr_22-11-py310.7z (114.8 MiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 378 mb/s)
+Total of 12.41 seconds
+Output size: 559.8 MiB
+Package successfully installed to C:\packman-repo\chk\nv-usd\22.11.nv.0.2.49.a42c0222-win64_py310_debug-merge_pxr_22-11-py310
+>>> After Pull Commands Step. Running 'C:/source/masters/kit-extension-template-cpp/repo.bat precache_exts -c release'...
+Setting env var: OMNI_TRUSTED_CERTIFICATE=ALL
+running kit for app precache, cmd: C:\source\masters\kit-extension-template-cpp\_build\windows-x86_64\release\kit\kit.exe C:\source\masters\kit-extension-template-cpp\source\apps\exts.deps.generated.kit --allow-root --portable --ext-precache-mode --/app/settings/persistent=0 --/app/settings/loadUserConfig=0 --/app/extensions/generateVersionLock=1 --/app/extensions/parallelPullEnabled=1 --/app/enableStdoutOutput=1 --/app/extensions/detailedSolverExplanation=1 --/app/extensions/registryEnabled=1 --/app/extensions/mkdirExtFolders=0 --/app/extensions/registryCacheFull='C:\source\masters\kit-extension-template-cpp\_build\windows-x86_64\release\extscache' --/log/flushStandardStreamOutput=1 --/exts/omni.kit.registry.nucleus/registries/0/name="kit/default" --/exts/omni.kit.registry.nucleus/registries/0/url="omniverse://kit-extensions.ov.nvidia.com/exts/kit/default" --/exts/omni.kit.registry.nucleus/registries/1/name="kit/sdk" --/exts/omni.kit.registry.nucleus/registries/1/url="omniverse://kit-extensions.ov.nvidia.com/exts/kit/sdk/${kit_version_short}/${kit_git_hash}" --/app/extensions/target/config=release --ext-folder C:\source\masters\kit-extension-template-cpp\source\extensions --ext-folder C:\source\masters\kit-extension-template-cpp\source\apps --/app/extensions/generateVersionLockSkipLocalExts=1 --portable-root C:/source/masters/kit-extension-template-cpp/_build/windows-x86_64/release
+[Info] [carb] Logging to file: C:/source/masters/kit-extension-template-cpp/_build/windows-x86_64/release/logs/Kit/exts.deps.generated/0.0/kit_20230707_103133.log
+2023-07-07 09:31:34 [659ms] [Warning] [carb] Plugin interface for a client: carb.settings.python was already released.
+2023-07-07 09:31:34 [669ms] [Warning] [omni.core.ITypeFactory] Module c:/source/masters/kit-extension-template-cpp/_build/windows-x86_64/release/kit/omni.structuredlog.plugin.dll remained loaded after unload request.
+[2023-07-07 10:31:34,546][WARNING][omni.repo.build.pippull] Skipping pip file (doesn't exist): C:/source/masters/kit-extension-template-cpp/deps/pip.toml
+Build number: '105.0+main.0.3436debb.local'
+Written to file: 'c:\source\masters\kit-extension-template-cpp\_build\windows-x86_64\debug\VERSION'
+Build number: '105.0+main.0.3436debb.local'
+Written to file: 'c:\source\masters\kit-extension-template-cpp\_build\windows-x86_64\release\VERSION'
+Building configurations...
+Running action 'vs2019'...
+Generated _compiler/vs2019/kit-extension-template-cpp.sln...
+Generated _compiler/vs2019/omni.example.cpp.actions.plugin/omni.example.cpp.actions.plugin.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.actions.plugin/omni.example.cpp.actions.plugin.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.actions.tests/omni.example.cpp.actions.tests.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.actions.tests/omni.example.cpp.actions.tests.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.commands.plugin/omni.example.cpp.commands.plugin.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.commands.plugin/omni.example.cpp.commands.plugin.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.commands.tests/omni.example.cpp.commands.tests.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.commands.tests/omni.example.cpp.commands.tests.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.hello_world.plugin/omni.example.cpp.hello_world.plugin.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.hello_world.plugin/omni.example.cpp.hello_world.plugin.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.omnigraph_node.ogn/omni.example.cpp.omnigraph_node.ogn.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.omnigraph_node.ogn/omni.example.cpp.omnigraph_node.ogn.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.omnigraph_node.plugin/omni.example.cpp.omnigraph_node.plugin.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.omnigraph_node.plugin/omni.example.cpp.omnigraph_node.plugin.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.pybind.plugin/omni.example.cpp.pybind.plugin.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.pybind.plugin/omni.example.cpp.pybind.plugin.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.pybind.python/omni.example.cpp.pybind.python.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.pybind.python/omni.example.cpp.pybind.python.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.pybind.tests/omni.example.cpp.pybind.tests.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.pybind.tests/omni.example.cpp.pybind.tests.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.tasking.plugin/omni.example.cpp.tasking.plugin.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.tasking.plugin/omni.example.cpp.tasking.plugin.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.ui_widget/omni.example.cpp.ui_widget.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.ui_widget/omni.example.cpp.ui_widget.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.ui_widget.python/omni.example.cpp.ui_widget.python.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.ui_widget.python/omni.example.cpp.ui_widget.python.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.usd.plugin/omni.example.cpp.usd.plugin.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.usd.plugin/omni.example.cpp.usd.plugin.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.usd.python/omni.example.cpp.usd.python.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.usd.python/omni.example.cpp.usd.python.vcxproj.filters...
+Generated _compiler/vs2019/omni.example.cpp.usd_physics.plugin/omni.example.cpp.usd_physics.plugin.vcxproj...
+Generated _compiler/vs2019/omni.example.cpp.usd_physics.plugin/omni.example.cpp.usd_physics.plugin.vcxproj.filters...
+Generated _compiler/vs2019/omni.app.example.extension_browser/omni.app.example.extension_browser.vcxproj...
+Generated _compiler/vs2019/omni.app.example.extension_browser/omni.app.example.extension_browser.vcxproj.user...
+Generated _compiler/vs2019/omni.app.example.extension_browser/omni.app.example.extension_browser.vcxproj.filters...
+Generated _compiler/vs2019/omni.app.example.viewport/omni.app.example.viewport.vcxproj...
+Generated _compiler/vs2019/omni.app.example.viewport/omni.app.example.viewport.vcxproj.user...
+Generated _compiler/vs2019/omni.app.example.viewport/omni.app.example.viewport.vcxproj.filters...
+Generated _compiler/vs2019/omni.app.kit.dev/omni.app.kit.dev.vcxproj...
+Generated _compiler/vs2019/omni.app.kit.dev/omni.app.kit.dev.vcxproj.user...
+Generated _compiler/vs2019/omni.app.kit.dev/omni.app.kit.dev.vcxproj.filters...
+Generated _build/windows-x86_64/debug/compile_commands.json...
+Generated _build/windows-x86_64/release/compile_commands.json...
+Done (5248ms).
+[2023-07-07 10:31:40,527][WARNING][omni.repo.licensing.get_licenses] No 'PACKAGE-DEPS.yaml' for package 'C:/packman-repo/chk/boost-preprocessor/1.70-2'
+[2023-07-07 10:31:40,534][WARNING][omni.repo.licensing.get_licenses] No 'PACKAGE-DEPS.yaml' for package 'C:/packman-repo/chk/imgui/1.77_WIP-277297b1'
+[2023-07-07 10:31:41,296][WARNING][omni.repo.licensing.get_licenses] carbonite is missing a SWIPAT!
+[2023-07-07 10:31:41,296][WARNING][omni.repo.licensing.get_licenses] NVTX is missing metadata!
+[2023-07-07 10:31:41,296][WARNING][omni.repo.licensing.get_licenses] NVTX is missing a SWIPAT!
+[Warning] Tried searching S3 for a license for the package py-spy/0.3.14
+[2023-07-07 10:31:41,991][WARNING][omni.repo.licensing.get_licenses] boost is missing metadata!
+[2023-07-07 10:31:41,991][WARNING][omni.repo.licensing.get_licenses] Draco is missing metadata!
+[Warning] Tried searching S3 for a license for the package PyYAML/6.0
+[2023-07-07 10:31:42,640][WARNING][omni.repo.licensing.get_licenses] python_4 is missing metadata!
+[2023-07-07 10:31:42,640][WARNING][omni.repo.licensing.get_licenses] python_5 is missing metadata!
+We have 26 licenses, zipping up...
+Building a manifest of files to archive ...
+Compressing: kit-extension-template-cpp-LICENSES.zip  (211.0 KiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 47.9 mb/s)
+Total of 0.04 seconds
+Output size: 108.2 KiB (Compressed to 51.3% of input size)
+Package created: C:\source\masters\kit-extension-template-cpp\_build\PACKAGE-LICENSES\kit-extension-template-cpp-LICENSES.zip
+>>> Stage Files Step. doing file copy and folder linking.
+>>> File doesn't exist: C:/source/masters/kit-extension-template-cpp/prebuild.toml. Skipping.
+>>> Processing file: C:/source/masters/kit-extension-template-cpp/_build/generated/prebuild.toml
+>>> VS Code setup. Writing: C:\source\masters\kit-extension-template-cpp\_build\windows-x86_64\release\setup_python_env.bat
+>>> VS Code setup. Writing: C:\source\masters\kit-extension-template-cpp\_build\windows-x86_64\release\site\sitecustomize.py
+>>> VS Code setup. Writing: C:/source/masters/kit-extension-template-cpp/.vscode/settings.json
+Building using this MSBuild: C:/source/masters/kit-extension-template-cpp/_build/host-deps\msvc\MSBuild\Current\Bin\MSBuild.exe
+*** Building release ***
+Microsoft (R) Build Engine version 16.7.0+b89cb5fde for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  OgnExampleNode.ogn
+  ExampleUsdPhysicsExtension.cpp
+  ExampleCommandsExtension.cpp
+  ExampleUsdExtension.cpp
+  HelloWorldExtension.cpp
+  ExampleTaskingExtension.cpp
+  ExampleCommandsTests.cpp
+  ExamplePybindTests.cpp
+  ExamplePybindBindings.cpp
+  ExampleActionsExtension.cpp
+  ExampleUsdBindings.cpp
+  ExampleActionsTests.cpp
+  CppWidget.cpp
+  ExampleUIExtension.cpp
+  ExamplePybindExtension.cpp
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.commands\bin\omni.example.cpp.commands.plugin.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.commands\bin\omni.example.cpp.commands.plugin.exp
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.pybind\bin\omni.example.cpp.pybind.plugin.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.pybind\bin\omni.example.cpp.pybind.plugin.exp
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.hello_world\bin\omni.example.cpp.hello_world.plugin.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.hello_world\bin\omni.example.cpp.hello_world.plugin.exp
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.actions\bin\omni.example.cpp.actions.plugin.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.actions\bin\omni.example.cpp.actions.plugin.exp
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.tasking\bin\omni.example.cpp.tasking.plugin.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.tasking\bin\omni.example.cpp.tasking.plugin.exp
+  omni.example.cpp.pybind.tests.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.pybind.tests\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.pybind\bin\omni.example.cpp.pybind.tests.dll
+  omni.example.cpp.actions.tests.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.actions.tests\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.actions\bin\omni.example.cpp.actions.tests.dll
+  omni.example.cpp.commands.plugin.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.commands.plugin\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.commands\bin\omni.example.cpp.commands.plugin.dll
+  omni.example.cpp.commands.tests.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.commands.tests\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.commands\bin\omni.example.cpp.commands.tests.dll
+  omni.example.cpp.pybind.plugin.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.pybind.plugin\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.pybind\bin\omni.example.cpp.pybind.plugin.dll
+  omni.example.cpp.hello_world.plugin.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.hello_world.plugin\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.hello_world\bin\omni.example.cpp.hello_world.plugin.dll
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.ui_widget\bin\omni.example.cpp.ui_widget.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.ui_widget\bin\omni.example.cpp.ui_widget.exp
+  omni.example.cpp.tasking.plugin.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.tasking.plugin\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.tasking\bin\omni.example.cpp.tasking.plugin.dll
+  omni.example.cpp.actions.plugin.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.actions.plugin\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.actions\bin\omni.example.cpp.actions.plugin.dll
+  omni.example.cpp.ui_widget.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.ui_widget\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.ui_widget\bin\omni.example.cpp.ui_widget.dll
+  BindCppWidget.cpp
+  Module.cpp
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.usd\omni\example\cpp\usd\_example_usd_bindings.cp310-win_amd64.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.usd\omni\example\cpp\usd\_example_usd_bindings.cp310-win_amd64.exp
+  omni.example.cpp.usd.python.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.usd.python\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.usd\omni\example\cpp\usd\_example_usd_bindings.cp310-win_amd64.pyd
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.pybind\omni\example\cpp\pybind\_example_pybind_bindings.cp310-win_amd64.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.pybind\omni\example\cpp\pybind\_example_pybind_bindings.cp310-win_amd64.exp
+  omni.example.cpp.pybind.python.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.pybind.python\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.pybind\omni\example\cpp\pybind\_example_pybind_bindings.cp310-win_amd64.pyd
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.ui_widget\omni\example\cpp\ui_widget\_example_cpp_widget.cp310-win_amd64.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.ui_widget\omni\example\cpp\ui_widget\_example_cpp_widget.cp310-win_amd64.exp
+  omni.example.cpp.ui_widget.python.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.ui_widget.python\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.ui_widget\omni\example\cpp\ui_widget\_example_cpp_widget.cp310-win_amd64.pyd
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.usd_physics\bin\omni.example.cpp.usd_physics.plugin.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.usd_physics\bin\omni.example.cpp.usd_physics.plugin.exp
+  omni.example.cpp.usd_physics.plugin.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.usd_physics.plugin\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.usd_physics\bin\omni.example.cpp.usd_physics.plugin.dll
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.usd\bin\omni.example.cpp.usd.plugin.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.usd\bin\omni.example.cpp.usd.plugin.exp
+  omni.example.cpp.usd.plugin.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.usd.plugin\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.usd\bin\omni.example.cpp.usd.plugin.dll
+  OgnExampleNode.cpp
+  ExampleOmniGraphNodeExtension.cpp
+     Creating library ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.omnigraph_node\bin\omni.example.cpp.omnigraph_node.plugin.lib and object ..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.omnigraph_node\bin\omni.example.cpp.omnigraph_node.plugin.exp
+  omni.example.cpp.omnigraph_node.plugin.vcxproj -> C:\source\masters\kit-extension-template-cpp\_compiler\vs2019\omni.example.cpp.omnigraph_node.plugin\..\..\..\_build\windows-x86_64\release\exts\omni.example.cpp.omnigraph_node\bin\omni.example.cpp.omnigraph_node.plugin.dll
+BUILD (RELEASE) SUCCEEDED (Took 164.67 seconds)

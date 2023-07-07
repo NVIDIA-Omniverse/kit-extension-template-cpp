@@ -47,6 +47,7 @@ exit /b 1
 @echo Error while processing and setting environment variables!
 exit /b 1
 
+:: pad [xxxx]
 :ECHO_AND_RESET_ERROR
 @echo off
 if /I "%PM_VERBOSITY%"=="debug" (
@@ -62,10 +63,27 @@ goto :RUN_PM_MODULE
 
 :CONFIGURE
 :: Must capture and set code page to work around issue #279, powershell invocation mutates console font
-for /f "tokens=2 delims=:" %%a in ('chcp') do (set OLD_CODE_PAGE=%%a)
-chcp 437 > nul
+:: This issue only happens in Windows CMD shell when using 65001 code page. Some Git Bash implementations 
+:: don't support chcp so this workaround is a bit convoluted.
+:: Test for chcp:
+chcp > nul 2>&1
+if %errorlevel% equ 0 ( 
+	for /f "tokens=2 delims=:" %%a in ('chcp') do (set PM_OLD_CODE_PAGE=%%a)
+) else (
+	call :ECHO_AND_RESET_ERROR
+)
+:: trim leading space (this is safe even when PM_OLD_CODE_PAGE has not been set)
+set PM_OLD_CODE_PAGE=%PM_OLD_CODE_PAGE:~1%
+if "%PM_OLD_CODE_PAGE%" equ "65001" (
+	chcp 437 > nul
+	set PM_RESTORE_CODE_PAGE=1
+)
 call "%~dp0\bootstrap\configure.bat"
-set CONFIG_ERRORLEVEL=%errorlevel%
-:: Restore code page
-chcp %OLD_CODE_PAGE% > nul
-exit /b %CONFIG_ERRORLEVEL%
+set PM_CONFIG_ERRORLEVEL=%errorlevel%
+if defined PM_RESTORE_CODE_PAGE (
+	:: Restore code page
+	chcp %PM_OLD_CODE_PAGE% > nul
+)
+set PM_OLD_CODE_PAGE=
+set PM_RESTORE_CODE_PAGE=
+exit /b %PM_CONFIG_ERRORLEVEL%

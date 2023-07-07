@@ -22,7 +22,7 @@ else
 	PM_CURL_SILENT="-s -S"
 	PM_WGET_QUIET="--quiet"
 fi
-PM_PACKMAN_VERSION=7.2.3
+PM_PACKMAN_VERSION=7.6-rc.1
 
 # This is necessary for newer macOS
 if [ `uname` == 'Darwin' ]; then

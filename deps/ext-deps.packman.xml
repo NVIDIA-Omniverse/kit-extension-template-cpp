@@ -13,9 +13,9 @@
 
   <!-- Because we always use the release kit-sdk we have to explicitly refer to the debug usd package. -->
   <dependency name="nv_usd_py310_debug" linkPath="../_build/target-deps/nv_usd/debug">
-      <package name="nv-usd" version="22.11.nv.0.2.49.a42c0222-win64_py310_debug-merge_pxr_22-11-py310" platforms="windows-x86_64"/>
-      <package name="nv-usd" version="22.11.nv.0.2.49.a42c0222-linux64_py310-centos_debug-merge_pxr_22-11-py310" platforms="linux-x86_64" />
-      <package name="nv-usd" version="22.11.nv.0.2.49.a42c0222-linux-aarch64_py310_debug-merge_pxr_22-11-py310" platforms="linux-aarch64" />
+      <package name="nv-usd" version="22.11.nv.0.2.49.a42c0222-win64_py310_debug-merge_pxr_22-11-py310" platforms="windows-x86_64" checksum="e292a1bde7a84d907c9d6eb9df4d066fa7265e2011fdbfbb45235eb739ac1adc" />
+      <package name="nv-usd" version="22.11.nv.0.2.49.a42c0222-linux64_py310-centos_debug-merge_pxr_22-11-py310" platforms="linux-x86_64" checksum="123" continueOnChecksumFailure="true" />
+      <package name="nv-usd" version="22.11.nv.0.2.49.a42c0222-linux-aarch64_py310_debug-merge_pxr_22-11-py310" platforms="linux-aarch64" checksum="123" continueOnChecksumFailure="true" />
   </dependency>
 
 </project>
