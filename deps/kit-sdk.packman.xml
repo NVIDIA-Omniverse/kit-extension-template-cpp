@@ -1,7 +1,7 @@
 <project toolsVersion="5.0">
   <dependency name="kit_sdk_debug" linkPath="../_build/${platform}/debug/kit" tags="debug non-redist">
-    <package name="kit-sdk" version="105.0.1+debug.109439.ed961c5c.tc.windows-x86_64.release" platforms="windows-x86_64" checksum="123" continueOnChecksumFailure="true" />
-    <package name="kit-sdk" version="105.0.1+debug.109439.ed961c5c.tc.linux-x86_64.release" platforms="linux-x86_64" checksum="123" continueOnChecksumFailure="true"/>
+    <package name="kit-sdk" version="105.0.1+release.109439.ed961c5c.tc.windows-x86_64.debug" platforms="windows-x86_64" checksum="5321f0d587921f1deed93bbfe8d1cfccc146634e92733e1e324ecae0bbbb0826" />
+    <package name="kit-sdk" version="105.0.1+release.109439.ed961c5c.tc.linux-x86_64.debug" platforms="linux-x86_64" checksum="123" continueOnChecksumFailure="true"/>
   </dependency>
   <dependency name="kit_sdk_release" linkPath="../_build/${platform}/release/kit" tags="release non-redist">
     <package name="kit-sdk" version="105.0.1+release.109439.ed961c5c.tc.windows-x86_64.release" platforms="windows-x86_64" checksum="06c4fcf3f8d687d55c91093ec06ba4c6fded67af8da267b708bc50aa2eecb7a7" />
