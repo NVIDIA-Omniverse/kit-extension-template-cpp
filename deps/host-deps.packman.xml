@@ -1,8 +1,7 @@
 <project toolsVersion="5.0">
   <dependency name="premake" linkPath="../_build/host-deps/premake">
     <package name="premake" version="5.0.0-alpha15.dev+pipeline3388156.1f299ea4-windows-x86_64" checksum="b1e5dcef9acf47b0c86a4630afa4fadc9485b878e25e4321ac5afbb826bbdf93" platforms="windows-x86_64" />
-    <package name="premake" version="5.0.0-alpha15.dev+pipeline3388156.1f299ea4-linux-x86_64" checksum="123" continueOnChecksumFailure="true" platforms="linux-x86_64" />
-    <package name="premake" version="5.0.0-alpha15.dev+pipeline3388156.1f299ea4-aarch64" checksum="123" continueOnChecksumFailure="true" platforms="aarch64" />
+    <package name="premake" version="5.0.0-alpha15.dev+pipeline3388156.1f299ea4-linux-x86_64" checksum="ae15e63cf6d53571fa3bdfa33ddcec8a3be90675cdd155590a26bcd75d04d73f" platforms="linux-x86_64" />
   </dependency>
   <dependency name="msvc" linkPath="../_build/host-deps/msvc">
     <package name="msvc" version="2019-16.7.6-license" platforms="windows-x86_64" checksum="0e37c0f29899fe10dcbef6756bcd69c2c4422a3ca1101206df272dc3d295b92d" />
