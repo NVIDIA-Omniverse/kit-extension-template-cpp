@@ -1,10 +1,7 @@
 <project toolsVersion="5.0">
-  <dependency name="kit_sdk_debug" linkPath="../_build/${platform}/${config}/kit" tags="debug non-redist">
-    <package name="kit-sdk" version="105.0.1+release.109439.ed961c5c.tc.windows-x86_64.debug" platforms="windows-x86_64" checksum="5321f0d587921f1deed93bbfe8d1cfccc146634e92733e1e324ecae0bbbb0826" />
-    <package name="kit-sdk" version="105.0.1+release.109439.ed961c5c.tc.linux-x86_64.debug" platforms="linux-x86_64" checksum="679bbe1089004ae7337c77bfa0513baf03b9cab299d548b10e8a621689dd12b4" />
-  </dependency>
-  <dependency name="kit_sdk_release" linkPath="../_build/${platform}/${config}/kit" tags="release non-redist">
-    <package name="kit-sdk" version="105.0.1+release.109439.ed961c5c.tc.windows-x86_64.release" platforms="windows-x86_64" checksum="06c4fcf3f8d687d55c91093ec06ba4c6fded67af8da267b708bc50aa2eecb7a7" />
-    <package name="kit-sdk" version="105.0.1+release.109439.ed961c5c.tc.linux-x86_64.release" platforms="linux-x86_64" checksum="6c608f0f4829c4f59fe4ddb3ee883232641f787ff60b471f0cb9d13c8cb950a9" />
+  <!-- We always depend on the release kit-sdk package, regardless of config -->
+  <dependency name="kit_sdk_${config}" linkPath="../_build/${platform}/${config}/kit" tags="${config} non-redist">
+    <package name="kit-sdk" version="105.0.2+release.109459.e3a297f7.tc.windows-x86_64.release" platforms="windows-x86_64" checksum="e2c3bc4ba21c1c44335e7a90caaeea642231a28ca287f1b937fab45f82701ed7" />
+    <package name="kit-sdk" version="105.0.2+release.109459.e3a297f7.tc.linux-x86_64.release" platforms="linux-x86_64" checksum="83b5c11dccf3c4820a8f951f0cfd2f9a4de2925e72cfe6dc45c8a0e6cee6b94c" />
   </dependency>
 </project>
