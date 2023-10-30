@@ -14,5 +14,7 @@ Example Extensions
 * `omni.example.cpp.ui_widget <../../omni.example.cpp.ui_widget/latest/index.html>`_
 * `omni.example.cpp.usd <../../omni.example.cpp.usd/latest/index.html>`_
 * `omni.example.cpp.usd_physics <../../omni.example.cpp.usd_physics/latest/index.html>`_
+* `omni.example.cpp.usdrt <../../omni.example.cpp.usdrt/latest/index.html>`_
 * `omni.example.python.hello_world <../../omni.example.python.hello_world/latest/index.html>`_
 * `omni.example.python.ui <../../omni.example.python.ui/latest/index.html>`_
+* `omni.example.python.usdrt <../../omni.example.python.usdrt/latest/index.html>`_

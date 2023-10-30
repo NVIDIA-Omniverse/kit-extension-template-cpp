@@ -1,3 +1,5 @@
+(changelog_omni_example_cpp_omnigraph_node)=
+
 # Changelog
 
 ## [1.0.1] - 2023-04-27

@@ -13,9 +13,9 @@
 
   <!-- Because we always use the release kit-sdk we have to explicitly refer to the debug usd package. -->
   <dependency name="nv_usd_py310_debug" linkPath="../_build/target-deps/nv_usd/debug">
-      <package name="nv-usd" version="22.11.nv.0.2.1060.196d6f2d-win64_py310_debug-kit-release-integ-23-04-105-0-0" platforms="windows-x86_64" checksum="82b9d1fcd6f6d07cdff3a9b44059fb72d9ada12c5bc452c2df223f267b27035a" />
-      <package name="nv-usd" version="22.11.nv.0.2.1060.196d6f2d-linux64_py310-centos_debug-kit-release-integ-23-04-105-0-0" platforms="linux-x86_64"  checksum="4561794f8b4e453ff4303abca59db3a1877d97566d964ad91a790297409ee5d6"/>
-      <package name="nv-usd" version="22.11.nv.0.2.1060.196d6f2d-linux-aarch64_py310_debug-kit-release-integ-23-04-105-0-0" platforms="linux-aarch64" checksum="b3c43e940fa613bd5c3fe6de7cd898e4f6304693f8d9ed76da359f04a0de8b02" />
+      <package name="nv-usd" version="22.11.nv.0.2.1058.7d2f59ad-win64_py310_debug-dev_omniverse" platforms="windows-x86_64" checksum="02f7c3477830eb17699cc91774438edd8651f3ec0031582c67093ae3276f360b" />
+      <package name="nv-usd" version="22.11.nv.0.2.1058.7d2f59ad-linux64_py310-centos_debug-dev_omniverse" platforms="linux-x86_64"  checksum="2ac18e0470d05b251a2f36691a1dc1b28da340da92b19175d890addb762adb0f"/>
+      <package name="nv-usd" version="22.11.nv.0.2.1058.7d2f59ad-linux-aarch64_py310_debug-dev_omniverse" platforms="linux-aarch64" checksum="904ede636008fb011b5f3d66c1a7c2969dfba291dcf1a227fa7503a714f1f18d" />
   </dependency>
 
 </project>

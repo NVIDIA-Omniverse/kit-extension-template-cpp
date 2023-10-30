@@ -2,6 +2,7 @@
   <!-- Import dependencies from Kit SDK to ensure we're using the same versions. -->
   <import path="../_build/${platform}/${config}/kit/dev/all-deps.packman.xml">
     <filter include="carb_sdk_plugins"/>
+    <filter include="cuda"/>
     <filter include="doctest"/>
     <filter include="pybind11"/>
     <filter include="python"/>
@@ -9,6 +10,7 @@
 
   <!-- Override the link paths to point to the correct locations. -->
   <dependency name="carb_sdk_plugins" linkPath="../_build/target-deps/carb_sdk_plugins"/>
+  <dependency name="cuda" linkPath="../_build/target-deps/cuda"/>
   <dependency name="doctest" linkPath="../_build/target-deps/doctest"/>
   <dependency name="pybind11" linkPath="../_build/target-deps/pybind11"/>
   <dependency name="python" linkPath="../_build/target-deps/python"/>

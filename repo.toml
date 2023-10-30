@@ -38,8 +38,10 @@ extensions = [
     "omni.example.cpp.ui_widget",
     "omni.example.cpp.usd",
     "omni.example.cpp.usd_physics",
+    "omni.example.cpp.usdrt",
     "omni.example.python.hello_world",
     "omni.example.python.ui",
+    "omni.example.python.usdrt",
 ]
 
 [repo_package.packages."platform:windows-x86_64".docs]
