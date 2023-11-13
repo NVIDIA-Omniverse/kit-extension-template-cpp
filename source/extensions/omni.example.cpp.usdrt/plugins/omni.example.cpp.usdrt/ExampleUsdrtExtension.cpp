@@ -28,6 +28,7 @@
 #include <omni/fabric/IFabric.h>
 
 #include <vector>
+#include <random>
 
 const struct carb::PluginImplDesc pluginImplDesc = { "omni.example.cpp.usdrt.plugin",
                                                      "An example C++ USDRT extension.", "NVIDIA",
@@ -115,17 +116,18 @@ inline std::string ExampleCppUsdrtExtension::apply_random_rotation(long int stag
         rtxformable.SetWorldXformFromUsd();
     }
 
-    std::srand(std::time(nullptr)); // use current time as seed for random generator
-        
-    float angle = std::rand() * M_PI * 2;
-    usdrt::GfVec3f axis = usdrt::GfVec3f(std::rand(), std::rand(), std::rand()).GetNormalized();
+    std::random_device rd;  // Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
+    std::uniform_real_distribution<float> dist(0.0f, 1.0f);
+    float angle = dist(gen) * M_PI * 2;
+    usdrt::GfVec3f axis = usdrt::GfVec3f(dist(gen), dist(gen), dist(gen)).GetNormalized();
     float halfangle = angle / 2.0;
     float shalfangle = sin(halfangle);
     usdrt::GfQuatf rotation = usdrt::GfQuatf(cos(halfangle), axis[0] * shalfangle, axis[1] * shalfangle, axis[2] * shalfangle);
 
     rtxformable.GetWorldOrientationAttr().Set(rotation);
     *rot = rotation;
-    
+
     return "";
 }
 
@@ -159,13 +161,13 @@ inline std::string  ExampleCppUsdrtExtension::deform_mesh(long int stageId, usdr
     // In the python example, this uses warp to run the deformation on GPU
     // The more correct C++ equivalent would be to write a CUDA kernel for this
     // but for simplicity of this example, do the deformation here on CPU.
-    for (usdrt::GfVec3f point : pointsarray) {
+    for (usdrt::GfVec3f& point : pointsarray) {
         float offset = -sin(point[0]);
         float scale = sin(time) * 10.0;
 
         point = point + usdrt::GfVec3f(0.0, offset * scale, 0.0);
     }
-    
+
     points.Set(pointsarray);
 
     return "Deformed points on prim " + path->GetString();

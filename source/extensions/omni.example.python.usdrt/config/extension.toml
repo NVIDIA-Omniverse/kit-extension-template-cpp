@@ -6,7 +6,7 @@ version = "1.0.1"
 authors = ["Alan Blevins <ablevins@nvidia.com>"]
 
 # The title and description fields are primarily for displaying extension info in UI
-title = "What's in Fabric? USDRT Example"
+title = "Example Python Extension: USDRT"
 description="Example Kit extension using the USDRT Scenegraph API."
 
 # Path (relative to the root) or content of readme markdown file for UI.

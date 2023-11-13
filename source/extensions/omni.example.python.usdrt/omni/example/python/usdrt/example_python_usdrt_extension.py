@@ -16,6 +16,7 @@ import omni.usd
 from usdrt import Gf, Rt, Sdf, Usd, Vt
 
 try:
+    wp = None
     import warp as wp
 
     wp.init()
@@ -158,7 +159,7 @@ def deform_mesh_with_warp(stage_id, path, time):
         return f"Prim at path {path} does not have points attribute"
 
     if not wp:
-        return "Warp failed to initialize."
+        return "Warp failed to initialize. Install/Load the warp extension."
 
     # Tell OmniHydra to render points from Fabric
     if not prim.HasAttribute("Deformable"):
