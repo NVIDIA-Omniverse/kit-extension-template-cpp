@@ -26,6 +26,7 @@ sphinx_exclude_patterns = [
     "VERSION.md",
     "source/extensions/*/docs/Overview.md",
     "source/extensions/*/docs/CHANGELOG.md",
+    "source/extensions/*/README.md",
 ]
 
 [repo_docs.kit]

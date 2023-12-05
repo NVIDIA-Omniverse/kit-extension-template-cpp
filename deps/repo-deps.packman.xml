@@ -1,32 +1,32 @@
 <project toolsVersion="5.0">
   <dependency name="repo_build" linkPath="../_repo/deps/repo_build">
-    <package name="repo_build" version="0.44.6" checksum="11858f3d45b15d83f0279fa96e2813232bfd65755d0cf45861f5fdd28a5a39b6" />
+    <package name="repo_build" version="0.52.0" checksum="39dfc49adb0839b203aec3279b8a1bd8327b2f7de2a7ed231991bdbd22d1f9e9" />
   </dependency>
   <dependency name="repo_changelog" linkPath="../_repo/deps/repo_changelog">
-    <package name="repo_changelog" version="0.3.2" checksum="fbe4bc4257d5aec1c964f2616257043095a9dfac8a10e027ac96aa89340f1423" />
+    <package name="repo_changelog" version="0.3.13" checksum="63ede6e88417131acd3d5d257307c931d2165b7750e4c202c08514568b39c05f" />
   </dependency>
   <dependency name="repo_docs" linkPath="../_repo/deps/repo_docs">
     <package name="repo_docs" version="0.37.3" checksum="78bd6488c1cd7295ab6728d9cd0b79fac3684598bcaebefad710fc79e3a7b8ea" />
   </dependency>
   <dependency name="repo_kit_tools" linkPath="../_repo/deps/repo_kit_tools">
-    <package name="repo_kit_tools" version="0.11.8" checksum="8d6e1ade8b75b40f880505ba62308958d87a88e52db6a3b932be3da387a8a571" />
+    <package name="repo_kit_tools" version="0.13.42" checksum="e4b2cfdc4054b4975c2c1e913cd38f4df33dc5385370d622cb95e4b153f06624" />
   </dependency>
   <dependency name="repo_licensing" linkPath="../_repo/deps/repo_licensing">
     <package name="repo_licensing" version="1.12.0" checksum="2fa002302a776f1104896f39c8822a8c9516ef6c0ce251548b2b915979666b9d" />
   </dependency>
   <dependency name="repo_man" linkPath="../_repo/deps/repo_man">
-    <package name="repo_man" version="1.36.1" checksum="aba22f72ec46b7d2761c5fe2eee397bcb6958dda9b4a8aaca947eb69b97f6089" />
+    <package name="repo_man" version="1.46.2" checksum="195f1ce8ea953cd61392904817344707ca17e3ac215d0bdc72af50a509358781" />
   </dependency>
   <dependency name="repo_package" linkPath="../_repo/deps/repo_package">
-    <package name="repo_package" version="5.8.8" checksum="b8279d841f7201b44d9b232b934960d9a302367be59ee64e976345854b741fec" />
+    <package name="repo_package" version="5.9.2" checksum="3b870e71b09d6cb7a7b48385da268275e675a141cb408581a2581733452fdff8" />
   </dependency>
   <dependency name="repo_format" linkPath="../_repo/deps/repo_format">
-    <package name="repo_format" version="2.7.0" checksum="8083eb423043de585dfdfd3cf7637d7e50ba2a297abb8bebcaef4307b80503bb" />
+    <package name="repo_format" version="2.8.0" checksum="37c365c0579091336a9f4e608644207eaf8f07ee997d6daef4ea673d5c7bfb48" />
   </dependency>
   <dependency name="repo_source" linkPath="../_repo/deps/repo_source">
-    <package name="repo_source" version="0.4.2" checksum="05776a984978d84611cb8becd5ed9c26137434e0abff6e3076f36ab354313423" />
+    <package name="repo_source" version="0.4.3" checksum="24e602070cb95ea03c9930da7108f9a693f2d7920a4ee9ba3b6ca4f2f7e45f33" />
   </dependency>
   <dependency name="repo_test" linkPath="../_repo/deps/repo_test">
-    <package name="repo_test" version="2.9.3" checksum="1903a2a1c998ca4adc87bc20520e91a9af21bf18a6a48a8e05467fe29d674931" />
+    <package name="repo_test" version="2.18.2" checksum="9d6a1b86367b791a5b39369c28ed83600a760d3bb2b7ed61ff7dbb206a777192" />
   </dependency>
 </project>

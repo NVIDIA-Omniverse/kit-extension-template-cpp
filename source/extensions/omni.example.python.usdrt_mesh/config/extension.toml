@@ -1,0 +1,56 @@
+[package]
+# Semantic Versioning is used: https://semver.org/
+version = "0.0.1"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["Justin Shrake <jshrake@nvidia.com>"]
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "Example Python Extension: USDRT Mesh"
+description="Example Kit extension that demonstrates how to create, update, and delete a USDRT Mesh"
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme  = "docs/README.md"
+
+# URL of the extension source repository.
+repository = "https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp"
+
+# One of categories for UI.
+category = "Example"
+
+# Keywords for the extension
+keywords = ["kit", "example", "usdrt", "scenegraph", "fabric"]
+
+# Location of change log file in target (final) folder of extension, relative to the root.
+# More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog="docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+# Extension dependencies
+[dependencies]
+"omni.kit.uiapp" = {}
+"usdrt.scenegraph" = {}
+"omni.usd" = {}
+"omni.kit.primitive.mesh" = {}
+"omni.warp" = { optional = true }
+
+# Main python module this extension provides
+[[python.module]]
+name = "omni.example.python.usdrt_mesh"
+
+[[test]]
+waiver = "Just example code, not for production"
+
+#TODO
+# Define the documentation that will be generated for this extension.
+[documentation]
+pages = [
+    "docs/Overview.md",
+    "docs/CHANGELOG.md",
+]

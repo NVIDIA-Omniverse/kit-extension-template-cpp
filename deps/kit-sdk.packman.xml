@@ -1,7 +1,7 @@
 <project toolsVersion="5.0">
   <!-- We always depend on the release kit-sdk package, regardless of config -->
   <dependency name="kit_sdk_${config}" linkPath="../_build/${platform}/${config}/kit" tags="${config} non-redist">
-    <package name="kit-sdk" version="105.1+release.127680.dd92291b.tc.windows-x86_64.release" platforms="windows-x86_64" checksum="78b6054c730a44b97e6551eae9e17f45384621f244d4babde5264a1d6df3038f" />
-    <package name="kit-sdk" version="105.1+release.127680.dd92291b.tc.linux-x86_64.release" platforms="linux-x86_64" checksum="2f8357eda2de9232c0b4cb345eb6c4d3c3aa8c4c9685ed45d4bfe749af57b0b8" />
+    <package name="kit-sdk" version="105.1.0+release.51.a7407fb5.tc.windows-x86_64.release" platforms="windows-x86_64" checksum="aa561b1037c434fe1dc450238f99c077327ca47482e34e0cf0cb96b5a4d5e037" />
+    <package name="kit-sdk" version="105.1.0+release.51.a7407fb5.tc.linux-x86_64.release" platforms="linux-x86_64" checksum="57d69c91f185491cc1f8181062c908f5389d5e2b780efd20aa9ed6187e12328d" />
   </dependency>
 </project>
