@@ -67,6 +67,25 @@ Extensive documentation detailing what extensions are and how they work can be f
     - You can generate the documentation for a single extension by running `repo.bat docs -p {extension_name}`
 2. Open `_build/docs/kit-extension-template-cpp/latest/index.html` to view the generated documentation.
 
-## Contributing
-The source code for this repository is provided as-is and we are not accepting outside contributions.
+## Publishing
 
+Developers can publish publicly hosted extensions to the community extension registry using the following steps:
+
+1. Tag the GitHub repository with the **[omniverse-kit-extension](https://github.com/topics/omniverse-kit-extension)** tag.
+
+2. Create a [GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+
+3. Upload the packaged extension archives, created with `./repo.bat package` on Windows or `./repo.sh package` on Linux, to the GitHub release. You must rename the packaged extension archive to match the following convention:
+
+    - Linux: `{github-namespace}-{github-repository}-linux-x86_64-{github-release-tag}.zip`
+    - Windows: `{github-namespace}-{github-repository}-windows-x86_64-{github-release-tag}.zip`
+
+For example, the v0.0.2 release of the extension at <https://github.com/jshrake-nvidia/kit-community-release-test/releases/tag/v0.0.2> has archives named `jshrake-nvidia-kit-community-release-test-linux-x86_64-v0.0.2.zip` and `jshrake-nvidia-kit-community-release-test-windows-x86_64-v0.0.2.zip` for Linux and Windows, respectively.
+
+Our publishing pipeline runs nightly and discovers any publicly hosted GitHub repository with the `omniverse-kit-extension` tag. The published extensions should be visible in the community registry the day following the creation of a GitHub release.
+
+Refer to [the kit extension documentation](https://docs.omniverse.nvidia.com/kit/docs/kit-manual/latest/guide/extensions_advanced.html#package-writetarget) for how to specify the Kit version compatibility for your extension. This ensures that the correct version of your extension is listed in any given Kit application.
+
+## Contributing
+
+The source code for this repository is provided as-is and we are not accepting outside contributions.
