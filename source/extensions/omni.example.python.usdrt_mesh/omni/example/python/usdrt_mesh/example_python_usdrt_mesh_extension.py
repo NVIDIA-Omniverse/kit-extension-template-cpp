@@ -127,14 +127,13 @@ def create_mesh_usdrt(stage: usdrt.Usd.Stage, prim_path: str, num_x_divisions: i
 
     prim = mesh.GetPrim()
     # Visibility Attribute
-    attr = prim.CreateAttribute("_worldVisibility", usdrt.Sdf.ValueTypeNames.Bool, True)
-    attr.Set(True)
+    visibility_attr = prim.CreateAttribute("_worldVisibility", usdrt.Sdf.ValueTypeNames.Bool, True)
+    visibility_attr.Set(True)
 
     # Set the xform
     xformable = usdrt.Rt.Xformable(prim)
-    xformable.CreateWorldPositionAttr(usdrt.Gf.Vec3d(0.0, 0.0, 0.0))
-    xformable.CreateWorldScaleAttr(usdrt.Gf.Vec3f(1.0, 1.0, 1.0))
-    xformable.CreateWorldOrientationAttr(usdrt.Gf.Quatf(0.0, 0.0, 0.0, 1.0))
+    xformable.CreateFabricHierarchyLocalMatrixAttr(usdrt.Gf.Matrix4d(1))
+    xformable.CreateFabricHierarchyWorldMatrixAttr(usdrt.Gf.Matrix4d(1))
 
     # Set the extents
     bound = usdrt.Rt.Boundable(prim)

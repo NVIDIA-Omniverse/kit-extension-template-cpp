@@ -39,3 +39,5 @@ project_ext_plugin(ext, ogn.plugin_project)
 
     -- Add the standard dependencies all OGN projects have; includes, libraries to link, and required compiler flags
     add_ogn_dependencies(ogn)
+
+    cppdialect "C++17"

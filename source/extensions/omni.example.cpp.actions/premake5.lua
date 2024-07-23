@@ -26,8 +26,3 @@ project_ext_tests(ext, "omni.example.cpp.actions.tests")
     filter { "system:linux" }
         disablewarnings { "error=sign-compare", "error=unused-variable" }
     filter {}
-
-    -- Temp: Should have been set by project_ext_tests
-    libdirs {
-        "%{kit_sdk}/exts/omni.kit.test/bin",
-    }

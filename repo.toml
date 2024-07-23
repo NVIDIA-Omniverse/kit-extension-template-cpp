@@ -13,6 +13,8 @@ name = "kit-extension-template-cpp"
 [repo_build]
 msbuild.vs_version = "vs2019"
 post_build.commands = []
+licensing.enabled = false
+fetch.pip.licensing_enabled = false
 
 [repo_docs]
 name = "Kit Extension Template C++"
@@ -47,3 +49,6 @@ extensions = [
 
 [repo_package.packages."platform:windows-x86_64".docs]
 windows_max_path_length = 0
+
+[repo_symstore]
+enabled = false

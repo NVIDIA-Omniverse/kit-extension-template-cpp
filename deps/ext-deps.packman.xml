@@ -11,11 +11,10 @@
   <dependency name="imgui" linkPath="../_build/target-deps/imgui"/>
   <dependency name="nv_usd_py310_release" linkPath="../_build/target-deps/nv_usd/release"/>
 
-  <!-- Because we always use the release kit-sdk we have to explicitly refer to the debug usd package. -->
+  <!-- Because we always use the release kit-kernel we have to explicitly refer to the debug usd package. -->
   <dependency name="nv_usd_py310_debug" linkPath="../_build/target-deps/nv_usd/debug">
-      <package name="nv-usd" version="22.11.nv.0.2.1058.7d2f59ad-win64_py310_debug-dev_omniverse" platforms="windows-x86_64" checksum="02f7c3477830eb17699cc91774438edd8651f3ec0031582c67093ae3276f360b" />
-      <package name="nv-usd" version="22.11.nv.0.2.1058.7d2f59ad-linux64_py310-centos_debug-dev_omniverse" platforms="linux-x86_64"  checksum="2ac18e0470d05b251a2f36691a1dc1b28da340da92b19175d890addb762adb0f"/>
-      <package name="nv-usd" version="22.11.nv.0.2.1058.7d2f59ad-linux-aarch64_py310_debug-dev_omniverse" platforms="linux-aarch64" checksum="904ede636008fb011b5f3d66c1a7c2969dfba291dcf1a227fa7503a714f1f18d" />
+    <package name="nv-usd" version="22.11.nv.0.2.1568.4290eb06-win64_py310_debug-releases-106-0" platforms="windows-x86_64"/>
+    <package name="nv-usd" version="22.11.nv.0.2.1568.4290eb06-linux64_py310-centos_debug-releases-106-0" platforms="linux-x86_64"/>
+    <package name="nv-usd" version="22.11.nv.0.2.1568.4290eb06-linux-aarch64_py310_debug-releases-106-0" platforms="linux-aarch64"/>
   </dependency>
-
 </project>

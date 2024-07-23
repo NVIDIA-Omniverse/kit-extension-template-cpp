@@ -2,6 +2,10 @@
 
 # Changelog
 
+## [1.0.2] - 2024-01-02
+### Updated
+- Build against Kit 105.2
+
 ## [1.0.1] - 2023-04-27
 ### Updated
 - Build against Kit 105.0
