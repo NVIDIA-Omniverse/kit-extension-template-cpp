@@ -1,3 +1,6 @@
+-- Temp: Disable on Linux until we get a newer Kit version
+if os.host() ~= "linux" then
+
 -- Setup the extension.
 local ext = get_current_extension_info()
 project_ext(ext)
@@ -73,3 +76,6 @@ project_ext_bindings {
         { "python/impl", ext.target_dir.."/omni/example/cpp/usdrt/impl" },
         { "python/tests", ext.target_dir.."/omni/example/cpp/usdrt/tests" },
     }
+ 
+-- Temp: Disable on Linux until we get a newer Kit version  
+end
