@@ -34,7 +34,7 @@ project_ext_plugin(ext, "omni.example.cpp.usdrt.plugin")
         staticruntime "Off"
         includedirs { "%{target_deps}/python/include/python3.10", 
         "%{target_deps}/cuda" }
-        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef" }
+        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -pthread -lstdc++fs -Wno-error" }
         linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/nv_usd/release/lib:%{target_deps}/python/lib:" }
     filter { "system:windows" }
         buildoptions { "/wd4244 /wd4305 /wd4530" }
