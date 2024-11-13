@@ -6,21 +6,27 @@
     <package name="repo_docs" version="0.39.2" />
   </dependency>
   <dependency name="repo_kit_tools" linkPath="../_repo/deps/repo_kit_tools">
-    <package name="repo_kit_tools" version="0.19.4" />
+    <package name="repo_kit_tools" version="0.19.9" />
   </dependency>
   <dependency name="repo_man" linkPath="../_repo/deps/repo_man">
     <package name="repo_man" version="1.63.3" />
   </dependency>
   <dependency name="repo_package" linkPath="../_repo/deps/repo_package">
-    <package name="repo_package" version="5.9.2" />
+    <package name="repo_package" version="5.10.0" />
   </dependency>
   <dependency name="repo_format" linkPath="../_repo/deps/repo_format">
-    <package name="repo_format" version="2.8.0" />
+    <package name="repo_format" version="2.13.0" />
   </dependency>
   <dependency name="repo_source" linkPath="../_repo/deps/repo_source">
-    <package name="repo_source" version="0.4.3" />
+    <package name="repo_source" version="0.6.0" />
   </dependency>
   <dependency name="repo_test" linkPath="../_repo/deps/repo_test">
-    <package name="repo_test" version="2.36.9" />
+    <package name="repo_test" version="2.37.0" />
+  </dependency>
+  <dependency name="repo_ci" linkPath="../_repo/deps/repo_ci">
+    <package name="repo_ci" version="0.8.5" />
+  </dependency>
+  <dependency name="repo_usd" linkPath="../_repo/deps/repo_usd">
+    <package name="repo_usd" version="4.4.20" />
   </dependency>
 </project>

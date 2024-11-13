@@ -13,6 +13,7 @@
 
 #include <omni/ext/IExt.h>
 #include <omni/kit/IApp.h>
+#include <carb/events/EventsUtils.h>
 
 const struct carb::PluginImplDesc pluginImplDesc = { "omni.example.cpp.hello_world.plugin",
                                                      "An example C++ extension.", "NVIDIA",

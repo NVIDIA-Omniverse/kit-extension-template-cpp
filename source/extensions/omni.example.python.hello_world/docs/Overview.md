@@ -1,6 +1,6 @@
 # Overview
 
-An example Python extension that can be used as a reference/template for creating new extensions.
+An [example Python->C++ extension](http://omniverse-docs.s3-website-us-east-1.amazonaws.com/kit-extension-template-cpp/106.0.1/index.html) extension that can be used as a reference/template for creating new extensions.
 
 Demonstrates how to create a Python module that will startup / shutdown along with the extension.
 

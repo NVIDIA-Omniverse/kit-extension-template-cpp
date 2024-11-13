@@ -10,6 +10,7 @@
 #define CARB_EXPORTS
 
 #include <carb/PluginUtils.h>
+#include <carb/events/EventsUtils.h>
 
 #include <omni/example/cpp/usd/IExampleUsdInterface.h>
 #include <omni/ext/ExtensionsUtils.h>

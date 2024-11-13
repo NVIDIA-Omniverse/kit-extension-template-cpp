@@ -1,6 +1,3 @@
--- Temp: Disable on Linux until we get a newer Kit version
-if os.host() ~= "linux" then
-
 -- Setup the extension.
 local ext = get_current_extension_info()
 project_ext(ext)
@@ -37,8 +34,8 @@ project_ext_plugin(ext, "omni.example.cpp.usdrt.plugin")
         staticruntime "Off"
         includedirs { "%{target_deps}/python/include/python3.10", 
         "%{target_deps}/cuda" }
-        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -pthread -lstdc++fs -Wno-error" }
-        linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/nv_usd/release/lib:%{target_deps}/python/lib:" }
+        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -pthread -lstdc++fs -Wno-error -fabi-version=11" }
+        linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/python/lib:" }
     filter { "system:windows" }
         buildoptions { "/wd4244 /wd4305 /wd4530" }
         links { "carb", "cudart_static"}
@@ -67,8 +64,8 @@ project_ext_bindings {
         exceptionhandling "On"
         staticruntime "Off"
         includedirs { "%{target_deps}/python/include/python3.10" }
-        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef" }
-        linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/nv_usd/release/lib:%{target_deps}/python/lib:" }
+        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef -fabi-version=11" }
+        linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/python/lib:" }
     filter { "system:windows" }
         buildoptions { "/wd4244 /wd4305 /wd4530" }
     filter {}
@@ -76,6 +73,3 @@ project_ext_bindings {
         { "python/impl", ext.target_dir.."/omni/example/cpp/usdrt/impl" },
         { "python/tests", ext.target_dir.."/omni/example/cpp/usdrt/tests" },
     }
- 
--- Temp: Disable on Linux until we get a newer Kit version  
-end

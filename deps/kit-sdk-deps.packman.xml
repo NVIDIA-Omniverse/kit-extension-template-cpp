@@ -1,24 +1,37 @@
 <project toolsVersion="5.0">
   <!-- Import dependencies from kit-kernel to ensure we're using the same versions. -->
   <import path="../_build/${platform}/${config}/kit/dev/all-deps.packman.xml">
+    <filter include="boost_preprocessor"/>
     <filter include="carb_sdk_plugins"/>
     <filter include="cuda"/>
+    <filter include="imgui"/>
     <filter include="python"/>
+    <filter include="usd-release"/>
   </import>
 
   <!-- Override the link paths to point to the correct locations. -->
+  <dependency name="boost_preprocessor" linkPath="../_build/target-deps/boost-preprocessor"/>
   <dependency name="carb_sdk_plugins" linkPath="../_build/target-deps/carb_sdk_plugins"/>
   <dependency name="cuda" linkPath="../_build/target-deps/cuda"/>
+  <dependency name="imgui" linkPath="../_build/target-deps/imgui"/>
   <dependency name="python" linkPath="../_build/target-deps/python"/>
+  <dependency name="usd-release" linkPath="../_build/target-deps/usd/release"/>
 
   <!-- The doctest package imported from kit-kernel is not yet available. -->
   <dependency name="doctest" linkPath="../_build/target-deps/doctest">
     <package name="doctest" version="2.4.5+nv1-3" />
   </dependency>
 
-  <!-- There are problems with the pybind package imported from kit-kernel. -->
+  <!-- The pybind package imported from kit-kernel is incompatilbe with MSVC 14.27.29110 -->
   <dependency name="pybind11" linkPath="../_build/target-deps/pybind11">
-    <package name="pybind11" version="2.7.1-0" />
+    <package name="pybind11" version="2.7.1-0" platforms="windows-x86_64"/>
+    <package name="pybind11" version="2.11.1-0" platforms="linux-x86_64 linux-aarch64"/>
   </dependency>
 
+  <!-- Because we always use the release kit-kernel we have to explicitly refer to the debug usd package. -->
+  <dependency name="usd-debug" linkPath="../_build/target-deps/usd/debug">
+    <package name="nv-usd" version="22.11.nv.0.2.4873.eb3d138f-win64_py310_debug-dev_omniverse" platforms="windows-x86_64"/>
+    <package name="nv-usd" version="22.11.nv.0.2.4873.eb3d138f-linux64_py310-centos_debug-dev_omniverse" platforms="linux-x86_64"/>
+    <package name="nv-usd" version="22.11.nv.0.2.4873.eb3d138f-linux-aarch64_py310_debug-releases-106-0" platforms="linux-aarch64"/>
+  </dependency>
 </project>

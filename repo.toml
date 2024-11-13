@@ -16,6 +16,9 @@ post_build.commands = []
 licensing.enabled = false
 fetch.pip.licensing_enabled = false
 
+[repo_build.docker]
+enabled = false
+
 [repo_docs]
 name = "Kit Extension Template C++"
 project = "kit-extension-template-cpp"
@@ -49,6 +52,12 @@ extensions = [
 
 [repo_package.packages."platform:windows-x86_64".docs]
 windows_max_path_length = 0
+
+[repo_precache_exts]
+registries = [
+    { name = "kit/default", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/106/shared" },
+    { name = "kit/sdk", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/sdk/${kit_version_short}/${kit_git_hash}" },
+]
 
 [repo_symstore]
 enabled = false

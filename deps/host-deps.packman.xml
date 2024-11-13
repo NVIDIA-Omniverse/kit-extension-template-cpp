@@ -1,12 +1,11 @@
 <project toolsVersion="5.0">
   <dependency name="premake" linkPath="../_build/host-deps/premake">
-    <package name="premake" version="5.0.0-alpha15.dev+pipeline3388156.1f299ea4-windows-x86_64" checksum="b1e5dcef9acf47b0c86a4630afa4fadc9485b878e25e4321ac5afbb826bbdf93" platforms="windows-x86_64" />
-    <package name="premake" version="5.0.0-alpha15.dev+pipeline3388156.1f299ea4-linux-x86_64" checksum="ae15e63cf6d53571fa3bdfa33ddcec8a3be90675cdd155590a26bcd75d04d73f" platforms="linux-x86_64" />
+    <package name="premake" version="5.0.0-beta2+nv1-${platform}" platforms="windows-x86_64 linux-x86_64" />
   </dependency>
   <dependency name="msvc" linkPath="../_build/host-deps/msvc">
-    <package name="msvc" version="2019-16.7.6-license" platforms="windows-x86_64" checksum="0e37c0f29899fe10dcbef6756bcd69c2c4422a3ca1101206df272dc3d295b92d" />
+    <package name="msvc" version="2019-16.7.6-license" platforms="windows-x86_64" />
   </dependency>
   <dependency name="winsdk" linkPath="../_build/host-deps/winsdk">
-    <package name="winsdk" version="10.0.18362.0-license" platforms="windows-x86_64" checksum="2db7aeb2278b79c6c9fbca8f5d72b16090b3554f52b1f3e5f1c8739c5132a3d6" />
+    <package name="winsdk" version="10.0.18362.0-license" platforms="windows-x86_64" />
   </dependency>
 </project>

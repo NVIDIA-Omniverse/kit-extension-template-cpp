@@ -39,6 +39,9 @@ project_ext_bindings {
         "%{target_deps}/imgui"
     }
     links { "omni.example.cpp.ui_widget", "%{extsbuild_dir}/omni.ui/bin/omni.ui" }
+    filter { "system:linux" }
+        buildoptions { "-fabi-version=11" }
+    filter {}
 
     repo_build.prebuild_link {
         { "python/tests", ext.target_dir.."/omni/example/cpp/ui_widget/tests" },
