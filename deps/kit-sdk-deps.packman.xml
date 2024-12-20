@@ -30,8 +30,8 @@
 
   <!-- Because we always use the release kit-kernel we have to explicitly refer to the debug usd package. -->
   <dependency name="usd-debug" linkPath="../_build/target-deps/usd/debug">
-    <package name="nv-usd" version="22.11.nv.0.2.4873.eb3d138f-win64_py310_debug-dev_omniverse" platforms="windows-x86_64"/>
-    <package name="nv-usd" version="22.11.nv.0.2.4873.eb3d138f-linux64_py310-centos_debug-dev_omniverse" platforms="linux-x86_64"/>
-    <package name="nv-usd" version="22.11.nv.0.2.4873.eb3d138f-linux-aarch64_py310_debug-releases-106-0" platforms="linux-aarch64"/>
+    <package name="nv-usd" version="22.11.nv.0.2.8268.07efe1d5-win64_py310_debug-dev_omniverse" platforms="windows-x86_64"/>
+    <package name="nv-usd" version="22.11.nv.0.2.8268.07efe1d5-linux64_py310-centos_debug-dev_omniverse" platforms="linux-x86_64"/>
+    <package name="nv-usd" version="22.11.nv.0.2.8268.07efe1d5-linux-aarch64_py310_debug-releases-106-0" platforms="linux-aarch64"/>
   </dependency>
 </project>

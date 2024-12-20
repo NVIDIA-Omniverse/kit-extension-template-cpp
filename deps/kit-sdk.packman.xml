@@ -1,6 +1,6 @@
 <project toolsVersion="5.0">
   <!-- We always depend on the release kit-kernel package, regardless of config -->
   <dependency name="kit_kernel_${config}" linkPath="../_build/${platform}/${config}/kit" tags="${config} non-redist">
-    <package name="kit-kernel" version="106.4.0+release.156974.9321c814.gl.${platform}.release"/>
+    <package name="kit-kernel" version="106.5.0+release.162521.d02c707b.gl.${platform}.release"/>
   </dependency>
 </project>

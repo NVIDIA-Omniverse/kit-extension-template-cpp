@@ -37,6 +37,7 @@ icon = "data/icon.png"
 "omni.kit.uiapp" = {}
 "usdrt.scenegraph" = {}
 "omni.usd" = {}
+"omni.kit.pip_archive" = {}
 "omni.kit.primitive.mesh" = {}
 "omni.warp" = { optional = true }
 
