@@ -2,10 +2,4 @@
   <dependency name="premake" linkPath="../_build/host-deps/premake">
     <package name="premake" version="5.0.0-beta2+nv1-${platform}" platforms="windows-x86_64 linux-x86_64" />
   </dependency>
-  <dependency name="msvc" linkPath="../_build/host-deps/msvc">
-    <package name="msvc" version="2019-16.7.6-license" platforms="windows-x86_64" />
-  </dependency>
-  <dependency name="winsdk" linkPath="../_build/host-deps/winsdk">
-    <package name="winsdk" version="10.0.18362.0-license" platforms="windows-x86_64" />
-  </dependency>
 </project>

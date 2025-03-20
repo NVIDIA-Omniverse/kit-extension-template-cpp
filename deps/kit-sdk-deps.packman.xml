@@ -5,6 +5,7 @@
     <filter include="carb_sdk_plugins"/>
     <filter include="cuda"/>
     <filter include="imgui"/>
+    <filter include="pybind11"/>
     <filter include="python"/>
     <filter include="usd-release"/>
   </import>
@@ -14,18 +15,13 @@
   <dependency name="carb_sdk_plugins" linkPath="../_build/target-deps/carb_sdk_plugins"/>
   <dependency name="cuda" linkPath="../_build/target-deps/cuda"/>
   <dependency name="imgui" linkPath="../_build/target-deps/imgui"/>
+  <dependency name="pybind11" linkPath="../_build/target-deps/pybind11"/>
   <dependency name="python" linkPath="../_build/target-deps/python"/>
   <dependency name="usd-release" linkPath="../_build/target-deps/usd/release"/>
 
   <!-- The doctest package imported from kit-kernel is not yet available. -->
   <dependency name="doctest" linkPath="../_build/target-deps/doctest">
     <package name="doctest" version="2.4.5+nv1-3" />
-  </dependency>
-
-  <!-- The pybind package imported from kit-kernel is incompatilbe with MSVC 14.27.29110 -->
-  <dependency name="pybind11" linkPath="../_build/target-deps/pybind11">
-    <package name="pybind11" version="2.7.1-0" platforms="windows-x86_64"/>
-    <package name="pybind11" version="2.11.1-0" platforms="linux-x86_64 linux-aarch64"/>
   </dependency>
 
   <!-- Because we always use the release kit-kernel we have to explicitly refer to the debug usd package. -->
