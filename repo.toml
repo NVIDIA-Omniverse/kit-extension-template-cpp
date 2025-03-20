@@ -11,13 +11,16 @@ import_configs = ["${root}/_repo/deps/repo_kit_tools/kit-template/repo.toml"]
 name = "kit-extension-template-cpp"
 
 [repo_build]
-msbuild.vs_version = "vs2019"
 post_build.commands = []
 licensing.enabled = false
 fetch.pip.licensing_enabled = false
 
 [repo_build.docker]
 enabled = false
+
+[repo_build.msbuild]
+link_host_toolchain = true
+"token:in_ci==true".vs_path = "C:\\vs2019"
 
 [repo_docs]
 name = "Kit Extension Template C++"
