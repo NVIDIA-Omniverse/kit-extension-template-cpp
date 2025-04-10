@@ -11,6 +11,7 @@
 
 #include <carb/PluginUtils.h>
 #include <carb/events/EventsUtils.h>
+#include <carb/eventdispatcher/IEventDispatcher.h>
 
 #include <omni/example/cpp/usd/IExampleUsdInterface.h>
 #include <omni/ext/ExtensionsUtils.h>
@@ -120,7 +121,7 @@ protected:
         // Release all event subscriptions.
         PXR_NS::TfNotice::Revoke(m_usdNoticeListenerKey);
         m_timelineEventsSubscription = nullptr;
-        m_updateEventsSubscription = nullptr;
+        m_updateEventsSubscription.reset();
 
         // Remove all prims.
         for (auto& primWithRotationOps : m_primsWithRotationOps)
@@ -177,7 +178,7 @@ protected:
     {
         PXR_NS::TfNotice::Revoke(m_usdNoticeListenerKey);
         m_timelineEventsSubscription = nullptr;
-        m_updateEventsSubscription = nullptr;
+        m_updateEventsSubscription.reset();
         m_primsWithRotationOps.clear();
         m_stage.Reset();
 
@@ -233,18 +234,20 @@ protected:
         }
 
         // Subscribe to update events so we can animate the prims.
-        if (omni::kit::IApp* app = carb::getCachedInterface<omni::kit::IApp>())
+        if (carb::eventdispatcher::IEventDispatcher* eventDispatcher =
+            carb::getCachedInterface<carb::eventdispatcher::IEventDispatcher>())
         {
-            m_updateEventsSubscription = carb::events::createSubscriptionToPop(app->getUpdateEventStream(), [this](carb::events::IEvent*)
-            {
-                onUpdateEvent();
-            });
+            // Subscribe to update events.
+            m_updateEventsSubscription = eventDispatcher->observeEvent(
+                carb::RStringKey("Example USD Extension"), carb::eventdispatcher::kDefaultOrder,
+                omni::kit::kGlobalEventPostUpdate,
+                [this](const carb::eventdispatcher::Event& e) { onUpdateEvent(); });
         }
     }
 
     void stopAnimatingPrims()
     {
-        m_updateEventsSubscription = nullptr;
+        m_updateEventsSubscription.reset();
         onUpdateEvent(); // Reset positions.
     }
 
@@ -293,7 +296,7 @@ private:
     PXR_NS::UsdStageRefPtr m_stage;
     PXR_NS::TfNotice::Key m_usdNoticeListenerKey;
     std::vector<PrimWithRotationOps> m_primsWithRotationOps;
-    carb::events::ISubscriptionPtr m_updateEventsSubscription;
+    carb::eventdispatcher::ObserverGuard m_updateEventsSubscription;
     carb::events::ISubscriptionPtr m_timelineEventsSubscription;
 };
 

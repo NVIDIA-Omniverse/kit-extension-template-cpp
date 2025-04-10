@@ -1,5 +1,0 @@
-<project toolsVersion="5.0">
-  <dependency name="premake" linkPath="../_build/host-deps/premake">
-    <package name="premake" version="5.0.0-beta2+nv1-${platform}" platforms="windows-x86_64 linux-x86_64" />
-  </dependency>
-</project>

@@ -35,8 +35,7 @@ project_ext_plugin(ext, "omni.example.cpp.usd_physics.plugin")
         exceptionhandling "On"
         staticruntime "Off"
         cppdialect "C++17"
-        includedirs { "%{target_deps}/python/include/python3.10" }
-        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -pthread -lstdc++fs -Wno-error" }
+        buildoptions { "-pthread -lstdc++fs -Wno-error" }
         linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/usd/release/lib:%{target_deps}/python/lib:%{target_deps}/usd_ext_physics/release/lib:" }
     filter { "system:windows" }
         buildoptions { "/wd4244 /wd4305" }

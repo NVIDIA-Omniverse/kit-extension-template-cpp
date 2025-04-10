@@ -20,7 +20,7 @@ enabled = false
 
 [repo_build.msbuild]
 link_host_toolchain = true
-vs_version = "" # Empty string will match all years and prioritize the newest, or can be specified eg. "vs2022"
+vs_version = "vs2019" # Empty string will match all years and prioritize the newest, specifying vs2019 because of issue with usd libs and vs2022
 "token:in_ci==true".vs_version = "vs2019"
 "token:in_ci==true".vs_path = "C:\\vs2019"
 
@@ -34,6 +34,7 @@ sphinx_exclude_patterns = [
     "_build",
     "tools",
     "VERSION.md",
+    "source/extensions/*/config/actions_api.md",
     "source/extensions/*/docs/Overview.md",
     "source/extensions/*/docs/CHANGELOG.md",
     "source/extensions/*/README.md",
@@ -60,7 +61,7 @@ windows_max_path_length = 0
 
 [repo_precache_exts]
 registries = [
-    { name = "kit/default", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/106/shared" },
+    { name = "kit/default", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/107/shared" },
     { name = "kit/sdk", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/sdk/${kit_version_short}/${kit_git_hash}" },
 ]
 

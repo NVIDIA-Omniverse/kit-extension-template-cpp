@@ -24,7 +24,6 @@ path = "bin/${lib_prefix}omni.example.cpp.ui_widget${lib_ext}"
 
 [[test]]
 dependencies = [
-    "omni.kit.renderer.capture",
     "omni.kit.ui_test",
 ]
 

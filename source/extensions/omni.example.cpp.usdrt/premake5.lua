@@ -32,9 +32,8 @@ project_ext_plugin(ext, "omni.example.cpp.usdrt.plugin")
         links { "dl", "pthread", "rt" }
         exceptionhandling "On"
         staticruntime "Off"
-        includedirs { "%{target_deps}/python/include/python3.10", 
-        "%{target_deps}/cuda" }
-        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -pthread -lstdc++fs -Wno-error -fabi-version=11" }
+        includedirs { "%{target_deps}/cuda" }
+        buildoptions { "-pthread -lstdc++fs -Wno-error" }
         linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/python/lib:" }
     filter { "system:windows" }
         buildoptions { "/wd4244 /wd4305 /wd4530" }
@@ -52,7 +51,7 @@ project_ext_bindings {
     includedirs { "include",
         "%{target_deps}/pybind11/include",
         "%{target_deps}/python/include",
-        "%{kit_sdk}/dev/gsl/include",    
+        "%{kit_sdk}/dev/gsl/include",
         "%{kit_sdk}/dev/fabric/include",
     }
 
@@ -63,8 +62,7 @@ project_ext_bindings {
         links { "dl", "pthread", "rt" }
         exceptionhandling "On"
         staticruntime "Off"
-        includedirs { "%{target_deps}/python/include/python3.10" }
-        buildoptions { "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef -fabi-version=11" }
+        buildoptions { "-Wno-deprecated-declarations -Wno-deprecated -Wno-unused-variable -pthread -lstdc++fs -Wno-undef" }
         linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/python/lib:" }
     filter { "system:windows" }
         buildoptions { "/wd4244 /wd4305 /wd4530" }

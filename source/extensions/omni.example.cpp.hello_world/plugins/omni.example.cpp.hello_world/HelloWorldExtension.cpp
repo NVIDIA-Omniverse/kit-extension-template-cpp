@@ -13,13 +13,13 @@
 
 #include <omni/ext/IExt.h>
 #include <omni/kit/IApp.h>
-#include <carb/events/EventsUtils.h>
+#include <carb/eventdispatcher/IEventDispatcher.h>
 
 const struct carb::PluginImplDesc pluginImplDesc = { "omni.example.cpp.hello_world.plugin",
                                                      "An example C++ extension.", "NVIDIA",
                                                      carb::PluginHotReload::eEnabled, "dev" };
 
-CARB_PLUGIN_IMPL_DEPS(omni::kit::IApp)
+CARB_PLUGIN_IMPL_DEPS(carb::eventdispatcher::IEventDispatcher)
 
 namespace omni
 {
@@ -40,14 +40,15 @@ public:
     {
         printf("ExampleCppHelloWorldExtension starting up (ext_id: %s).\n", extId);
 
-        // Get the app interface from the Carbonite Framework.
-        if (omni::kit::IApp* app = carb::getFramework()->acquireInterface<omni::kit::IApp>())
+        // Get the event dispatcher interface from the Carbonite Framework.
+        if (carb::eventdispatcher::IEventDispatcher* eventDispatcher =
+            carb::getCachedInterface<carb::eventdispatcher::IEventDispatcher>())
         {
             // Subscribe to update events.
-            m_updateEventsSubscription =
-                carb::events::createSubscriptionToPop(app->getUpdateEventStream(), [this](carb::events::IEvent*) {
-                onUpdate();
-            });
+            m_updateEventsSubscription = eventDispatcher->observeEvent(
+                carb::RStringKey("Hello World Extension"), carb::eventdispatcher::kDefaultOrder,
+                omni::kit::kGlobalEventPostUpdate,
+                [this](const carb::eventdispatcher::Event& e) { onUpdate(); });
         }
     }
 
@@ -56,7 +57,7 @@ public:
         printf("ExampleCppHelloWorldExtension shutting down.\n");
 
         // Unsubscribe from update events.
-        m_updateEventsSubscription = nullptr;
+        m_updateEventsSubscription.reset();
     }
 
     void onUpdate()
@@ -69,7 +70,7 @@ public:
     }
 
 private:
-    carb::events::ISubscriptionPtr m_updateEventsSubscription;
+    carb::eventdispatcher::ObserverGuard m_updateEventsSubscription;
     int m_updateCounter = 0;
 };
 
