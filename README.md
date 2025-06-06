@@ -19,14 +19,21 @@ While an extension can consist of a single `extension.toml` file, most contain P
 Extensive documentation detailing what extensions are and how they work can be found [here](https://docs.omniverse.nvidia.com/py/kit/docs/guide/extensions.html).
 
 
+## Prerequisites and Environment Setup
+
+Please see [Kit App Template Prerequisites](https://gitlab-master.nvidia.com/omniverse/kit-github/kit-app-template#prerequisites-and-environment-setup) for the latest information on general Kit prerequisites and environment setup.
+
+Please see [Windows Developer Configuration](https://gitlab-master.nvidia.com/omniverse/kit-github/kit-app-template/-/blob/main/readme-assets/additional-docs/windows_developer_configuration.md#microsoft-visual-studio-and-windows-sdk-setup) for the latest information on Windows specific setup.
+
+
 ## Getting Started
 
 1. Clone the [GitHub repo](https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp) to your local machine.
 2. Open a command prompt and navigate to the root of your cloned repo.
-3. Run `build.bat` to bootstrap your dev environment and build the example extensions.
-4. Run `_build\{platform}\release\omni.app.example.extension_browser.bat` to open an example kit application.
-    - Run `omni.app.example.viewport.bat` instead if you want the renderer and main viewport to be enabled.
-    - Run `omni.app.kit.dev.bat` instead if you want the full kit developer experience to be enabled.
+3. Run `./build.bat` on Windows or `./build.sh package` on Linux to bootstrap your dev environment and build the example extensions.
+4. Run `./_build\{platform}\release\omni.app.example.extension_browser.bat|.sh` to open an example kit application.
+    - Run `omni.app.example.viewport.bat|.sh` instead if you want the renderer and main viewport to be enabled.
+    - Run `omni.app.kit.dev.bat|.sh` instead if you want the full kit developer experience to be enabled.
 5. From the menu, select `Window->Extensions` to open the extension browser window.
 6. Enter `omni.example.cpp` in the search bar at the top of the extension browser window to view the example extensions included with this repo.
 
@@ -35,8 +42,8 @@ Extensive documentation detailing what extensions are and how they work can be f
 
 ## Debugging C++ Extensions
 
-1. Run `build.bat` (if you haven't already) to generate the solution file.
-2. Open `_compiler\vs2019\kit-extension-template-cpp.sln` using Visual Studio 2019.
+1. Run `./build.bat` on Windows (if you haven't already) to generate the solution file.
+2. Open `./_compiler\vs2019\kit-extension-template-cpp.sln` using Visual Studio 2019.
 3. Select `omni.app.example.extension_browser` as the startup project (if it isn't already).
     - Select `omni.app.example.viewport` instead if you want the renderer and main viewport to be enabled.
     - Select `omni.app.kit.dev` instead if you want the full kit developer experience to be enabled.
@@ -56,14 +63,14 @@ Extensive documentation detailing what extensions are and how they work can be f
 5. Update your new extension's Python code in the `python` folder as necessary.
 6. Update your new extension's Python bindings in the `bindings` folder as necessary.
 7. Update your new extension's documentation in the `docs` folder as necessary.
-8. Run `build.bat` to build your new extension.
+8. Run `./build.bat|.sh` to build your new extension.
 9. Refer to the *Getting Started* section above to open the example kit application and extension browser window.
 10. Enter the name of your new extension in the search bar at the top of the extension browser window to view it.
 
 
 ## Generating Documentation
 
-1. Run `repo.bat docs` to generate the documentation for the repo, including all extensions it contains.
+1. Run `./repo.bat docs` on Windows to generate the documentation for the repo, including all extensions it contains.
     - You can generate the documentation for a single extension by running `repo.bat docs -p {extension_name}`
 2. Open `_build/docs/kit-extension-template-cpp/latest/index.html` to view the generated documentation.
 
