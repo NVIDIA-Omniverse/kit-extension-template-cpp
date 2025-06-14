@@ -17,3 +17,9 @@ app.menu.legacy_mode = false # So the extension window shows up
 app.windowtitle = "Example Application: Extension Browser"
 app.windowwidth = 1700
 app.windowheight = 900
+
+[settings.exts."omni.kit.registry.nucleus"]
+registries = [
+    { name = "kit/default", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/107/shared" },
+    { name = "kit/sdk", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/sdk/${kit_version_short}/${kit_git_hash}" },
+]
