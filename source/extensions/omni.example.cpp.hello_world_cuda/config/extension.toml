@@ -1,0 +1,22 @@
+[package]
+version = "1.0.0"
+
+title = "CUDA Hello World (C++)"
+description = "Demonstrates how to call a CUDA kernel from a C++ Omniverse Kit extension."
+category = "Example"
+keywords = ["example", "C++", "CUDA", "cpp"]
+icon = "data/icon.png"
+preview_image = "data/preview.png"
+readme  = "docs/Overview.md"
+repository = "https://github.com/NVIDIA-Omniverse/kit-extension-template-cpp"
+
+[[python.module]]
+name = "omni.example.cpp.hello_world_cuda"
+
+[[native.plugin]]
+path = "bin/*.plugin"
+
+[documentation]
+pages = [
+    "docs/Overview.md",
+]
