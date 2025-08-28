@@ -38,3 +38,4 @@ cpp_api = [
      "include/omni/example/cpp/pybind/IExampleBoundObject.h",
      "include/omni/example/cpp/pybind/ExampleBoundObject.h",
 ]
+python_api_hidden = true

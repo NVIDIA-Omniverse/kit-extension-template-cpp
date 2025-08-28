@@ -32,19 +32,19 @@ public:
     /// @private
     CARB_PLUGIN_INTERFACE("omni::example::cpp::usdruntime::IExampleUsdrtInterface", 1, 0);
 
-    /*
-    Get the Fabric data for a path.
-    */
+    /**
+     * Get the Fabric data for a path.
+     */
     virtual std::string get_attributes_for_prim(long int stageId, usdrt::SdfPath* path, std::vector<usdrt::UsdAttribute>* data) = 0;
-    
-    /*
-    Apply a random world space rotation to a prim in Fabric.
-    */
+
+    /**
+     * Apply a random world space rotation to a prim in Fabric.
+     */
     virtual std::string apply_random_rotation(long int stageId, usdrt::SdfPath* path, usdrt::GfQuatf* rot) = 0;
-    
-    /*
-    Deform a Mesh prim
-    */
+
+    /**
+     * Deform a Mesh prim
+     */
     virtual std::string deform_mesh(long int stageId, usdrt::SdfPath* path, int time) = 0;
 };
 

@@ -6,4 +6,5 @@
 ## distribution of this software and related documentation without an express
 ## license agreement from NVIDIA CORPORATION is strictly prohibited.
 ##
+__all__ = ["hello_from", "hello_squared", "ExamplePythonHelloWorldExtension"]
 from .hello_world_extension import *

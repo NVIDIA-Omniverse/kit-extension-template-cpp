@@ -15,29 +15,26 @@ project_ext_plugin(ext, "omni.example.cpp.usdrt.plugin")
     includedirs {
         "include",
         "plugins/omni.example.cpp.usdrt",
-        "%{target_deps}/cuda",
         "%{target_deps}/pybind11/include",
         "%{target_deps}/python/include",
         "%{kit_sdk}/dev/gsl/include",
         "%{kit_sdk}/dev/fabric/include",
      }
-    libdirs { "%{target_deps}/python/libs", "%{target_deps}/cuda/lib/x64"  }
+    libdirs { "%{target_deps}/python/libs" }
     defines { "NOMINMAX", "NDEBUG" }
     cppdialect "C++17"
     runtime "Release"
     rtti "On"
 
     filter { "system:linux" }
-        libdirs {"%{target_deps}/cuda/lib64/stubs"}
         links { "dl", "pthread", "rt" }
         exceptionhandling "On"
         staticruntime "Off"
-        includedirs { "%{target_deps}/cuda" }
         buildoptions { "-pthread -lstdc++fs -Wno-error" }
         linkoptions { "-Wl,--disable-new-dtags -Wl,-rpath,%{target_deps}/python/lib:" }
     filter { "system:windows" }
         buildoptions { "/wd4244 /wd4305 /wd4530" }
-        links { "carb", "cudart_static"}
+        links { "carb", }
     filter {}
 
 -- Build Python bindings that will be loaded by the extension.
@@ -58,7 +55,6 @@ project_ext_bindings {
     cppdialect "C++17"
 
     filter { "system:linux" }
-        libdirs {"%{target_deps}/cuda/lib64/stubs"}
         links { "dl", "pthread", "rt" }
         exceptionhandling "On"
         staticruntime "Off"

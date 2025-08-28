@@ -45,3 +45,4 @@ pages = [
 cpp_api = [
      "include/CppWidget.h",
 ]
+python_api_hidden = true

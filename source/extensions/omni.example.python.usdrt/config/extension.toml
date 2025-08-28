@@ -54,3 +54,4 @@ pages = [
     "docs/Overview.md",
     "docs/CHANGELOG.md",
 ]
+python_api_hidden = true

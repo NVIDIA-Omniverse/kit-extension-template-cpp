@@ -101,13 +101,17 @@ protected:
         }
 
         // Subscribe to timeline events so we know when to start or stop animating the prims.
-        if (auto timeline = omni::timeline::getTimeline())
+        if (carb::eventdispatcher::IEventDispatcher* eventDispatcher =
+            carb::getCachedInterface<carb::eventdispatcher::IEventDispatcher>())
         {
-            m_timelineEventsSubscription = carb::events::createSubscriptionToPop(
-                timeline->getTimelineEventStream(),
-                [this](carb::events::IEvent* timelineEvent) {
-                onTimelineEvent(static_cast<omni::timeline::TimelineEventType>(timelineEvent->type));
-            });
+            m_timelineEventsPlaySubscription = eventDispatcher->observeEvent(
+                carb::RStringKey("Example USD Extension"), carb::eventdispatcher::kDefaultOrder,
+                omni::timeline::kGlobalEventPlay,
+                [this](const carb::eventdispatcher::Event& e) { startAnimatingPrims(); });
+            m_timelineEventsStopSubscription = eventDispatcher->observeEvent(
+                carb::RStringKey("Example USD Extension"), carb::eventdispatcher::kDefaultOrder,
+                omni::timeline::kGlobalEventStop,
+                [this](const carb::eventdispatcher::Event& e) { stopAnimatingPrims(); });
         }
     }
 
@@ -120,7 +124,8 @@ protected:
 
         // Release all event subscriptions.
         PXR_NS::TfNotice::Revoke(m_usdNoticeListenerKey);
-        m_timelineEventsSubscription = nullptr;
+        m_timelineEventsStopSubscription.reset();
+        m_timelineEventsPlaySubscription.reset();
         m_updateEventsSubscription.reset();
 
         // Remove all prims.
@@ -177,7 +182,8 @@ protected:
     void onDefaultUsdStageChanged(long stageId) override
     {
         PXR_NS::TfNotice::Revoke(m_usdNoticeListenerKey);
-        m_timelineEventsSubscription = nullptr;
+        m_timelineEventsStopSubscription.reset();
+        m_timelineEventsPlaySubscription.reset();
         m_updateEventsSubscription.reset();
         m_primsWithRotationOps.clear();
         m_stage.Reset();
@@ -297,7 +303,8 @@ private:
     PXR_NS::TfNotice::Key m_usdNoticeListenerKey;
     std::vector<PrimWithRotationOps> m_primsWithRotationOps;
     carb::eventdispatcher::ObserverGuard m_updateEventsSubscription;
-    carb::events::ISubscriptionPtr m_timelineEventsSubscription;
+    carb::eventdispatcher::ObserverGuard m_timelineEventsPlaySubscription;
+    carb::eventdispatcher::ObserverGuard m_timelineEventsStopSubscription;
 };
 
 }

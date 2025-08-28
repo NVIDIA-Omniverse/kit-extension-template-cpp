@@ -6,4 +6,5 @@
 ## distribution of this software and related documentation without an express
 ## license agreement from NVIDIA CORPORATION is strictly prohibited.
 ##
+__all__ = ["get_example_usdrt_interface", "get_selected_prim_path", "get_stage_id", "ExampleUsdrtExtension"]
 from .example_usdrt_extension import *

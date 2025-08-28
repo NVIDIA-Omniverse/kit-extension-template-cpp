@@ -8,7 +8,7 @@
 ##
 
 import carb
-import carb.events
+import carb.eventdispatcher
 import numpy as np
 import omni.ext
 import omni.kit.app
@@ -31,7 +31,6 @@ class ExamplePythonUsdrtMeshExtension(omni.ext.IExt):
 
     def on_shutdown(self):
         if self.sub:
-            self.sub.unsubscribe()
             self.sub = None
         self.step = 0
         self.playing = False
@@ -81,7 +80,7 @@ class ExamplePythonUsdrtMeshExtension(omni.ext.IExt):
 
     def init_on_update(self):
         @carb.profiler.profile(zone_name="omni.example.python.usdrt_mesh.on_update")
-        def on_update(e: carb.events.IEvent):
+        def on_update(e: carb.eventdispatcher.Event):
             if not self.playing:
                 return
             try:
@@ -92,8 +91,11 @@ class ExamplePythonUsdrtMeshExtension(omni.ext.IExt):
                 carb.log_error(e)
             return
 
-        update_stream = omni.kit.app.get_app().get_update_event_stream()
-        self.sub = update_stream.create_subscription_to_pop(on_update, name="omni.example.python.usdrt_mesh.on_update")
+        self.sub = carb.eventdispatcher.get_eventdispatcher().observe_event(
+            event_name=omni.kit.app.GLOBAL_EVENT_UPDATE,
+            on_event=on_update,
+            observer_name="omni.example.python.usdrt_mesh.on_update"
+        )
         return
 
 

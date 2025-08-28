@@ -6,4 +6,5 @@
 ## distribution of this software and related documentation without an express
 ## license agreement from NVIDIA CORPORATION is strictly prohibited.
 ##
+__all__ = ["get_example_usd_interface", "ExampleUsdExtension"]
 from .example_usd_extension import *
